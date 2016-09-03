@@ -1,0 +1,77 @@
+﻿@model MvcPL.ViewModels.PagedData<MvcPL.ViewModels.PhotoViewModel>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $().ready(function () {
+        $(".page-number").on("click", function () {
+            var page = parseInt($(this).html());
+            $.ajax({
+                url: '@Url.Action("PhotosList")',
+                data: { "page": page },
+                success: function (data) {
+                    $("#photos-list").html(data);
+                }
+            });
+        });
+    });
+    
+</script>
+<div class="rTable">
+    @{var counter = 1;}
+    <div class="rTableRow">
+        @foreach (var item in Model.Data)
+        {
+            <div class="rTableCell" id="@item.Id">
+                <img src="@Url.Action("GetImage", "Photo", new { photoId = item.Id })" width="300" height="300" />
+                <div>  
+                    <noscript>                
+                    <a href="/Photo/DeletePhoto/@item.Id"  style="float:right;">
+                        <img src="~/Content/images/delete-photo.png" width="24" height="24" style="background-image:none; margin-left: -24px; z-index: 10; position:absolute"/>
+                    </a>
+                    </noscript>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "deletePhoto" })
+                    <a href="@Url.Action("CreatePhoto", "Photo")" style="float:right;">
+                        <img src="~/Content/images/add-photo.png" width="24" height="24" style="background-image:none;" />
+                    </a>
+                    <a class="confirm" href="@Url.Action("EditPhoto", "Photo", new { photoId = item.Id })" style="float:right;">
+                        <img src="~/Content/images/edit-photo.png" width="24" height="24" style="background-image:none;" />
+                    </a>
+                </div>
+            </div>
+            if (counter % 3 == 0)
+            {
+                @:</div><div class="rTableRow">
+            }
+            counter++;
+
+        }
+        @if (Model.Data.Count() == 1)
+        {
+            <div class="rTableCell" style="border:none; width:340px;"></div>
+            <div class="rTableCell" style="border:none; width:340px;"></div>
+        }else if (Model.Data.Count() == 2)
+        {
+            <div class="rTableCell" style="border:none; width:340px"></div>
+        }  
+    </div>
+    <div class="tfoot">
+        <div class="rTableRow">
+            @for (int i = 1; i <= Model.NumberOfPages; i++)
+            {
+                if (i == Model.CurrentPage)
+                {
+                    @i
+                }
+                else
+                {
+                    <a class="page-number" href="javascript:void(0);">@i</a>
+                }
+            }
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

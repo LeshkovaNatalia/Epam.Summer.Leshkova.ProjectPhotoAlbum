@@ -1,0 +1,43 @@
+﻿@model MvcPL.ViewModels.PagedData<MvcPL.ViewModels.PhotoViewModel>
+
+@{
+    ViewBag.Title = "GetPhotoForUser";
+    Layout = "~/Views/Shared/_PhotoLayout.cshtml";
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $().ready(function () {
+        $(".page-number").on("click", function () {
+            var page = parseInt($(this).html());
+            $.ajax({
+                url: '@Url.Action("PhotosList")',
+                data: { "page": page },
+                success: function (data) {
+                    $("#photos-list").html(data);
+                }
+            });
+        });
+    });
+</script>
+@if (Model.Data.Count() == 0){
+    <div style="width:80%; margin-left:auto; margin-right:auto; font-size:16px;">
+        <p>No photo. @Html.ActionLink("Add Photo", "CreatePhoto")</p>
+    </div>
+}
+
+<div id="photos-list">
+    @if (TempData["message"] != null)
+    {
+        <div>
+            @TempData["message"]
+        </div>
+    }
+        @Html.Partial("PhotosList")
+</div>
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

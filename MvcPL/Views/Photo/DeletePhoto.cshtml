@@ -1,0 +1,20 @@
+﻿@model MvcPL.ViewModels.PhotoViewModel
+
+@{
+    ViewBag.Title = "DeletePhoto";
+    Layout = "~/Views/Shared/_PhotoLayout.cshtml";
+}
+
+<h2>Delete Photo</h2>
+<div>Are you sure you want to delete photo with description <b>@Html.DisplayFor(model => model.Description)</b>?</div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" />
+    </p>
+    <p>
+        @Html.ActionLink("Back to photos", "GetPhotoForUser")
+    </p>
+}
+

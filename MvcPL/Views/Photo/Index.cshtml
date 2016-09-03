@@ -1,0 +1,32 @@
+﻿@model  IEnumerable<MvcPL.ViewModels.PhotoViewModel>
+
+@{
+    ViewBag.Title = "GetAllPhoto";
+    Layout = "~/Views/Shared/_PhotoLayout.cshtml";
+}
+
+<script src="~/Scripts/jquery-1.12.4.min.js"></script>
+<script src="~/Scripts/load-photos.js"></script>
+<noscript>Display all photo @Html.ActionLink("All Photo", "AllPhotos")</noscript>
+<div class="rTable  grid cs-style-3">
+    @{var counter = 1;}
+    <div class="rTableRow">
+        @foreach (var item in Model)
+        {
+            <div class="rTableCell">
+                <figure>
+                    @Html.Partial("_Photo", item)
+                    <figcaption id="@item.Id">
+                        @Html.Partial("_AboutPhoto", item)
+                    </figcaption>
+                </figure>
+            </div>
+            if (counter % 3 == 0)
+            {
+                @:</div><div class="rTableRow">
+            }
+            counter++;
+        }
+    </div>
+</div>
+@Html.Hidden("User", User.Identity.Name)

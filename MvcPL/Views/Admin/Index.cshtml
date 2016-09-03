@@ -1,0 +1,61 @@
+﻿@model IEnumerable <MvcPL.ViewModels.UserViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_PhotoLayout.cshtml";
+}
+
+<style>
+.userDescription{
+    display:none;
+    margin-left:10em;
+}
+.email:hover + .userDescription{
+    display:block;
+    position:absolute;
+}
+</style>
+
+<div style="width:80%; margin-left:auto; margin-right:auto">
+<h4>List of users</h4>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedOn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Roles)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(item.Email, "Details", new { id = item.UserId }, new { @class = "email" })
+                <div class="userDescription">
+                    <img src="@Url.Action("GetUserImage", "Photo", new { userName = item.Email })" width="100" height="100" alt="No Photo" style="background-image:none;">
+                </div>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedOn)
+            </td>
+            <td>
+                @{
+                    var roles = Html.Action("GetRolesForUser", "Account", new { userId = item.UserId });
+                    <div>@Convert.ToString(roles)</div>
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "DeleteUser", new { id = item.UserId }, new { @class = "deleteUser" })
+                <noscript>@Html.ActionLink("Delete", "Delete", new { id = item.UserId })</noscript>
+            </td>
+        </tr>
+    }
+
+</table>
+</div>

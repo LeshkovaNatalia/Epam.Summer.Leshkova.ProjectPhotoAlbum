@@ -1,0 +1,12 @@
+VotingController.AddVoting => VotingService.Update => NLogLogger.Info VotingService
+VotingController.AddVoting => VotingService.Update => NLogLogger.Error 02.09.2016 0:00:00 BLL.Services.VotingService Update vote for photo was failed.
+VotingController.AddVoting => VotingService.Update => NLogLogger.Error 02.09.2016 BLL.Services.VotingService Update vote for photo was failed.
+VotingController.AddVoting => VotingService.Update => NLogLogger.Error 02.09.2016 Logger.NLogLogger Update vote for photo was failed.
+VotingController.AddVoting => VotingService.Update => NLogLogger.Error 02.09.2016 BLL.Services.VotingService Update vote for photo was failed.
+VotingController.AddVoting => VotingService.Update => NLogLogger.Error 03.09.2016 BLL.Services.VotingService Update vote for photo was failed.
+VotingController.AddVoting => VotingService.Update => NLogLogger.Error 03.09.2016 BLL.Services.VotingService Update vote for photo was failed.
+CategoryController.GetCategory => CategoryPhotoService.GetCategoryPhotoEntity => NLogLogger.Error 03.09.2016 BLL.Services.CategoryPhotoService Get category photo was failed.
+CategoryController.GetCategory => CategoryPhotoService.GetCategoryPhotoEntity => NLogLogger.Error 03.09.2016 BLL.Services.CategoryPhotoService Get category photo was failed.
+CategoryController.GetCategory => CategoryPhotoService.GetCategoryPhotoEntity => NLogLogger.Error 03.09.2016 BLL.Services.CategoryPhotoService Get category photo was failed.
+CategoryController.GetCategory => CategoryPhotoService.GetCategoryPhotoEntity => NLogLogger.Error 03.09.2016 BLL.Services.CategoryPhotoService Get category photo was failed.
+CategoryController.GetCategory => CategoryPhotoService.GetCategoryPhotoEntity => NLogLogger.Error 03.09.2016 BLL.Services.CategoryPhotoService Get category photo was failed.

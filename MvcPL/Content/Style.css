@@ -1,0 +1,595 @@
+﻿body {
+    font-family:"Times New Roman";
+    font-size:1em;
+    height: 100%;
+}
+
+html {
+    font-family: "Times New Roman";
+    font-size:0.8em;
+}
+/* For IE 6 */
+* html #wrapper {
+    height: 100%;
+}
+
+/* Style for laptop */
+#wrapper{
+    min-height:100%;
+    position:relative;
+    margin:0 auto;
+}
+
+.header {
+    width:90%;
+    min-height: 10em;
+    height: auto;
+    max-width:1024px;
+    margin:0 auto;
+}
+
+.mainContent {
+    width:90%;
+    max-width:1024px;
+    margin:0 auto;
+    padding-bottom:6em;
+}
+
+#footer {
+    width:90%;
+    max-width:1024px;
+    margin:0 auto;
+    height:6em;    
+    clear:both;
+    margin-top:6em;
+    border-top: 1px solid #999999;
+    text-align:center;
+}
+
+
+#logo{
+    float:left;
+}
+
+/* Style for menu */
+.topnav{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;    
+    width:60%;
+}
+
+.topnav li{
+    float: left;
+}
+
+.topnav li a{
+    display: inline-block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+.topnav li a:hover{
+    background-color:darkturquoise;
+}
+
+.topnav li.icon {
+    display: none;
+}
+
+@media screen and (max-width:680px) {
+    .topnav li:not(:first-child) {
+        display: none;
+    }
+    .topnav li.icon {
+        float: right;
+        display: inline-block;
+    }
+}
+
+@media screen and (max-width:680px) {
+    .topnav.responsive {
+        position: relative;
+    }
+    .topnav.responsive li.icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    ul.topnav.responsive li {
+        float: none;
+        display: inline;
+    }
+    ul.topnav.responsive li a {
+        display: block;
+        text-align: left;
+    }
+}
+
+.star{
+    background-image:none;
+}
+
+.voteDiv{
+    width:50%;
+    float:left;
+}
+
+img {
+  background: url('images/ajax-loader.gif') no-repeat center;
+}
+
+/* Style for input type="file" */
+.file_upload{
+    display: block;
+    position: relative;
+    overflow: hidden;
+    margin-left:2em;
+    height: 2em;                 
+}
+.file_upload .button, .file_upload > mark{
+    display: block;
+    cursor: pointer;              
+    margin-top: 0.6em;
+}
+.file_upload .button{
+    float: right;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 6em;                 
+    height: 70%;
+    text-align: center           
+}
+.file_upload > mark{
+    background: transparent;     
+    padding-left: 1em            
+}
+
+.file_upload input[type=file]{
+    position: absolute;
+    top: 0;
+    opacity: 0
+}
+
+@media only screen and ( max-width: 500px ){  /* example */
+    .file_upload > div{
+        display: none
+    }
+    .file_upload > button{
+        width: 100%
+    }
+}
+
+#preview {
+    background-image: none; 
+    padding-top: 1.5em;
+    margin-left: 4.5em;
+}
+
+.col-sm-offset-3{
+    margin-left:34%;
+}
+
+div.form-group label.file_upload {
+    float: left;
+    text-align: left;
+    width: 89%;
+}
+
+div.form-group label.file_upload span{
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size:12px;
+}
+
+.login{
+    text-align: right;
+    color: white;
+}
+
+/* style for table with div */
+.rTable { 
+    display: table;
+    margin-left:auto;
+    margin-right:auto; 
+    margin-top:1em;
+} 
+.rTableRow { 
+    display: table-row; 
+    width:100%;
+}
+.rTableCell {   	
+    display: table-cell;   	
+    padding: 1.5em; 	
+    border: 1px solid #999999;
+    float:left;
+}
+
+.tfoot
+{
+    display: table-footer-group;
+}
+
+/* Login Panel */
+.loginPanel {
+    float:right;
+    margin-top: 0.4em;
+    overflow: auto;
+    padding: 0;
+    display: none;
+}
+
+input[type=checkbox]:checked ~ .loginPanel {
+   display: block;
+}
+
+/* Div with login form */
+.loginForm {
+    font-weight: 300;
+    position: relative;
+}
+
+.loginForm input[type=text] {
+    float:left;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size:16px;
+}
+
+.loginForm input[type=password] {
+    float:left;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size:16px;
+}
+
+.loginForm input[type=submit] {
+    float:left;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size:12px;
+}
+
+.loginForm div.editor-field{
+    float:left;
+    margin-right:0.3em;
+}
+
+
+/* Sign Up button */
+label.btn {
+    display: block;
+    float:right;
+    margin-top:-3.6em;
+    cursor: pointer;
+    background: #2bbbad;
+    width: 5em;
+    border-radius: 0 0 5px 5px;
+    padding: 8px 5px;
+    color: #FFF;
+    line-height: 2em;
+    font-size: 14px;
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
+    cursor: pointer;
+    transition: all 400ms cubic-bezier(0.17,0.04,0.03,0.94);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+    z-index: 10
+}
+
+/* Style for Search photos */
+#search{
+    float:left;
+    width:60%;
+}
+
+#searchPhoto{
+    float:left;
+}
+
+.selectedPhoto 
+{   	
+    padding: 10px;
+}
+
+#searchResult{
+    margin-left:auto;
+    margin-right:auto;
+}
+
+#searchPhotos{
+    display:block; 
+    /*width: 50%; */
+    float: left;
+}
+
+.photoDescription{
+    width:100%;
+}
+
+/* rating */
+.rating {
+    float:left;
+    width: 50%;        
+}
+
+/* :not(:checked) is a filter, so that browsers that don’t support :checked don’t 
+   follow these rules. Every browser that supports :checked also supports :not(), so
+   it doesn’t make the test unnecessarily selective */
+/*.rating:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+    clip:rect(0,0,0,0);
+}
+
+.rating:not(:checked) > label {
+    float:right;
+    width:1em;
+    padding:0 .1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:200%;
+    line-height:1.2;
+    color:#ddd;
+    text-shadow:1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating:not(:checked) > label:before {
+    content: '★ ';
+}
+
+.rating > input:checked ~ label {
+    color: #f70;
+    text-shadow:1px 1px #c60, 2px 2px #940, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+    color: gold;
+    text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+    color: #ea0;
+    text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating > label:active {
+    position:relative;
+    top:2px;
+    left:2px;
+}*/
+
+/* Display all photo */
+.grid {
+    width:100%;
+	max-width: 1024px;
+	/*margin: 0 auto;*/
+	text-align: center;
+}
+
+.grid div.rTableCell {
+	display: inline-block;
+	margin: 0;
+	text-align: left;
+	position: relative;
+}
+
+.grid figure {
+	margin: 0;
+	position: relative;
+}
+
+.grid figure img.sourcePhoto {
+	max-width: 100%;
+	display: block;
+	position: relative;
+}
+
+.grid figcaption {
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 20px;
+	background: white;
+    font-size:12px;
+}
+
+@media screen and (max-width: 31.5em) {
+	.grid div.rTableCell {
+		width: 100%;
+		min-width: 300px;
+	}
+}
+
+.cs-style-3 figure {
+	overflow: hidden;
+}
+
+.cs-style-3 figure img.sourcePhoto {
+	transition: transform 0.4s;
+}
+
+.cs-style-3 figure:hover img.sourcePhoto,
+.cs-style-3 figure.cs-hover img.sourcePhoto {
+	transform: translateY(-50px);
+}
+
+.cs-style-3 figcaption {
+	height: 100px;
+	width: 100%;
+	top: auto;
+	bottom: 0;
+	opacity: 0;
+	transform: translateY(100%);
+	transition: transform 0.4s, opacity 0.1s 0.3s;
+}
+
+.no-touch .cs-style-3 figure:hover figcaption,
+.cs-style-3 figure.cs-hover figcaption {
+	opacity: 1;
+	transform: translateY(0px);
+	transition: transform 0.4s, opacity 0.1s;
+}
+
+.multi-line  {   
+    height:  5em;  
+    font-family:  Segoe UI,  Verdana;  
+    width: 20em;
+}
+
+/* Style for button */
+input[type=submit] {
+    padding:0.3em 0.9em; 
+    background:white; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 0.3em; 
+}
+
+input#GetPhotos[type=submit]{
+    margin-left:-2.7em;
+    background-image: url('images/find.png');
+    background-position:center;
+    background-repeat: no-repeat;
+}
+
+input#photo[type=text] {
+    width: 14em;
+    max-width: 30em;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    padding: 0.5em 1em 0.5em 1em;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+input#photo[type=text]:focus {
+    width: 100%;
+}
+
+#menu{
+    background-color: darkturquoise;
+    float: left;
+    width: 100%;
+}
+
+#ui-id-1{
+    position:fixed;
+    background-color:white;
+    border: 2px solid #ccc;
+    border-top-style: none;
+    border-radius: 4px;
+    width:1em;
+    list-style:none;
+    opacity:0.8;
+}
+
+/* Register form */
+#registerForm{
+    width: 80%;
+    margin-left:auto;
+    margin-right:auto;
+}
+#registerForm form{
+    margin-left:auto;
+    margin-right:auto;
+}
+
+#registerForm div.form-group{    
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    width: 70%;
+}
+
+#registerForm input[type=submit]{
+    border:thin solid lightgray;
+    margin-left: 16.5em;
+}
+
+div.form-group label {
+    text-align:left;
+    width:35%;
+    float:left
+}
+
+div.form-group div {
+    text-align:left;
+    width:55%;
+    float:left
+}
+
+.img-responsive{
+    padding-top:0.5em;
+    padding-left: 3em;
+}
+
+/* Description photo */
+#descriptionPhoto{
+    width:80%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+#descriptionPhoto img {
+    margin-left:1.1em;
+}
+
+#aboutPhoto{
+    float:right;
+    margin-right:9em;
+}
+
+/* GetAllPhoto */
+.sourcePhoto{
+    float:left;
+    background: url('images/ajax-loader.gif') no-repeat center;
+}
+
+/* Placeholder */
+input[type=text]:focus::-webkit-input-placeholder {color: transparent}
+input[type=text]:focus::-moz-placeholder          {color: transparent}
+input[type=text]:focus:-moz-placeholder           {color: transparent}
+input[type=text]:focus:-ms-input-placeholder      {color: transparent}
+
+input[type=password]:focus::-webkit-input-placeholder {color: transparent}
+input[type=password]:focus::-moz-placeholder          {color: transparent}
+input[type=password]:focus:-moz-placeholder           {color: transparent}
+input[type=password]:focus:-ms-input-placeholder      {color: transparent}
+
+.categoryDropDown{
+    width:15em;
+}
+
+.categoryDropDown select{
+    margin-left: 2.6%;
+    margin-top: 1%;
+}
+
+input[type=text]{
+    color:black;
+}
+
+.deletePhoto{
+    background:url(images/delete-photo.png) no-repeat center;
+    float: right;
+    width:24px;
+    height:24px;
+    color: transparent;
+    font-size:0;
+}

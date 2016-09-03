@@ -1,0 +1,14 @@
+﻿@model MvcPL.ViewModels.PhotoViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_PhotoLayout.cshtml";
+}
+<div id="descriptionPhoto">
+    <img src="@Url.Action("GetImage", "Photo", new { photoId = Model.Id })" width="400" height="400" />
+    <div id="aboutPhoto">
+        <h4>Photo Details: @Model.Description</h4>
+        <p>@Model.CreatedOn</p>
+        <p>@Html.ActionLink("Back to main page", "GetAllPhoto")</p>
+    </div>
+</div>

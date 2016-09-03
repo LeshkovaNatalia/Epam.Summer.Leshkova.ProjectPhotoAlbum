@@ -1,0 +1,43 @@
+﻿@using MvcPL.Infrastructure.Helpers
+@using MvcPL.ViewModels
+@model PhotoViewModel
+
+@if (User.IsInRole("User"))
+{
+    var canVote = Html.Action("CanVote", "Voting", new { userName = User.Identity.Name, photoId = Model.Id });
+    var isUserPhoto = Html.Action("IsUserPhoto", "Voting", new { userName = User.Identity.Name, photoId = Model.Id });
+    if (Convert.ToBoolean(isUserPhoto.ToString()) == true)
+    {
+        <div class="voteDiv"> It's your photo :)</div>
+    }
+    else if (Convert.ToBoolean(canVote.ToString()) == true)
+    {
+        @Html.Ratings(new VotingViewModel() { PhotoId = @Model.Id })
+    }
+    else
+    {
+        <div class="voteDiv"> You already vote!</div>
+    }
+ }
+ else
+ {
+    <div class="voteDiv"> Sign Up for rate photo!</div>
+ }
+<div style="float:left;">
+        <span id="totalRating @Model.Id">@Html.Action("GetTotalRating", "Voting", new { photoId = Model.Id })</span>
+        <img height="10" width="10" src="~/Content/images/star.png" />
+        By <span id="totalRaters @Model.Id">@Html.Action("GetRaters", "Voting", new { photoId = Model.Id })</span> rater(s)
+</div>
+<div style="float:left;">Description: @Model.Description</div>
+<div style="float:left;">Category: @Html.Action("GetCategory", "Category", new { categoryId = Model.CategoryId })</div>
+<div>
+    <div id="rate"></div>
+    <div id="generalRate"></div>
+</div>
+
+@section Scripts
+{
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/jqueryval")
+}
+

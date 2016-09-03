@@ -1,0 +1,11 @@
+﻿@model MvcPL.ViewModels.PhotoViewModel
+
+<div id="results" class="results">
+    <img id="@Model.Id" src="@Url.Action("GetImage", "Photo", new { photoId = Model.Id })" class="sourcePhoto" width="300" height="300" style="float: left"/>
+</div>
+
+@section Scripts
+{
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jqueryval")
+}

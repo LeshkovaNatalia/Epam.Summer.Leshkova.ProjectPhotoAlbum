@@ -1,0 +1,74 @@
+﻿@using MvcPL.ViewModels
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Photo Album</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="icon" href="~/Content/images/icon.png" />   
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+    <script src="~/Scripts/jquery-1.12.4.min.js"></script>
+    <script src="~/Scripts/jquery.tmpl.js"></script>
+</head>
+<body>
+    <div id="wrapper">
+    <div class="header">
+        <div id="logo">
+            <a href="/"><img  src="~/Content/images/logo.png" style="background-image:none; width:50%;"/></a>
+        </div>
+        <div id="menu">
+            <ul class="topnav" id="topnav">
+                <li>@Html.ActionLink("Home", "Index", "Photo")</li>
+                <li>@Html.ActionLink("About", "About", "Home")</li>
+                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                @{
+                    if (@User.IsInRole("User"))
+                    {
+                        <li>@Html.ActionLink("My Photo", "GetPhotoForUser", "Photo")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Registry", "Register", "Account")</li>
+                    }
+                }
+                @{
+                    if (@User.IsInRole("Administrator"))
+                    { 
+                        <li>@Html.ActionLink("Users", "Index", "Admin")</li>
+                    }
+                }
+                <li class="icon">
+                    <a href="javascript:void(0);" onclick="subMenuFunction()">&#9776;</a>
+                </li>                
+            </ul>           
+             
+        </div>   
+        @Html.Partial("_Login", new LogOnViewModel())        
+        <div id="search">
+            @{
+                using (Html.BeginForm("Find", "Photo", FormMethod.Post, new { id = "searchForm" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="text" id="photo" name="term" placeholder="Search" />
+                            <input type="submit" name="searchBtn" form="searchForm" id="GetPhotos" value="" style="background-image:url(/Content/images/find.png)" height="20" />
+                }
+            }
+        </div>
+     
+    </div>
+        <div style="clear: both;"></div>
+        <div class="mainContent">
+            @RenderBody()
+        </div>
+        
+    </div>
+    <div style="clear:both;"></div>
+    <div id="footer">
+        <p>&copy; @DateTime.Now.Year - Lehkova Natalia</p>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

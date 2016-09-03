@@ -1,0 +1,7 @@
+﻿@model MvcPL.ViewModels.CategoryPhotoViewModel
+
+@{
+    Layout = null;
+}
+
+@Html.DropDownListFor(Model => Model.Id, ViewBag.CategoryPhoto as IEnumerable<SelectListItem>)

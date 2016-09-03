@@ -1,0 +1,72 @@
+﻿@model MvcPL.ViewModels.PhotoViewModel
+
+@{
+    ViewBag.Title = "CreatePhoto";
+    Layout = "~/Views/Shared/_PhotoLayout.cshtml";
+}
+
+<script type="text/javascript">
+    function previewFile() {
+        var preview = document.getElementById('preview');
+        var file = document.querySelector('input[type=file]').files[0];
+        var reader = new FileReader();
+
+        reader.addEventListener("load", function () {
+            preview.src = reader.result;
+        }, false);
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    }
+</script>
+
+<div id="registerForm">
+<h4>Add new Photo</h4>
+<hr>
+@using (Html.BeginForm("CreatePhoto", "Photo", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+        <div class="form-group">
+            @Html.LabelFor(m => Model.Description, new { @class = "control-label col-sm-3" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Description, new { @class = "form-control required" })
+                @Html.ValidationMessageFor(model => model.Description)
+            </div>
+       </div>
+            <div class="form-group">
+                @Html.Label("Category", new { @class = "control-label col-sm-3" })
+                <div class="col-md-10">
+                    <div class="categoryDropDown">
+                        @{Html.RenderAction("GetAllCategoryPhoto", "Category");}
+                    </div>
+                </div>
+           </div>
+
+            <div class="form-group">
+                @Html.Label("Choose Image(s)", new { @class = "control-label col-sm-3" })
+                <div class="col-md-10">
+                    <label class="file_upload">
+                        <span class="button">Upload File</span>
+                        <mark></mark>
+                        <input type="file" id="photoPath" name="files" accept=".jpg, .png, .gif" title="Choose file" onchange="previewFile()">
+                    </label>
+                    @*<input type="file" name="files"
+                           multiple="multiple" accept=".jpg, .png, .gif" onchange="previewFile()" />*@
+                    <img src="" width="150" height="150" alt="Preview..." id="preview">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2"></label>
+                <div class="col-md-10">
+                    <input type="submit" class="btn" value="Add" style="float:right;" />
+                    <div style="color:red">
+                        @ViewBag.error
+                    </div>
+                </div>
+            </div>
+
+}
+</div>
+
+

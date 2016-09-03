@@ -1,0 +1,21 @@
+﻿@model MvcPL.ViewModels.LogOnViewModel
+
+@{
+    ViewBag.Title = "LogOn";
+    Layout = null;
+}
+
+@using (Html.BeginForm("LogOn", "Account", FormMethod.Post, new { id = "loginform" }))
+{
+    @Html.ValidationSummary(true)
+    @Html.AntiForgeryToken()
+    <div class="editor-field">
+        @Html.TextBoxFor(model => model.Email, new { @placeholder = "Email" })
+        @Html.ValidationMessageFor(model => model.Email)
+    </div>
+    <div class="editor-field">
+        @Html.PasswordFor(model => model.Password, new { @placeholder = "Password" })
+        @Html.ValidationMessageFor(model => model.Password)
+    </div>
+    <input type="submit" name="loginBtn" form="loginform" id="loginBtn" value="Go" />
+}

@@ -1,0 +1,28 @@
+﻿@using MvcPL.Infrastructure.Helpers
+@using MvcPL.ViewModels
+@model LogOnViewModel
+
+<div id="login" class="login">
+    @{
+        if (Request.IsAuthenticated)
+        {
+            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+            {
+                <div style="float:right; margin-top: -3.5em; margin-right: 0.5em;">
+                    <input type="submit" title="Log Out" value="Hi, @User.Identity.Name" style="background-color:transparent; color:white; font-size:1.2em;">
+                </div>
+                }
+            }
+            else
+            {
+                <input class="open" id="top-box" type="checkbox" hidden>
+                <label class="btn" for="top-box">Sign Up</label>
+                    <div class="loginPanel">
+                        <div class="loginForm">
+                            @Html.Partial("LogOn", new LogOnViewModel() { Email = @Model.Email, Password = @Model.Password })
+                        </div>
+                    </div>
+            }
+        }
+    </div>
+
