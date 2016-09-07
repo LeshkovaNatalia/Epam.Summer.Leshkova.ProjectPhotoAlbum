@@ -10,3 +10,6 @@ CategoryController.GetCategory => CategoryPhotoService.GetCategoryPhotoEntity =>
 CategoryController.GetCategory => CategoryPhotoService.GetCategoryPhotoEntity => NLogLogger.Error 03.09.2016 BLL.Services.CategoryPhotoService Get category photo was failed.
 CategoryController.GetCategory => CategoryPhotoService.GetCategoryPhotoEntity => NLogLogger.Error 03.09.2016 BLL.Services.CategoryPhotoService Get category photo was failed.
 CategoryController.GetCategory => CategoryPhotoService.GetCategoryPhotoEntity => NLogLogger.Error 03.09.2016 BLL.Services.CategoryPhotoService Get category photo was failed.
+PhotoController.Index => PhotoService.GetAllPhotoEntities => NLogLogger.Error 04.09.2016 BLL.Services.PhotoService Get all photos was failed.
+PhotoController.Index => PhotoService.GetAllPhotoEntities => NLogLogger.Error 05.09.2016 BLL.Services.PhotoService Get all photos was failed.
+PhotoController.Index => PhotoService.GetAllPhotoEntities => NLogLogger.Error 06.09.2016 BLL.Services.PhotoService Get all photos was failed.

@@ -1,4 +1,12 @@
-﻿/* Function change menu for small screen */
+﻿$(document).ready(function() {
+    $("body").fadeIn(2000);
+    $("a.nav").click(function () {        
+		href = this.href;
+		$("body").fadeOut(2000, window.location = href);
+	});
+});
+
+/* Function change menu for small screen */
 function subMenuFunction() {
     var x = document.getElementById("topnav");
     if (x.className === "topnav") {
@@ -28,9 +36,9 @@ $(document).ready(function () {
             noResults: "", results: ""
         }
     });
-    $('#GetPhotos').click(function () {
+    $('#get-photos').click(function () {
         $.getJSON('/Photo/PhotoListBySearch?search=' + $('#photo').val(), function (data) {
-            var items = '<table id="searchPhotos">';
+            var items = '<table id="search-photos">';
             var counter = 1;
             items += "<tr>";
             $.each(data, function (i, photo) {
@@ -43,13 +51,13 @@ $(document).ready(function () {
             });
             items += "</table>";
 
-            $('#searchPhoto').html(items);
+            $('#search-photo').html(items);
         });
     });
 })
 
 function aboutPhoto(obj) {
-    $(".selectedPhoto").hide().html('');
+    $(".selected-photo").hide().html('');
     $("#indicator").show();
 
     var url = $(obj).attr('href');
@@ -59,61 +67,16 @@ function aboutPhoto(obj) {
 
         $("div #photoTemplate")
             .tmpl(photo)
-            .appendTo('.selectedPhoto');
+            .appendTo('.selected-photo');
 
-        $('.selectedPhoto').show();
-    });
-}
-
-/* Voting */
-
-$("img.star").mouseover(function () {
-    var span = $(this).parent("span");
-    var newRating = $(this).attr("value");
-    setRating(span, newRating);
-});        
-$("img.star").mouseout(function () {
-    var span = $(this).parent("span");
-    var rating = span.attr("rating");
-    setRating(span, rating);
-});
-
-function setRating(span, rating) {
-    span.find('img.star').each(function () {
-    var value = parseFloat($(this).attr("value"));
-    var imgSrc = $(this).attr("src");
-    if (value <= rating)
-        $(this).attr("src", imgSrc.replace("starOff.png", "star.png"));
-    else
-        $(this).attr("src", imgSrc.replace("star.png", "starOff.png"));
-    });
-}    
-
-function clickStar(obj) {
-    var url = "/Voting/AddVoting";
-    var span = $(obj).parent("span");
-    var rate = $(obj).attr("value");
-    var photoId = span.attr("photo");
-    var text = span.children("span");
-    var user = $("#User").attr("value");
-    var data = { userName: user, photoId: photoId, rating: rate };
-    $.post(url, data, function (obj) {
-        var spanId = 'span' + photoId;
-        var elementSpan = document.getElementById(spanId);
-        elementSpan.innerHTML = 'Thanks for vote!';
-        var id = 'totalRating ' + photoId;
-        var element = document.getElementById(id);
-        element.innerHTML = obj.Rating;
-        var idRaters = 'totalRaters ' + photoId;
-        var elementRaters = document.getElementById(idRaters);
-        elementRaters.innerHTML = obj.Raters;
+        $('.selected-photo').show();
     });
 }
 
 /* Load photo */
 $().ready(function () {
-    $('#results img').load(function () {
-        $('#results img').fadeIn(2000);        
+    $('div.results img').load(function () {
+        $('div.results img').fadeIn(2000);        
     });
 });
 
@@ -134,12 +97,12 @@ function previewFile() {
 
 /* Refresh captcha */
 function refreshCaptcha() {
-    $('#captchaImg').attr('src', '/Account/Captcha' + "?t=" + new Date().getTime());
+    $('#captcha-img').attr('src', '/Account/Captcha' + "?t=" + new Date().getTime());
 }
 
 $(function () {
-    var wrapper = $(".file_upload"),
-    inp = wrapper.find("#photoPath"),
+    var wrapper = $(".file-upload"),
+    inp = wrapper.find("#photo_path"),
     btn = wrapper.find(".button"),
     lbl = wrapper.find("mark");       
         
@@ -166,11 +129,11 @@ $().ready(function () {
 
 /* Dialog for confirm delete photo */
 $().ready(function () {
-    $('.deletePhoto').click(function (e) {
+    $('.delete-photo').click(function (e) {
         e.preventDefault();
         deleteItem(this, '<p>Are you sure you want to delete this photo?</p>');
     });
-    $('.deleteUser').click(function (e) {
+    $('.delete-user').click(function (e) {
         e.preventDefault();
         deleteItem(this, '<p>Are you sure you want to delete this user?</p>');
     });

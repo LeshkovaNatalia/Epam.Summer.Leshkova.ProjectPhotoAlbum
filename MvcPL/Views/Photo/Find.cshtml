@@ -1,62 +1,43 @@
 ﻿@model IEnumerable<MvcPL.ViewModels.PhotoViewModel>
 @{
-    ViewBag.Title = "Find";
+    ViewBag.Title = "Search";
     Layout = "~/Views/Shared/_PhotoLayout.cshtml";
 }
 
 <script src="~/Scripts/jquery.tmpl.js"></script>
-<script>
-    function aboutPhoto(obj) {
-        //e.preventDefault();
+<script src="~/Scripts/find-photos.js"></script>
 
-        $(".selectedPhoto").hide().html('');
-        $("#indicator").show();
-
-        var url = $(obj).attr('href');
-
-        $.getJSON(url, null, function (photo) {
-            $("#indicator").hide();
-
-            $("div #photoTemplate")
-                .tmpl(photo)
-                .appendTo('.selectedPhoto');
-
-            $('.selectedPhoto').show();
-        });
-    }
-</script>
-
-<div style="width: 80%; margin:0 auto; display:block;">
+<div class="central-div">
     <h2>Result of search</h2>
     <hr>
-    <div class="rTable" id="searchPhotos">
+    <div class="r-table" id="search-photos">
         @{var counter = 1; }
-        <div class="rTableRow">
+        <div class="r-table-row">
             @foreach (var photo in Model)
             {
-                <div class="rTableCell">
+                <div class="r-table-cell">
                     <a onclick='aboutPhoto(this)' data-ajax='true' data-ajax-mode='replace' data-ajax-update='#photoTemplate' href='/Photo/Details?photoId=@photo.Id'>
                         <img src='/Photo/GetImage?photoId=@photo.Id' width="100" height="100" />
                     </a>
                 </div>
                 if (counter % 3 == 0)
                 {
-                    @:</div><div class="rTableRow">
+                    @:</div><div class="r-table-row">
                 }
                 counter++;
             }
         </div>
     </div>
     <div style="width: 40%; margin-left: 38em;">
-    <span id="searchPhoto"></span>
+    <span id="search-photo" class="left-float"></span>
     <img id="indicator" src="@Url.Content("~/Content/images/ajax-loader.gif")" alt="loading..." style="display:none" />
-    <div class="selectedPhoto" style="display:none">
+    <div class="selected-photo" style="display:none">
     </div>
     <script id="photoTemplate" type="text/x-jquery-tmpl">
-        <p class="photoDescription">
+        <p class="photo-description">
             ${Description}
         </p>
-        <img src="/Photo/GetImage?photoId=${Id}" alt="Speaker image" class="speaker-pic" width="300" height="300" />
+        <img src="/Photo/GetImage?photoId=${Id}" alt="Photo" class="display-img" />
         <br style="clear:both;" />
     </script>  
     </div>

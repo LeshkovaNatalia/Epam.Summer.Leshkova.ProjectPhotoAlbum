@@ -8,8 +8,8 @@
         {
             using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
             {
-                <div style="float:right; margin-top: -3.5em; margin-right: 0.5em;">
-                    <input type="submit" title="Log Out" value="Hi, @User.Identity.Name" style="background-color:transparent; color:white; font-size:1.2em;">
+                <div class="logout-div" style="">
+                    <input type="submit" title="Log Out" value="Hi, @User.Identity.Name" class="logout-btn" >
                 </div>
                 }
             }
@@ -17,8 +17,8 @@
             {
                 <input class="open" id="top-box" type="checkbox" hidden>
                 <label class="btn" for="top-box">Sign Up</label>
-                    <div class="loginPanel">
-                        <div class="loginForm">
+                    <div class="login-panel">
+                        <div class="login-form">
                             @Html.Partial("LogOn", new LogOnViewModel() { Email = @Model.Email, Password = @Model.Password })
                         </div>
                     </div>

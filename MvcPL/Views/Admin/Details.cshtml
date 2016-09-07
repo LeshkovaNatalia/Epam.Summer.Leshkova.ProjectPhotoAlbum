@@ -1,0 +1,17 @@
+﻿@model MvcPL.ViewModels.UserViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_PhotoLayout.cshtml";
+}
+
+<div class="central-div">
+    <h4>Details</h4>
+    <hr>
+    <img src="@Url.Action("GetUserImage", "Photo", new { userName = Model.Email })" alt="User Photo" class="left-float">
+    <div>Data of user's registration: @Html.DisplayFor(modelItem => Model.CreatedOn)</div>
+    @{
+        var roles = Html.Action("GetRolesForUser", "Account", new { userId = Model.UserId });
+        <div>Roles: @Convert.ToString(roles)</div>
+    }
+</div>

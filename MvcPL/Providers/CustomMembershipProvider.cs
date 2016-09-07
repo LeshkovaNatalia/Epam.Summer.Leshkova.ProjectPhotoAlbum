@@ -21,7 +21,7 @@ namespace MvcPL.Providers
         public IRoleService RoleService 
             => (IRoleService)System.Web.Mvc.DependencyResolver.Current.GetService(typeof(IRoleService));
 
-        public MembershipUser CreateUser(string email, string password, string avatarPath)
+        public MembershipUser CreateUser(string email, string password, byte[] avatarImg)
         {
             MembershipUser membershipUser = GetUser(email, false);
 
@@ -30,15 +30,15 @@ namespace MvcPL.Providers
                 return null;
             }
 
-            Image img = Image.FromFile(avatarPath);
-            byte[] byteImage = imgToByteArray(img);
+            /*Image img = Image.FromFile(avatarPath);
+            byte[] byteImage = imgToByteArray(img);*/
 
             var user = new UserEntity
             {
                 Email = email,
                 Password = Crypto.HashPassword(password),
                 CreatedOn = DateTime.Now,
-                Photo = byteImage
+                Photo = avatarImg
             };
 
             var role = RoleService.GetAllRoles().FirstOrDefault(r => r.Name == "User");

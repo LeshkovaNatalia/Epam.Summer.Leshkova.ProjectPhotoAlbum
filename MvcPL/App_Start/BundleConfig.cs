@@ -13,7 +13,8 @@ namespace MvcPL
                         "~/Scripts/jquery.tmpl.js",
                         "~/Scripts/jquery-ui-{version}.js",
                         "~/Scripts/jquery.unobtrusive-ajax.min.js",                        
-                        "~/Scripts/photo-album.js"));
+                        "~/Scripts/photo-album.js",
+                        "~/Scripts/rating-photos.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));

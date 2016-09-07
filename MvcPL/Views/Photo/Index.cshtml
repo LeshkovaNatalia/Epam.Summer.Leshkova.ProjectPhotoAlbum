@@ -1,19 +1,20 @@
 ﻿@model  IEnumerable<MvcPL.ViewModels.PhotoViewModel>
 
 @{
-    ViewBag.Title = "GetAllPhoto";
+    ViewBag.Title = "Photo Album";
     Layout = "~/Views/Shared/_PhotoLayout.cshtml";
 }
 
 <script src="~/Scripts/jquery-1.12.4.min.js"></script>
 <script src="~/Scripts/load-photos.js"></script>
+
 <noscript>Display all photo @Html.ActionLink("All Photo", "AllPhotos")</noscript>
-<div class="rTable  grid cs-style-3">
+<div class="div-table  grid cs-style-3">
     @{var counter = 1;}
-    <div class="rTableRow">
+    <div class="div-row">
         @foreach (var item in Model)
         {
-            <div class="rTableCell">
+            <div class="div-cell">
                 <figure>
                     @Html.Partial("_Photo", item)
                     <figcaption id="@item.Id">
@@ -23,7 +24,7 @@
             </div>
             if (counter % 3 == 0)
             {
-                @:</div><div class="rTableRow">
+                @:</div><div class="div-row">
             }
             counter++;
         }

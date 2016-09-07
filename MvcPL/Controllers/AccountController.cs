@@ -75,7 +75,7 @@ namespace MvcPL.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(RegisterViewModel viewModel, HttpPostedFileBase photoPath)
+        public ActionResult Register(RegisterViewModel viewModel, HttpPostedFileBase photo_path)
         {
             if (viewModel.Captcha != (string)Session[CaptchaImage.CaptchaValueKey])
             {
@@ -83,13 +83,14 @@ namespace MvcPL.Controllers
                 return View(viewModel);
             }
 
-            if (photoPath != null && photoPath.ContentLength > 0)
+            if (photo_path != null && photo_path.ContentLength > 0)
             {
-                var fileName = Path.GetFileName(photoPath.FileName);
-                var guid = Guid.NewGuid().ToString();
-                var path = Path.Combine(Server.MapPath("~/Uploads"), guid + fileName);
-                photoPath.SaveAs(path);
-                viewModel.AvatarPath = Path.GetFullPath(path);
+                using (var img = Image.FromStream(photo_path.InputStream))
+                {
+                    var ms = new MemoryStream();
+                    img.Save(ms, img.RawFormat);
+                    viewModel.AvatarImg = ms.ToArray();
+                }
             }
 
             var anyUser = userService.GetAllUserEntities().Any(u => u.Email.Contains(viewModel.Email));
@@ -103,12 +104,12 @@ namespace MvcPL.Controllers
             if (ModelState.IsValid)
             {
                 var membershipUser = ((CustomMembershipProvider)Membership.Provider)
-                    .CreateUser(viewModel.Email, viewModel.Password, viewModel.AvatarPath);
+                    .CreateUser(viewModel.Email, viewModel.Password, viewModel.AvatarImg);
 
                 if (membershipUser != null)
                 {
                     FormsAuthentication.SetAuthCookie(viewModel.Email, false);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Photo");
                 }
                 else
                     ModelState.AddModelError("", "Error registration.");

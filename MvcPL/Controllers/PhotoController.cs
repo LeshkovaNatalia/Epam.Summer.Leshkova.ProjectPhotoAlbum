@@ -1,15 +1,15 @@
-﻿using BLL.Interface.Services;
-using MvcPL.Infrastructure.Mappers;
-using MvcPL.Infrastructure.Attributes;
-using MvcPL.Infrastructure.Utilities;
-using MvcPL.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BLL.Interface.Entities;
+using BLL.Interface.Services;
+using MvcPL.Infrastructure.Mappers;
+using MvcPL.Infrastructure.Attributes;
+using MvcPL.Infrastructure.Utilities;
+using MvcPL.ViewModels;
 using System.IO;
 using System.Drawing.Imaging;
 
@@ -172,7 +172,7 @@ namespace MvcPL.Controllers
             return View(photo.ToMvcPhoto());
         }
 
-        [HttpPost, ActionName("DeletePhoto")]
+        [HttpPost, ActionName("delete-photo")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

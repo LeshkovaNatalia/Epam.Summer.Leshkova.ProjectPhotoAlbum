@@ -1,73 +1,94 @@
 ﻿@using MvcPL.ViewModels
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Photo Album</title>
+    <meta name="viewport" content="width=device-width" />   
+    <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link rel="icon" href="~/Content/images/icon.png" />   
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
-    <script src="~/Scripts/jquery-1.12.4.min.js"></script>
-    <script src="~/Scripts/jquery.tmpl.js"></script>
 </head>
 <body>
-    <div id="wrapper">
-    <div class="header">
-        <div id="logo">
-            <a href="/"><img  src="~/Content/images/logo.png" style="background-image:none; width:50%;"/></a>
-        </div>
-        <div id="menu">
+    <main>
+    <header>
+        <section>
+            <a href="/"><img src="~/Content/images/logo.png" class="logo nav" alt="Logo" /></a>
+        </section>
+        <nav>
             <ul class="topnav" id="topnav">
-                <li>@Html.ActionLink("Home", "Index", "Photo")</li>
-                <li>@Html.ActionLink("About", "About", "Home")</li>
-                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                <li>@Html.ActionLink("Home", "Index", "Photo", null, new { @class = "nav" })</li>
+                <li>@Html.ActionLink("About", "About", "Home", null, new { @class = "nav" })</li>
+                <li>@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav" })</li>
                 @{
                     if (@User.IsInRole("User"))
                     {
-                        <li>@Html.ActionLink("My Photo", "GetPhotoForUser", "Photo")</li>
+                        <li>@Html.ActionLink("My Photo", "GetPhotoForUser", "Photo", null, new { @class = "nav" })</li>
                     }
                     else
                     {
-                        <li>@Html.ActionLink("Registry", "Register", "Account")</li>
+                        <li>@Html.ActionLink("Registry", "Register", "Account", null, new { @class = "nav" })</li>
                     }
                 }
                 @{
                     if (@User.IsInRole("Administrator"))
                     { 
-                        <li>@Html.ActionLink("Users", "Index", "Admin")</li>
+                        <li>@Html.ActionLink("Users", "Index", "Admin", null, new { @class = "nav" })</li>
                     }
                 }
                 <li class="icon">
-                    <a href="javascript:void(0);" onclick="subMenuFunction()">&#9776;</a>
+                    <a href="javascript:void(0)" onclick="subMenuFunction()">&#9776;</a>
                 </li>                
-            </ul>           
-             
-        </div>   
+            </ul>            
+        </nav> 
         @Html.Partial("_Login", new LogOnViewModel())        
-        <div id="search">
+        <section id="search">
             @{
-                using (Html.BeginForm("Find", "Photo", FormMethod.Post, new { id = "searchForm" }))
+                using (Html.BeginForm("Find", "Photo", FormMethod.Post, new { id = "search-form" }))
                 {
                     @Html.AntiForgeryToken()
                     <input type="text" id="photo" name="term" placeholder="Search" />
-                            <input type="submit" name="searchBtn" form="searchForm" id="GetPhotos" value="" style="background-image:url(/Content/images/find.png)" height="20" />
+                    <input type="submit" name="search-btn" form="search-form" id="get-photos" value="" />
                 }
             }
-        </div>
+        </section>
      
-    </div>
+    </header>
         <div style="clear: both;"></div>
-        <div class="mainContent">
+        <section class="main-content">
             @RenderBody()
-        </div>
+        </section>
         
-    </div>
+    </main>
     <div style="clear:both;"></div>
-    <div id="footer">
+    <footer>
+        <nav>
+        <ul class="footer-nav">
+            <li>@Html.ActionLink("Home", "Index", "Photo", null, new { @class = "nav" })</li>
+            <li>@Html.ActionLink("About", "About", "Home", null, new { @class = "nav" })</li>
+            <li>@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav" })</li>
+            @{
+                if (@User.IsInRole("User"))
+                {
+                    <li>@Html.ActionLink("My Photo", "GetPhotoForUser", "Photo", null, new { @class = "nav" })</li>
+                }
+                else
+                {
+                    <li>@Html.ActionLink("Registry", "Register", "Account", null, new { @class = "nav" })</li>
+                }
+            }
+            @{
+                if (@User.IsInRole("Administrator"))
+                {
+                    <li>@Html.ActionLink("Users", "Index", "Admin", null, new { @class = "nav" })</li>
+                }
+            }
+        </ul>
+            <a href="/" class="nav"><img src="~/Content/images/logo.png" class="footer-logo" alt="Logo" /></a>
+        </nav>
         <p>&copy; @DateTime.Now.Year - Lehkova Natalia</p>
-    </div>
+    </footer>
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
 </body>

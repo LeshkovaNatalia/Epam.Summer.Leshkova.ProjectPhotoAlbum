@@ -10,7 +10,7 @@ namespace MvcPL.Controllers
     {
         #region Public Methods
         // GET: Error
-        public ActionResult Index()
+        public ActionResult Error()
         {
             return View();
         }

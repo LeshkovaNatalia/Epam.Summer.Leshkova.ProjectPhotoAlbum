@@ -34,6 +34,6 @@ namespace MvcPL.ViewModels
         public DateTime AddedDate { get; set; }
 
         [Display(Name = "Avatar")]
-        public string AvatarPath { get; set; }
+        public byte[] AvatarImg { get; set; }
     }
 }

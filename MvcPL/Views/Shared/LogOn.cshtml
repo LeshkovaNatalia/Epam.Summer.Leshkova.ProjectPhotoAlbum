@@ -5,7 +5,7 @@
     Layout = null;
 }
 
-@using (Html.BeginForm("LogOn", "Account", FormMethod.Post, new { id = "loginform" }))
+@using (Html.BeginForm("LogOn", "Account", FormMethod.Post, new { id = "login-form" }))
 {
     @Html.ValidationSummary(true)
     @Html.AntiForgeryToken()
@@ -17,5 +17,5 @@
         @Html.PasswordFor(model => model.Password, new { @placeholder = "Password" })
         @Html.ValidationMessageFor(model => model.Password)
     </div>
-    <input type="submit" name="loginBtn" form="loginform" id="loginBtn" value="Go" />
+    <input type="submit" name="loginBtn" form="login-form" id="loginBtn" value="Go" />
 }

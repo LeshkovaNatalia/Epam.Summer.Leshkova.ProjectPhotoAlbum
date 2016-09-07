@@ -6,49 +6,70 @@
 
 html {
     font-family: "Times New Roman";
-    font-size:0.8em;
+    font-size:14px;
 }
 /* For IE 6 */
 * html #wrapper {
     height: 100%;
 }
 
-/* Style for laptop */
-#wrapper{
-    min-height:100%;
-    position:relative;
-    margin:0 auto;
+.logo{
+    background-image:none; 
+    width:20%;
 }
 
-.header {
+.footer-logo{
+    background-image:none; 
+    width:13%;
+    float:right;
+    margin-top:-5rem;
+}
+
+header {
     width:90%;
-    min-height: 10em;
+    min-height: 10rem;
     height: auto;
     max-width:1024px;
     margin:0 auto;
 }
 
-.mainContent {
+.main-content {
     width:90%;
     max-width:1024px;
     margin:0 auto;
-    padding-bottom:6em;
+    padding-bottom:6rem;
 }
 
-#footer {
+footer {
     width:90%;
     max-width:1024px;
     margin:0 auto;
-    height:6em;    
+    height:6rem;    
     clear:both;
-    margin-top:6em;
+    margin-top:6rem;
     border-top: 1px solid #999999;
+    border-bottom: 1px solid #999999;
     text-align:center;
 }
 
+a {
+    text-decoration:none;
+    color: #00ced1;
+}
 
-#logo{
-    float:left;
+a:visited{
+    text-decoration:none;
+    color: darkblue;
+}
+
+a:hover {
+    color:blue;
+    text-decoration:none;
+}
+
+a:active{
+    border:none;
+    text-decoration:none;
 }
 
 /* Style for menu */
@@ -111,11 +132,24 @@ html {
     }
 }
 
+footer > nav {
+    background: none !important;
+}
+
+.footer-nav{
+    list-style:none;
+}
+.footer-nav li{
+    float:left;
+    color:black;
+    padding: 1rem;
+}
+
 .star{
     background-image:none;
 }
 
-.voteDiv{
+.vote-div{
     width:50%;
     float:left;
 }
@@ -125,63 +159,63 @@ img {
 }
 
 /* Style for input type="file" */
-.file_upload{
+.file-upload{
     display: block;
     position: relative;
     overflow: hidden;
-    margin-left:2em;
-    height: 2em;                 
+    margin-left:2rem;
+    height: 2rem;                 
 }
-.file_upload .button, .file_upload > mark{
+.file-upload .button, .file-upload > mark{
     display: block;
     cursor: pointer;              
-    margin-top: 0.6em;
+    margin-top: 0.6rem;
 }
-.file_upload .button{
+.file-upload .button{
     float: right;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
-    width: 6em;                 
+    width: 6rem;                 
     height: 70%;
     text-align: center           
 }
-.file_upload > mark{
+.file-upload > mark{
     background: transparent;     
-    padding-left: 1em            
+    padding-left: 1rem            
 }
 
-.file_upload input[type=file]{
+.file-upload input[type=file]{
     position: absolute;
     top: 0;
     opacity: 0
 }
 
 @media only screen and ( max-width: 500px ){  /* example */
-    .file_upload > div{
+    .file-upload > div{
         display: none
     }
-    .file_upload > button{
+    .file-upload > button{
         width: 100%
     }
 }
 
 #preview {
     background-image: none; 
-    padding-top: 1.5em;
-    margin-left: 4.5em;
+    padding-top: 1.5rem;
+    margin-left: 4.5rem;
 }
 
 .col-sm-offset-3{
     margin-left:34%;
 }
 
-div.form-group label.file_upload {
+div.form-group label.file-upload {
     float: left;
     text-align: left;
     width: 89%;
 }
 
-div.form-group label.file_upload span{
+div.form-group label.file-upload span{
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size:12px;
@@ -193,86 +227,77 @@ div.form-group label.file_upload span{
 }
 
 /* style for table with div */
-.rTable { 
-    display: table;
+.div-table { 
     margin-left:auto;
     margin-right:auto; 
-    margin-top:1em;
+    margin-top:1rem;
 } 
-.rTableRow { 
-    display: table-row; 
+.div-row { 
     width:100%;
 }
-.rTableCell {   	
-    display: table-cell;   	
-    padding: 1.5em; 	
+.div-cell {   	
+    padding: 1.4rem; 	
     border: 1px solid #999999;
     float:left;
 }
 
-.tfoot
-{
-    display: table-footer-group;
-}
-
 /* Login Panel */
-.loginPanel {
+.login-panel {
     float:right;
-    margin-top: 0.4em;
+    margin-top: 0.4rem;
     overflow: auto;
     padding: 0;
     display: none;
 }
 
-input[type=checkbox]:checked ~ .loginPanel {
+input[type=checkbox]:checked ~ .login-panel {
    display: block;
 }
 
 /* Div with login form */
-.loginForm {
+.login-form {
     font-weight: 300;
     position: relative;
 }
 
-.loginForm input[type=text] {
+.login-form input[type=text] {
     float:left;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size:16px;
 }
 
-.loginForm input[type=password] {
+.login-form input[type=password] {
     float:left;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size:16px;
 }
 
-.loginForm input[type=submit] {
+.login-form input[type=submit] {
     float:left;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size:12px;
 }
 
-.loginForm div.editor-field{
+.login-form div.editor-field{
     float:left;
-    margin-right:0.3em;
+    margin-right:0.3rem;
 }
-
 
 /* Sign Up button */
 label.btn {
     display: block;
     float:right;
-    margin-top:-3.6em;
+    margin-top:-3.6rem;
     cursor: pointer;
     background: #2bbbad;
-    width: 5em;
+    width: 5rem;
     border-radius: 0 0 5px 5px;
     padding: 8px 5px;
     color: #FFF;
-    line-height: 2em;
+    line-height: 2rem;
     font-size: 14px;
     text-align: center;
     -webkit-font-smoothing: antialiased;
@@ -288,97 +313,38 @@ label.btn {
     width:60%;
 }
 
-#searchPhoto{
-    float:left;
-}
-
-.selectedPhoto 
+.selected-photo 
 {   	
     padding: 10px;
 }
 
-#searchResult{
+/*#searchResult{
     margin-left:auto;
     margin-right:auto;
-}
+}*/
 
-#searchPhotos{
+#search-photos{
     display:block; 
-    /*width: 50%; */
     float: left;
 }
 
-.photoDescription{
+.photo-description{
     width:100%;
 }
 
-/* rating */
 .rating {
     float:left;
     width: 50%;        
 }
 
-/* :not(:checked) is a filter, so that browsers that don’t support :checked don’t 
-   follow these rules. Every browser that supports :checked also supports :not(), so
-   it doesn’t make the test unnecessarily selective */
-/*.rating:not(:checked) > input {
-    position:absolute;
-    top:-9999px;
-    clip:rect(0,0,0,0);
-}
-
-.rating:not(:checked) > label {
-    float:right;
-    width:1em;
-    padding:0 .1em;
-    overflow:hidden;
-    white-space:nowrap;
-    cursor:pointer;
-    font-size:200%;
-    line-height:1.2;
-    color:#ddd;
-    text-shadow:1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0,0,0,.5);
-}
-
-.rating:not(:checked) > label:before {
-    content: '★ ';
-}
-
-.rating > input:checked ~ label {
-    color: #f70;
-    text-shadow:1px 1px #c60, 2px 2px #940, .1em .1em .2em rgba(0,0,0,.5);
-}
-
-.rating:not(:checked) > label:hover,
-.rating:not(:checked) > label:hover ~ label {
-    color: gold;
-    text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
-}
-
-.rating > input:checked + label:hover,
-.rating > input:checked + label:hover ~ label,
-.rating > input:checked ~ label:hover,
-.rating > input:checked ~ label:hover ~ label,
-.rating > label:hover ~ input:checked ~ label {
-    color: #ea0;
-    text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
-}
-
-.rating > label:active {
-    position:relative;
-    top:2px;
-    left:2px;
-}*/
-
 /* Display all photo */
 .grid {
     width:100%;
 	max-width: 1024px;
-	/*margin: 0 auto;*/
 	text-align: center;
 }
 
-.grid div.rTableCell {
+.grid div.r-table-cell {
 	display: inline-block;
 	margin: 0;
 	text-align: left;
@@ -390,7 +356,7 @@ label.btn {
 	position: relative;
 }
 
-.grid figure img.sourcePhoto {
+.grid figure img.source-photo {
 	max-width: 100%;
 	display: block;
 	position: relative;
@@ -406,7 +372,7 @@ label.btn {
 }
 
 @media screen and (max-width: 31.5em) {
-	.grid div.rTableCell {
+	.grid div.r-table-cell {
 		width: 100%;
 		min-width: 300px;
 	}
@@ -416,12 +382,12 @@ label.btn {
 	overflow: hidden;
 }
 
-.cs-style-3 figure img.sourcePhoto {
+.cs-style-3 figure img.source-photo {
 	transition: transform 0.4s;
 }
 
-.cs-style-3 figure:hover img.sourcePhoto,
-.cs-style-3 figure.cs-hover img.sourcePhoto {
+.cs-style-3 figure:hover img.source-photo,
+.cs-style-3 figure.cs-hover img.source-photo {
 	transform: translateY(-50px);
 }
 
@@ -450,30 +416,30 @@ label.btn {
 
 /* Style for button */
 input[type=submit] {
-    padding:0.3em 0.9em; 
+    padding:0.3rem 0.9rem; 
     background:white; 
     border:0 none;
     cursor:pointer;
     -webkit-border-radius: 5px;
-    border-radius: 0.3em; 
+    border-radius: 0.3rem; 
 }
 
-input#GetPhotos[type=submit]{
-    margin-left:-2.7em;
+input#get-photos[type=submit]{
+    margin-left:-2.7rem;
     background-image: url('images/find.png');
     background-position:center;
     background-repeat: no-repeat;
 }
 
 input#photo[type=text] {
-    width: 14em;
-    max-width: 30em;
+    width: 14rem;
+    max-width: 30rem;
     box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
     background-color: white;
-    padding: 0.5em 1em 0.5em 1em;
+    padding: 0.5rem 1rem 0.5rem 1rem;
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
 }
@@ -482,7 +448,7 @@ input#photo[type=text]:focus {
     width: 100%;
 }
 
-#menu{
+nav {
     background-color: darkturquoise;
     float: left;
     width: 100%;
@@ -491,7 +457,7 @@ input#photo[type=text]:focus {
 #ui-id-1{
     position:fixed;
     background-color:white;
-    border: 2px solid #ccc;
+    border: 1px solid #ccc;
     border-top-style: none;
     border-radius: 4px;
     width:1em;
@@ -500,26 +466,26 @@ input#photo[type=text]:focus {
 }
 
 /* Register form */
-#registerForm{
+#register-form{
     width: 80%;
     margin-left:auto;
     margin-right:auto;
 }
-#registerForm form{
+#register-form form{
     margin-left:auto;
     margin-right:auto;
 }
 
-#registerForm div.form-group{    
+#register-form div.form-group{    
     margin-left: auto;
     margin-right: auto;
     text-align: left;
     width: 70%;
 }
 
-#registerForm input[type=submit]{
+#register-form input[type=submit]{
     border:thin solid lightgray;
-    margin-left: 16.5em;
+    margin-left: 16.5rem;
 }
 
 div.form-group label {
@@ -535,30 +501,41 @@ div.form-group div {
 }
 
 .img-responsive{
-    padding-top:0.5em;
-    padding-left: 3em;
+    padding-top:0.5rem;
+    padding-left:3rem;
 }
 
 /* Description photo */
-#descriptionPhoto{
+#description-photo{
     width:80%;
     margin-left:auto;
     margin-right:auto;
 }
 
-#descriptionPhoto img {
-    margin-left:1.1em;
+#description-photo img {
+    margin-left:1.1rem;
 }
 
-#aboutPhoto{
+#about-photo{
     float:right;
-    margin-right:9em;
+    margin-right:9rem;
 }
 
 /* GetAllPhoto */
-.sourcePhoto{
+.source-photo{
     float:left;
     background: url('images/ajax-loader.gif') no-repeat center;
+}
+
+.results img{
+    width:300px;
+    height: 300px;
+    float: left;
+}
+
+.photos-div{
+    width:342px; 
+    border: none;
 }
 
 /* Placeholder */
@@ -572,11 +549,11 @@ input[type=password]:focus::-moz-placeholder          {color: transparent}
 input[type=password]:focus:-moz-placeholder           {color: transparent}
 input[type=password]:focus:-ms-input-placeholder      {color: transparent}
 
-.categoryDropDown{
+.category-dropdown{
     width:15em;
 }
 
-.categoryDropDown select{
+.category-dropdown select{
     margin-left: 2.6%;
     margin-top: 1%;
 }
@@ -585,11 +562,132 @@ input[type=text]{
     color:black;
 }
 
-.deletePhoto{
+.delete-photo{
     background:url(images/delete-photo.png) no-repeat center;
     float: right;
     width:24px;
     height:24px;
     color: transparent;
     font-size:0;
+}
+
+.left-float{
+    float:left;
+}
+
+.left-float img{
+    width:10px;
+    height:10px;
+}
+
+.right-float{
+    float:right;
+}
+
+.img-preview{
+    width:150px; 
+    height:150px;
+}
+
+#description-photo img{
+    width:400px;
+    height:400px;
+}
+
+.central-div{
+    width:80%; 
+    margin:0 auto;
+}
+
+.edit-img{
+    float:left; 
+    width:48%;
+}
+
+.edit-label{
+    width:20%;
+}
+
+.edit-save{
+    border: 1px solid #999; 
+    margin-left:5rem; 
+    margin-top: 1rem;
+}
+
+.edit-cancel{
+    border: 1px solid #999; 
+    font-size: 12px; 
+    margin-top: 1rem;
+}
+
+.display-img{
+    width:300px;
+    height:300px;
+}
+
+.delete-non-ajax{
+    width:24px;
+    height:24px; 
+    background-image:none; 
+    margin-left: -24px; 
+    z-index: 10; 
+    position:absolute;
+}
+
+.photo{
+    width:24px; 
+    height:24px;
+    background-image:none;
+}
+
+.photos-list{
+    border:none; 
+    width:340px;
+}
+
+.user-description{
+    display:none;
+    margin-left:10rem;
+}
+.email:hover + .user-description{
+    display:block;
+    position:absolute;
+}
+
+div.user-description img{
+    width:100px;
+    height:100px;
+    background-image:none;
+}
+
+.logout-btn{
+    background-color:transparent !important; 
+    color:white; 
+    font-size:1.2rem;
+}
+
+.logout-div{
+    float:right; 
+    margin-top: -3.5rem; 
+    margin-right: 0.5rem;
+}
+
+#get-photos{
+    background-image:url(/Content/images/find.png);
+    height:20px;
+}
+
+span[data-descr]:hover::after {
+  content: attr(data-descr);
+  position: absolute;
+  left: 43rem;
+  top: 10.5rem;
+  min-width: 10rem;
+  border-radius: 10px;
+  background-color: #00ced1;
+  padding: 0.5em;
+  color: white;
+  font-size: 14px;
+  z-index: 1;
+  text-align: center;
 }

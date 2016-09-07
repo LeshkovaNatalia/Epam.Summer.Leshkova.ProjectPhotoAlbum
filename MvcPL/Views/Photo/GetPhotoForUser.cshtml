@@ -1,28 +1,15 @@
 ﻿@model MvcPL.ViewModels.PagedData<MvcPL.ViewModels.PhotoViewModel>
 
 @{
-    ViewBag.Title = "GetPhotoForUser";
+    ViewBag.Title = "My Photo";
     Layout = "~/Views/Shared/_PhotoLayout.cshtml";
 }
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="~/Scripts/load-user-photos.js"></script>
 
-<script type="text/javascript">
-    $().ready(function () {
-        $(".page-number").on("click", function () {
-            var page = parseInt($(this).html());
-            $.ajax({
-                url: '@Url.Action("PhotosList")',
-                data: { "page": page },
-                success: function (data) {
-                    $("#photos-list").html(data);
-                }
-            });
-        });
-    });
-</script>
 @if (Model.Data.Count() == 0){
-    <div style="width:80%; margin-left:auto; margin-right:auto; font-size:16px;">
+    <div class="central-div">
         <p>No photo. @Html.ActionLink("Add Photo", "CreatePhoto")</p>
     </div>
 }

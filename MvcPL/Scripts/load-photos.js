@@ -1,15 +1,15 @@
-﻿/*Dynamic loads photo*/
+﻿/* Dynamic loads photo */
 $(document).ready(function () {
     $(window).scroll(function () {
         if (($(window).scrollTop()) ==
      ($(document).height() - $(window).height())) {
             var lastPhotoId = $('div.results:last img').attr('id');
-            GetPhotos(lastPhotoId);
+            getPhotos(lastPhotoId.substring(4));
         };
     });
 });
 
-function GetPhotos(lastId) {
+function getPhotos(lastId) {
     $.ajax({
         type: 'POST',
         url: '/Photo/Photos',
@@ -17,7 +17,7 @@ function GetPhotos(lastId) {
         dataType: "html",
         success: function (result) {
             var domElement = $(result);
-            $('div.rTable').append(domElement);
+            $('div.div-table').append(domElement);
         }
     });
 };

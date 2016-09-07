@@ -35,6 +35,12 @@ namespace MvcPL.Controllers
 
             return View(model);
         }
+        
+        public ActionResult Details(int userId)
+        {
+            var user = userService.GetUserEntity(userId).ToMvcUser();
+            return View(user);
+        }
 
         [HttpGet]
         public ActionResult DeleteUser(int id)

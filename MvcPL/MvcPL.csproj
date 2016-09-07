@@ -278,6 +278,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
+    <Content Include="Scripts\find-photos.js" />
     <Content Include="Scripts\jquery-1.12.4.js" />
     <Content Include="Scripts\jquery-1.12.4.min.js" />
     <Content Include="Scripts\jquery-1.12.4.min.map" />
@@ -294,8 +295,10 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\load-photos.js" />
+    <Content Include="Scripts\load-user-photos.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\photo-album.js" />
+    <Content Include="Scripts\rating-photos.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
@@ -335,6 +338,7 @@
     <Content Include="Views\Shared\_Login.cshtml" />
     <Content Include="Views\Photo\_Photos.cshtml" />
     <Content Include="Views\Shared\LogOn.cshtml" />
+    <Content Include="Views\Admin\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Uploads\" />
