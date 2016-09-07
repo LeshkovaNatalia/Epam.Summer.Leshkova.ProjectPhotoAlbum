@@ -1,5 +1,4 @@
-﻿@using MvcPL.Infrastructure.Helpers
-@using MvcPL.ViewModels
+﻿@using MvcPL.ViewModels
 @model LogOnViewModel
 
 <div id="login" class="login">
@@ -8,7 +7,7 @@
         {
             using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
             {
-                <div class="logout-div" style="">
+                <div class="logout-div">
                     <input type="submit" title="Log Out" value="Hi, @User.Identity.Name" class="logout-btn" >
                 </div>
                 }
@@ -19,7 +18,7 @@
                 <label class="btn" for="top-box">Sign Up</label>
                     <div class="login-panel">
                         <div class="login-form">
-                            @Html.Partial("LogOn", new LogOnViewModel() { Email = @Model.Email, Password = @Model.Password })
+                            @Html.Partial("_LogOn", new LogOnViewModel() { Email = @Model.Email, Password = @Model.Password })
                         </div>
                     </div>
             }

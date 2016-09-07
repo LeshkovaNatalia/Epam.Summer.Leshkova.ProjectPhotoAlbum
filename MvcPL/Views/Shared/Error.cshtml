@@ -1,4 +1,11 @@
 ﻿@using MvcPL.ViewModels
+@model  IEnumerable<MvcPL.ViewModels.PhotoViewModel>
+
+@{
+    ViewBag.Title = "Error";
+    Layout = null;
+}
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -41,7 +48,7 @@
                     </li>
                 </ul>
             </nav>
-            @Html.Partial("_Login", new LogOnViewModel())
+            @*@Html.Partial("_Login", new LogOnViewModel())*@
             <div id="search">
                 @{
                     using (Html.BeginForm("Find", "Photo", FormMethod.Post, new { id = "search-form" }))
