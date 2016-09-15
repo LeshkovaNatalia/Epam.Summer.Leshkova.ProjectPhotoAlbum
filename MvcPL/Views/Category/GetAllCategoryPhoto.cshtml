@@ -5,3 +5,7 @@
 }
 
 @Html.DropDownListFor(Model => Model.Id, ViewBag.CategoryPhoto as IEnumerable<SelectListItem>)
+
+<span class="left-float">
+    @Html.RouteLink("+ Category", "categorycreate", routeValues: null, htmlAttributes: new { id = "categoryLink", data_dialog_width = 350 })
+</span>

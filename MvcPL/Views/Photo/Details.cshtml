@@ -4,11 +4,14 @@
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_PhotoLayout.cshtml";
 }
-<div id="description-photo">
-    <img src="@Url.Action("GetImage", "Photo", new { photoId = Model.Id })"/>
-    <div id="about-photo">
-        <h4>Photo Details: @Model.Description</h4>
-        <p>@Model.CreatedOn</p>
-        <p>@Html.ActionLink("Back to main page", "GetAllPhoto")</p>
+<div class="central-div">
+    <h4>Photo Details: @Model.Description</h4>
+    <hr>
+    <div id="description-photo">
+        <img src="@Url.RouteUrl("photoimg", new { photoId = Model.Id})" />
+        <div id="about-photo">
+            <p>@Model.CreatedOn</p>
+            <p>@Html.ActionLink("Back to main page", "Index")</p>
+        </div>
     </div>
 </div>

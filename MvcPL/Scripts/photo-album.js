@@ -1,27 +1,9 @@
-﻿$(document).ready(function() {
-    $("body").fadeIn(2000);
-    $("a.nav").click(function () {        
-		href = this.href;
-		$("body").fadeOut(2000, window.location = href);
-	});
-});
-
-/* Function change menu for small screen */
-function subMenuFunction() {
-    var x = document.getElementById("topnav");
-    if (x.className === "topnav") {
-        x.className += " responsive";
-    } else {
-        x.className = "topnav";
-    }                               
-}
-
-/* Function for search photos */
+﻿/* Function for search photos */
 $(document).ready(function () {
     $("#photo").autocomplete({
         source: function (request, response) {
             $.ajax({
-                url: "/Photo/FindByDescription",
+                url: "autocomplete",
                 type: "POST",
                 dataType: "json",
                 data: { term: request.term },
@@ -42,7 +24,7 @@ $(document).ready(function () {
             var counter = 1;
             items += "<tr>";
             $.each(data, function (i, photo) {
-                items += "<td><a onclick='aboutPhoto(this)' data-ajax='true' data-ajax-mode='replace' data-ajax-update='#photoTemplate' href='/Photo/Details?photoId=" + photo.Id + "'><img src='/Photo/GetImage?photoId=" + photo.Id + "' width=\"100\" height=\"100\"/></a></td>";
+                items += "<td><a onclick='aboutPhoto(this)' data-ajax='true' data-ajax-mode='replace' data-ajax-update='#photoTemplate' href='/Photo/Details?photoId=" + photo.Id + "'><img src='/images/" + photo.Id + "' width=\"100\" height=\"100\"/></a></td>";
                 if (counter % 5 == 0)
                 {
                     items += "</tr><tr>";
@@ -57,19 +39,18 @@ $(document).ready(function () {
 })
 
 function aboutPhoto(obj) {
-    $(".selected-photo").hide().html('');
+    //$(".selected-photo").hide().html('');
     $("#indicator").show();
 
     var url = $(obj).attr('href');
 
     $.getJSON(url, null, function (photo) {
         $("#indicator").hide();
-
-        $("div #photoTemplate")
-            .tmpl(photo)
-            .appendTo('.selected-photo');
-
-        $('.selected-photo').show();
+        var descr = photo.Description;
+        var photoId = photo.Id;
+        $('.selected-photo div p.photo-description').html(descr);
+        $('.selected-photo div img.display-img').attr('src', '/images?photoId=' + photoId);
+        $('.selected-photo').removeAttr('style');
     });
 }
 
@@ -97,7 +78,7 @@ function previewFile() {
 
 /* Refresh captcha */
 function refreshCaptcha() {
-    $('#captcha-img').attr('src', '/Account/Captcha' + "?t=" + new Date().getTime());
+    $('#captcha-img').attr('src', '/captcha' + "?t=" + new Date().getTime());
 }
 
 $(function () {
@@ -125,6 +106,12 @@ $().ready(function () {
             }
         });
     });
+});
+
+$(document).ready(function () {
+    $('.table tr td a.delete-user').removeAttr('style');
+    $('.div-cell div a.delete-photo').removeAttr('style');
+    $('.col-md-10 img.img-preview').removeAttr('style');
 });
 
 /* Dialog for confirm delete photo */

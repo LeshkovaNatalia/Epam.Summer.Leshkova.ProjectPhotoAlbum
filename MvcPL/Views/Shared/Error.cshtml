@@ -1,81 +1,13 @@
-﻿@using MvcPL.ViewModels
-@model  IEnumerable<MvcPL.ViewModels.PhotoViewModel>
-
-@{
+﻿@{
     ViewBag.Title = "Error";
-    Layout = null;
+    Layout = "~/Views/Shared/_PhotoLayout.cshtml";
 }
 
-<!DOCTYPE html>
-
-<html lang="en">
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Error</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-    <link rel="icon" href="~/Content/images/icon.png" />
-</head>
-<body>
-    <div id="wrapper">
-        <header>
-            <div id="logo">
-                <a href="/"><img src="~/Content/images/logo.png" class="logo" alt="Logo" /></a>
-            </div>
-            <nav>
-                <ul class="topnav" id="topnav">
-                    <li>@Html.ActionLink("Home", "Index", "Photo")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    @{
-                        if (@User.IsInRole("User"))
-                        {
-                            <li>@Html.ActionLink("My Photo", "GetPhotoForUser", "Photo")</li>
-                        }
-                        else
-                        {
-                            <li>@Html.ActionLink("Registry", "Register", "Account")</li>
-                        }
-                    }
-                    @{
-                        if (@User.IsInRole("Administrator"))
-                        {
-                            <li>@Html.ActionLink("Users", "Index", "Admin")</li>
-                        }
-                    }
-                    <li class="icon">
-                        <a href="javascript:void(0)" onclick="subMenuFunction()">&#9776;</a>
-                    </li>
-                </ul>
-            </nav>
-            @*@Html.Partial("_Login", new LogOnViewModel())*@
-            <div id="search">
-                @{
-                    using (Html.BeginForm("Find", "Photo", FormMethod.Post, new { id = "search-form" }))
-                    {
-                        @Html.AntiForgeryToken()
-                        <input type="text" id="photo" name="term" placeholder="Search" />
-                        <input type="submit" name="search-btn" form="search-form" id="get-photos" value="" />
-                    }
-                }
-            </div>
-
-        </header>
-        <div style="clear: both;"></div>
-        <div class="mainContent">
-            <div class="central-div">
-                <hgroup>
-                    <h1>Error.</h1>
-                    <h2>An error occurred while processing your request.</h2>
-                </hgroup>
-                <img src="~/Content/images/error.gif" />
-                @Html.ActionLink("Back to main page", "Index", "Photo")
-            </div>
-        </div>
-    </div>
-    <div style="clear:both;"></div>
-    <footer>
-        <p>&copy; @DateTime.Now.Year - Lehkova Natalia</p>
-    </footer>
-</body>
-</html>
+<div class="error-div-500">
+    <p class="error-code">500</p>
+    <p class="error-500-text">
+        An error occurred while processing your request!
+    </p>
+    <img src="~/Content/images/error.gif" style="display:block;" />
+    @Html.ActionLink("Back to main page", "Index", "Photo")
+</div>

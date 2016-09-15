@@ -114,8 +114,8 @@ namespace MvcPL.Infrastructure.Mappers
         {
             var roles = new List<RoleEntity>();
 
-            for(int i = 0; i < rolesStrings.Length; i++) 
-            { 
+            for (int i = 0; i < rolesStrings.Length; i++)
+            {
                 roles.Add(new RoleEntity() { Name = rolesStrings[i] });
             }
             return roles;

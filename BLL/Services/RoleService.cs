@@ -29,11 +29,27 @@ namespace BLL.Services
         }
         #endregion
 
+        #region Public Methods
+
+        /// <summary>
+        /// Method CreateRole create role entity.
+        /// </summary>
+        /// <param name="dalRole">New role entity for create.</param>
         public void CreateRole(RoleEntity role)
         {
-            throw new NotImplementedException();
+            try {
+                roleRepository.Create(role.ToDalRole());
+                uow.Commit();
+            }
+            catch (Exception ex) {
+                logger.Error(logger.GetMessage("Create role was failed.", this), ex);
+            }
         }
 
+        /// <summary>
+        /// Method GetAllRoles return all roles.
+        /// </summary>
+        /// <returns>Lists of roles.</returns>
         public IEnumerable<RoleEntity> GetAllRoles()
         {
             try {
@@ -46,24 +62,40 @@ namespace BLL.Services
             return null;
         }
 
+        /// <summary>
+        /// Method GetRoleEntity return RoleEntity entity by id.
+        /// </summary>
+        /// <param name="id">Id of role entity.</param>
+        /// <returns>RoleEntity entity by id.</returns>
         public RoleEntity GetRoleEntity(int id)
         {
-            throw new NotImplementedException();
+            try {
+                return roleRepository.GetById(id).ToBllRole();
+            }
+            catch (Exception ex) {
+                logger.Error(logger.GetMessage("Get role by id was failed.", this), ex);
+            }
+
+            return null;
         }
 
-        public string[] GetRolesForUser(string username)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool IsUserInRole(string username, string roleName)
-        {
-            throw new NotImplementedException();
-        }
-
+        /// <summary>
+        /// Method DeleteRole delete role. 
+        /// </summary>
+        /// <param name="dalRole">Entity that need delete.</param>
         public void DeleteRole(RoleEntity role)
         {
-            throw new NotImplementedException();
+            try
+            {
+                roleRepository.Delete(role.ToDalRole());
+                uow.Commit();
+            }
+            catch (Exception ex)
+            {
+                logger.Error(logger.GetMessage("Delete role was failed.", this), ex);
+            }
         }
+
+        #endregion
     }
 }

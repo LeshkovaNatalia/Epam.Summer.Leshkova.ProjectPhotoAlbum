@@ -13,14 +13,6 @@ namespace MvcPL.ViewModels
         public int CurrentPage { get; set; }    
     }
 
-    public class PagedList<T>
-    {
-        public List<T> Content { get; set; }
-        public Int32 CurrentPage { get; set; }
-        public Int32 PageSize { get; set; }
-        public int TotalRecords { get; set; }
-    }
-
     public class PageInfo
     {
         public int PageNumber { get; set; } 

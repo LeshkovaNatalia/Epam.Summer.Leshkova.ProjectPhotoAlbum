@@ -6,14 +6,13 @@
     @foreach (var item in Model)
     {
         <div class="div-cell">
-            <figure>                
+            <figure>
                 @Html.Partial("_Photo", item)
                 <figcaption id="@item.Id">
-                    <noscript><div>Please, enable JavaScript for rate photo.</div></noscript>
                     @Html.Partial("_AboutPhoto", item)
                 </figcaption>
             </figure>
-        </div>        
+        </div>
     }
 </div>
 

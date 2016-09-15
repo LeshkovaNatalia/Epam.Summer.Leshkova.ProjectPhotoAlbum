@@ -9,10 +9,10 @@ namespace MvcPL
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js",
-                        "~/Scripts/jquery.tmpl.js",
-                        "~/Scripts/jquery-ui-{version}.js",
-                        "~/Scripts/jquery.unobtrusive-ajax.min.js",                        
+                        "~/Scripts/jquery-1.12.4.js",
+                        "~/Scripts/jquery-ui-1.12.0.js",
+                        "~/Scripts/jquery.unobtrusive-ajax.min.js",
+                        "~/Scripts/dialog-login-registry.js",
                         "~/Scripts/photo-album.js",
                         "~/Scripts/rating-photos.js"));
 
@@ -30,7 +30,7 @@ namespace MvcPL
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css",
+                      "~/Content/themes/base/jquery-ui.css",
                       "~/Content/style.css"));
         }
     }

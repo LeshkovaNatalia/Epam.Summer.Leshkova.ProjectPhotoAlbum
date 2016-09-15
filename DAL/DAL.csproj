@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Concrete\CategoryPhotoRepository.cs" />
+    <Compile Include="Mappers\CustomExpressionVisitor.cs" />
     <Compile Include="Concrete\PhotoRepository.cs" />
     <Compile Include="Concrete\RoleRepository.cs" />
     <Compile Include="Concrete\UnitOfWork.cs" />

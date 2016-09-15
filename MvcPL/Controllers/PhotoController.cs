@@ -36,16 +36,29 @@ namespace MvcPL.Controllers
 
         #region Public Methods
 
-        public ActionResult Index()
+        public ActionResult Index(int page = 1)
         {
-            var photos = photoService.GetAllPhotoEntities().Select(photo => photo.ToMvcPhoto())
-                        .Take(6);
+            int pageSize = 6;
+            var photosPerPages = photoService.GetAllPhotoEntities().Select(photo => photo.ToMvcPhoto()).Skip((page - 1) * pageSize).Take(pageSize);
 
-            return View(photos);
+            PageInfo pageInfo = new PageInfo
+            {
+                PageNumber = page,
+                PageSize = pageSize,
+                TotalItems = photoService.GetAllPhotoEntities().Count()
+            };
+
+            IndexViewModel ivm = new IndexViewModel
+            {
+                PageInfo = pageInfo,
+                Photos = photosPerPages
+            };
+
+            return View(ivm);
         }
 
         [Authorize]
-        public ActionResult GetPhotoForUser()
+        public ActionResult GetPhotoForUser(int page = 0)
         {
             int pageSize = 3;
             int userId = userService.GetUserByEmail(User.Identity.Name).UserId;
@@ -54,14 +67,25 @@ namespace MvcPL.Controllers
             var allPhotos = photoService.GetAllPhotoEntitiesForUser(userId).Select(photo => photo.ToMvcPhoto())
                         .ToList();
 
-            photos.Data = photoService.GetAllPhotoEntitiesForUser(userId).Select(photo => photo.ToMvcPhoto())
+            if (page > 0)
+            {
+                photos.Data = photoService.GetAllPhotoEntitiesForUser(userId).Select(photo => photo.ToMvcPhoto())
+                        .Skip(pageSize * (page - 1))
                         .Take(pageSize)
                         .ToList();
-
+                photos.CurrentPage = page;
+            }
+            else
+            {
+                photos.Data = photoService.GetAllPhotoEntitiesForUser(userId).Select(photo => photo.ToMvcPhoto())
+                        .Take(pageSize)
+                        .ToList();
+                photos.CurrentPage = 1;
+            }
             photos.NumberOfPages = allPhotos.Count() % pageSize == 0 ? allPhotos.Count() / pageSize : allPhotos.Count() / pageSize + 1;
-            photos.CurrentPage = 1;
 
-            return View(photos);            
+
+            return View(photos);
         }
 
         public ActionResult PhotosList(int page)
@@ -78,30 +102,40 @@ namespace MvcPL.Controllers
                         .Take(pageSize)
                         .ToList();
 
-            photos.NumberOfPages = allPhotos.Count() % pageSize == 0 ? allPhotos.Count() / pageSize : allPhotos.Count() / pageSize + 1; 
+            photos.NumberOfPages = allPhotos.Count() % pageSize == 0 ? allPhotos.Count() / pageSize : allPhotos.Count() / pageSize + 1;
             photos.CurrentPage = page;
 
             return PartialView(photos);
         }
 
-        public ActionResult AllPhotos()
+        public ActionResult LastPhotos(string userName = null)
         {
-            return View(photoService.GetAllPhotoEntities().Select(photo => photo.ToMvcPhoto()));
+            int userId = 0;
+            if (userName == null)
+                userId = userService.GetUserByEmail(User.Identity.Name).UserId;
+            else
+                userId = userService.GetUserByEmail(userName).UserId;
+            var allPhotos = photoService.GetAllPhotoEntitiesForUser(userId).Select(photo => photo.ToMvcPhoto())
+                        .ToList();
+
+            var lastphotos = allPhotos.Skip(Math.Max(0, allPhotos.Count() - 3));
+
+            return PartialView(lastphotos);
         }
 
+        /// <summary>
+        /// Method Photos dynamic load photos to main page.
+        /// </summary>
+        /// <param name="id">Id of last photos in main page.</param>
+        /// <returns>Next 3 photos to main page.</returns>
         [HttpPost]
         public ActionResult Photos(int id)
         {
-            if (Request.IsAjaxRequest())
-            {
-                var photos = photoService.GetAllPhotoEntities().Select(photo => photo.ToMvcPhoto()).
-                    Where(p => p.Id > id).Take(3);
-                return PartialView("_Photos", photos);
-            }
+            var photos = photoService.GetAllPhotoEntities().Select(photo => photo.ToMvcPhoto()).
+                Where(p => p.Id > id).Take(3);
+            return PartialView("_Photos", photos);
+        }
 
-            return View(photoService.GetAllPhotoEntities().Select(photo => photo.ToMvcPhoto()));
-        }        
-        
         [Authorize]
         [HttpGet]
         public ActionResult CreatePhoto()
@@ -149,10 +183,12 @@ namespace MvcPL.Controllers
 
         [Authorize]
         [HttpPost]
-        public ActionResult EditPhoto(PhotoViewModel photo)
+        public ActionResult EditPhoto(PhotoViewModel photo, int photoId, int id)
         {
             if (ModelState.IsValid)
             {
+                photo.Id = photoId;
+                photo.CategoryId = id;
                 photoService.UpdatePhoto(photo.ToBllPhoto());
                 TempData["message"] = string.Format("Photo {0}  has been updated.", photo.Id);
                 return RedirectToAction("GetPhotoForUser");
@@ -160,7 +196,7 @@ namespace MvcPL.Controllers
 
             return View(photo);
         }
-        
+
         [HttpGet]
         public ActionResult DeletePhoto(int id)
         {
@@ -172,7 +208,7 @@ namespace MvcPL.Controllers
             return View(photo.ToMvcPhoto());
         }
 
-        [HttpPost, ActionName("delete-photo")]
+        [HttpPost, ActionName("DeletePhoto")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
@@ -186,15 +222,15 @@ namespace MvcPL.Controllers
         {
             PhotoEntity photo = photoService.GetPhotoEntity(id);
             photoService.DeletePhoto(photo);
-            return RedirectToAction("GetPhotoForUser");            
-        }        
+            return RedirectToAction("GetPhotoForUser");
+        }
 
         public ActionResult FindByDescription(string term)
         {
 
             var photos = photoService.GetAllPhotoEntities().Where(photo => photo.Description.ToLower().Contains(term.ToLower()));
-            
-            var projection = photos.Select(photo =>  
+
+            var projection = photos.Select(photo =>
                 new
                 {
                     id = photo.Id,
@@ -208,7 +244,7 @@ namespace MvcPL.Controllers
 
         [HttpGet]
         public ActionResult Find()
-        {            
+        {
             return View();
         }
 
@@ -217,7 +253,7 @@ namespace MvcPL.Controllers
         public ActionResult Find(string term)
         {
             IEnumerable<PhotoViewModel> photos = photoService.GetAllPhotoEntities().Where(photo => photo.Description.ToLower().Contains(term.ToLower()) || photo.Description.ToLower() == term.ToLower()).
-                Select(photo => new PhotoViewModel { CreatedOn = photo.CreatedOn, CategoryId = photo.CategoryId, Id = photo.Id }); 
+                Select(photo => new PhotoViewModel { CreatedOn = photo.CreatedOn, CategoryId = photo.CategoryId, Id = photo.Id });
 
             return View(photos);
         }
@@ -225,8 +261,8 @@ namespace MvcPL.Controllers
         public JsonResult PhotoListBySearch(string search)
         {
             var photos = photoService.GetAllPhotoEntities().Where(photo => photo.Description.ToLower().Contains(search.ToLower())).
-                Select(photo => new { photo.CreatedOn, photo.CategoryId, photo.Id});
-                        
+                Select(photo => new { photo.CreatedOn, photo.CategoryId, photo.Id });
+
             return Json(photos, JsonRequestBehavior.AllowGet);
         }
 
@@ -234,7 +270,7 @@ namespace MvcPL.Controllers
         public ActionResult Details(int photoId)
         {
             var photo = photoService.GetPhotoEntity(photoId);
-                        
+
             return Json(photo, JsonRequestBehavior.AllowGet);
         }
 

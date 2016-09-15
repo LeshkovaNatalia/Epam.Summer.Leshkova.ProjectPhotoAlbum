@@ -33,6 +33,10 @@ namespace BLL.Services
 
         #region Public Methods
 
+        /// <summary>
+        /// Method Create create voting entity.
+        /// </summary>
+        /// <param name="votingEntity">New voting entity for create.</param>
         public void Create(VotingEntity votingEntity)
         {
             try {
@@ -44,6 +48,11 @@ namespace BLL.Services
             }
         }
 
+        /// <summary>
+        /// Method GetRatingForPhoto return summary rating for photo.
+        /// </summary>
+        /// <param name="photoId">Summary rating for photo by it's id.</param>
+        /// <returns>Summary rating for photo by id.</returns>
         public double GetRatingForPhoto(int photoId)
         {
             try {
@@ -56,6 +65,12 @@ namespace BLL.Services
             return default(double);
         }
 
+        /// <summary>
+        /// Method GetRatingForPhotoUser return rating for photo by.
+        /// </summary>
+        /// <param name="photoId">Photo id.</param>
+        /// <param name="userId">User id.</param>
+        /// <returns>Returns rating for photo by user.</returns>
         public int GetRatingForPhotoUser(int photoId, int userId)
         {
             try {
@@ -68,6 +83,10 @@ namespace BLL.Services
             return default(int);
         }
 
+        /// <summary>
+        /// Method GetAll return all votings.
+        /// </summary>
+        /// <returns>Lists of votings entity.</returns>
         public IEnumerable<VotingEntity> GetAll()
         {
             try {
@@ -80,6 +99,10 @@ namespace BLL.Services
             return null;
          }
 
+        /// <summary>
+        /// Method Update update exists voting.
+        /// </summary>
+        /// <param name="votingEntity">VotingEntity that need update.</param>
         public void Update(VotingEntity votingEntity)
         {
             try {
@@ -89,6 +112,36 @@ namespace BLL.Services
             catch(Exception ex) {
                 logger.Error(logger.GetMessage("Update vote for photo was failed.", this), ex);
             }            
+        }
+
+        /// <summary>
+        /// Method return count of votes users.
+        /// </summary>
+        /// <param name="photoId">Photo id.</param>
+        /// <returns>Number of votes.</returns>
+        public int GetRaters(int photoId)
+        {
+            try {
+                int raters = 0;
+                var votes = votingRepository.GetAll().Select(vote => new VotingEntity
+                {
+                    UserId = vote.UserId,
+                    PhotoId = vote.PhotoId,
+                    Rating = vote.Rating
+                });
+
+                if (votes != null)
+                    foreach (var vote in votes)
+                        if (vote.PhotoId == photoId)
+                            raters++;
+
+                return raters;
+            }
+            catch(Exception ex) {
+                logger.Error(logger.GetMessage(string.Format("Get raters for photo by photo with id {0} was failed.", photoId), this), ex);
+            }
+            
+            return default(int);
         }
 
         #endregion

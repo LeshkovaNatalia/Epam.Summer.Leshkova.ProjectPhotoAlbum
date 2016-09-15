@@ -1,13 +1,16 @@
 ﻿/* Load photo for user */
-$().ready(function () {
-    $(".page-number").on("click", function () {
-        var page = parseInt($(this).html());
-        $.ajax({
-            url: '/Photo/PhotosList/)',
-            data: { "page": page },
-            success: function (data) {
-                $("#photos-list").html(data);
-            }
-        });
-    });
+$(document).ready(function () {
+    $('.div-cell div a.delete-photo').removeAttr('style');
+    $('div.div-row a.btn-default').removeAttr('style');
 });
+
+function loadUserPhoto(obg) {
+    var page = parseInt($(obg).html());
+    $.ajax({
+        url: 'loadmyphotos',
+        data: { "page": page },
+        success: function (data) {
+            $("#photos-list").html(data);
+        }
+    });
+}

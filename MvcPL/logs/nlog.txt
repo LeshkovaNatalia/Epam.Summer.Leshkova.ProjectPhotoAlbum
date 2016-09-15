@@ -14,3 +14,140 @@ PhotoController.Index => PhotoService.GetAllPhotoEntities => NLogLogger.Error 04
 PhotoController.Index => PhotoService.GetAllPhotoEntities => NLogLogger.Error 05.09.2016 BLL.Services.PhotoService Get all photos was failed.
 PhotoController.Index => PhotoService.GetAllPhotoEntities => NLogLogger.Error 06.09.2016 BLL.Services.PhotoService Get all photos was failed.
 PhotoController.Index => PhotoService.GetAllPhotoEntities => NLogLogger.Error 07.09.2016 BLL.Services.PhotoService Get all photos was failed.
+PhotoController.Index => PhotoService.GetAllPhotoEntities => NLogLogger.Error 07.09.2016 BLL.Services.PhotoService Get all photos was failed.
+CategoryController.GetCategory => CategoryPhotoService.GetCategoryPhotoEntity => NLogLogger.Error 07.09.2016 BLL.Services.CategoryPhotoService Get category photo by id 4 was failed.
+CategoryController.GetCategory => CategoryPhotoService.GetCategoryPhotoEntity => NLogLogger.Error 07.09.2016 BLL.Services.CategoryPhotoService Get category photo by id 4 was failed.
+CategoryController.GetCategory => CategoryPhotoService.GetCategoryPhotoEntity => NLogLogger.Error 07.09.2016 BLL.Services.CategoryPhotoService Get category photo by id 4 was failed.
+CategoryController.GetCategory => CategoryPhotoService.GetCategoryPhotoEntity => NLogLogger.Error 07.09.2016 BLL.Services.CategoryPhotoService Get category photo by id 4 was failed.
+CategoryController.GetCategory => CategoryPhotoService.GetCategoryPhotoEntity => NLogLogger.Error 08.09.2016 BLL.Services.CategoryPhotoService Get category photo by id 4 was failed.
+CategoryController.GetCategory => CategoryPhotoService.GetCategoryPhotoEntity => NLogLogger.Error 08.09.2016 BLL.Services.CategoryPhotoService Get category photo by id 4 was failed.
+CategoryController.GetCategory => CategoryPhotoService.GetCategoryPhotoEntity => NLogLogger.Error 08.09.2016 BLL.Services.CategoryPhotoService Get category photo by id 4 was failed.
+CustomRoleProvider.GetRolesForUser => UserService.GetAllUserEntities => NLogLogger.Error 10.09.2016 BLL.Services.UserService Get all user was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+CategoryController.GetCategory => CategoryPhotoService.GetCategoryPhotoEntity => NLogLogger.Error 10.09.2016 BLL.Services.CategoryPhotoService Get category photo by id 0 was failed.
+CategoryController.GetCategory => CategoryPhotoService.GetCategoryPhotoEntity => NLogLogger.Error 10.09.2016 BLL.Services.CategoryPhotoService Get category photo by id 0 was failed.
+CategoryController.GetCategory => CategoryPhotoService.GetCategoryPhotoEntity => NLogLogger.Error 10.09.2016 BLL.Services.CategoryPhotoService Get category photo by id 0 was failed.
+CategoryController.GetCategory => CategoryPhotoService.GetCategoryPhotoEntity => NLogLogger.Error 10.09.2016 BLL.Services.CategoryPhotoService Get category photo by id 0 was failed.
+CategoryController.GetCategory => CategoryPhotoService.GetCategoryPhotoEntity => NLogLogger.Error 10.09.2016 BLL.Services.CategoryPhotoService Get category photo by id 0 was failed.
+CategoryController.GetCategory => CategoryPhotoService.GetCategoryPhotoEntity => NLogLogger.Error 10.09.2016 BLL.Services.CategoryPhotoService Get category photo by id 0 was failed.
+CategoryController.GetCategory => CategoryPhotoService.GetCategoryPhotoEntity => NLogLogger.Error 10.09.2016 BLL.Services.CategoryPhotoService Get category photo by id 0 was failed.
+CategoryController.GetCategory => CategoryPhotoService.GetCategoryPhotoEntity => NLogLogger.Error 10.09.2016 BLL.Services.CategoryPhotoService Get category photo by id 0 was failed.
+CategoryController.GetCategory => CategoryPhotoService.GetCategoryPhotoEntity => NLogLogger.Error 10.09.2016 BLL.Services.CategoryPhotoService Get category photo by id 0 was failed.
+CategoryController.GetCategory => CategoryPhotoService.GetCategoryPhotoEntity => NLogLogger.Error 10.09.2016 BLL.Services.CategoryPhotoService Get category photo by id 0 was failed.
+CategoryController.GetCategory => CategoryPhotoService.GetCategoryPhotoEntity => NLogLogger.Error 10.09.2016 BLL.Services.CategoryPhotoService Get category photo by id 0 was failed.
+PhotoController.GetImage => PhotoService.GetPhotoEntity => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Get photo by id was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+PhotoController.EditPhoto => PhotoService.UpdatePhoto => NLogLogger.Error 10.09.2016 BLL.Services.PhotoService Update photo was failed.
+CategoryController.GetCategory => CategoryPhotoService.GetCategoryPhotoEntity => NLogLogger.Error 10.09.2016 BLL.Services.CategoryPhotoService Get category photo by id 0 was failed.
+CategoryController.GetCategory => CategoryPhotoService.GetCategoryPhotoEntity => NLogLogger.Error 10.09.2016 BLL.Services.CategoryPhotoService Get category photo by id 0 was failed.
+CategoryController.GetCategory => CategoryPhotoService.GetCategoryPhotoEntity => NLogLogger.Error 11.09.2016 BLL.Services.CategoryPhotoService Get category photo by id 4 was failed.
+PhotoController.Index => PhotoService.GetAllPhotoEntities => NLogLogger.Error 12.09.2016 BLL.Services.PhotoService Get all photos was failed.
+PhotoController.Index => PhotoService.GetAllPhotoEntities => NLogLogger.Error 12.09.2016 BLL.Services.PhotoService Get all photos was failed.
+CategoryController.GetCategory => CategoryPhotoService.GetCategoryPhotoEntity => NLogLogger.Error 12.09.2016 BLL.Services.CategoryPhotoService Get category photo by id 4 was failed.
+CategoryController.GetCategory => CategoryPhotoService.GetCategoryPhotoEntity => NLogLogger.Error 12.09.2016 BLL.Services.CategoryPhotoService Get category photo by id 4 was failed.
+CategoryController.GetCategory => CategoryPhotoService.GetCategoryPhotoEntity => NLogLogger.Error 12.09.2016 BLL.Services.CategoryPhotoService Get category photo by id 7 was failed.
+CategoryController.GetCategory => CategoryPhotoService.GetCategoryPhotoEntity => NLogLogger.Error 12.09.2016 BLL.Services.CategoryPhotoService Get category photo by id 7 was failed.
+CategoryController.GetCategory => CategoryPhotoService.GetCategoryPhotoEntity => NLogLogger.Error 12.09.2016 BLL.Services.CategoryPhotoService Get category photo by id 7 was failed.
+CategoryController.GetCategory => CategoryPhotoService.GetCategoryPhotoEntity => NLogLogger.Error 12.09.2016 BLL.Services.CategoryPhotoService Get category photo by id 7 was failed.
+CategoryController.GetCategory => CategoryPhotoService.GetCategoryPhotoEntity => NLogLogger.Error 12.09.2016 BLL.Services.CategoryPhotoService Get category photo by id 7 was failed.
+CategoryController.GetCategory => CategoryPhotoService.GetCategoryPhotoEntity => NLogLogger.Error 13.09.2016 BLL.Services.CategoryPhotoService Get category photo by id 7 was failed.
+CategoryController.GetCategory => CategoryPhotoService.GetCategoryPhotoEntity => NLogLogger.Error 13.09.2016 BLL.Services.CategoryPhotoService Get category photo by id 7 was failed.
+CategoryController.GetCategory => CategoryPhotoService.GetCategoryPhotoEntity => NLogLogger.Error 13.09.2016 BLL.Services.CategoryPhotoService Get category photo by id 7 was failed.
+PhotoController.Index => PhotoService.GetAllPhotoEntities => NLogLogger.Error 14.09.2016 BLL.Services.PhotoService Get all photos was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 14.09.2016 BLL.Services.UserService Delete user was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 14.09.2016 BLL.Services.CategoryPhotoService Get category id by name a was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 14.09.2016 BLL.Services.CategoryPhotoService Get category id by name an was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 14.09.2016 BLL.Services.CategoryPhotoService Get category id by name animals was failed.
+CategoryController.CreateCategory => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 14.09.2016 BLL.Services.CategoryPhotoService Get category id by name animals was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 14.09.2016 BLL.Services.CategoryPhotoService Get category id by name bu was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 14.09.2016 BLL.Services.CategoryPhotoService Get category id by name b was failed.
+PhotoController.Index => PhotoService.GetAllPhotoEntities => NLogLogger.Error 14.09.2016 BLL.Services.PhotoService Get all photos was failed.
+PhotoController.Index => PhotoService.GetAllPhotoEntities => NLogLogger.Error 14.09.2016 BLL.Services.PhotoService Get all photos was failed.
+CategoryController.CreateCategory => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 15.09.2016 BLL.Services.CategoryPhotoService Get category id by name  was failed.
+CategoryController.CreateCategory => CategoryPhotoService.CreateCategoryPhoto => NLogLogger.Error 15.09.2016 BLL.Services.CategoryPhotoService Create category photo was failed.

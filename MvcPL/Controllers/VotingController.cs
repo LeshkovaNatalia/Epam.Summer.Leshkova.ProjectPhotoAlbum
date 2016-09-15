@@ -53,27 +53,14 @@ namespace MvcPL.Controllers
 
         public int GetRaters(int photoId)
         {
-            int raters = 0;
-            var votes = votingService.GetAll().Select(vote => new VotingViewModel
-            {
-                UserId = vote.UserId,
-                PhotoId = vote.PhotoId,
-                Rating = vote.Rating
-            });
-
-            if (votes != null)             
-                foreach (var vote in votes)
-                    if (vote.PhotoId == photoId)
-                        raters++;
-
-            return raters;
+            return votingService.GetRaters(photoId);
         }
 
         public bool CanVote(string userName, int photoId)
         {
             var user = userService.GetUserByEmail(userName);
 
-            if(user != null)
+            if (user != null)
                 if (votingService.GetRatingForPhotoUser(photoId, user.UserId) > 0)
                     return false;
 

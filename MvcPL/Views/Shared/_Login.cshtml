@@ -7,21 +7,18 @@
         {
             using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
             {
-                <div class="logout-div">
-                    <input type="submit" title="Log Out" value="Hi, @User.Identity.Name" class="logout-btn" >
-                </div>
-                }
-            }
-            else
-            {
-                <input class="open" id="top-box" type="checkbox" hidden>
-                <label class="btn" for="top-box">Sign Up</label>
-                    <div class="login-panel">
-                        <div class="login-form">
-                            @Html.Partial("_LogOn", new LogOnViewModel() { Email = @Model.Email, Password = @Model.Password })
+                <div class="dropdown">
+                    <span>Hi, @User.Identity.Name</span>
+                        <div class="dropdown-content">
+                            <input type="submit" title="Log Out" value="Log Out" class="logout-btn">
                         </div>
-                    </div>
+                </div>
             }
         }
+        else
+        {
+             @Html.ActionLink("Log in", "LogOn", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", data_dialog_width = 300 })
+        }
+    }
     </div>
 

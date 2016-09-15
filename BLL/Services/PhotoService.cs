@@ -31,6 +31,12 @@ namespace BLL.Services
         }
         #endregion
 
+        #region Public Methods
+
+        /// <summary>
+        /// Method CreatePhoto create photo entity.
+        /// </summary>
+        /// <param name="photo">New photo entity for create.</param>
         public void CreatePhoto(PhotoEntity photo)
         {
             try {
@@ -42,6 +48,10 @@ namespace BLL.Services
             }
         }
 
+        /// <summary>
+        /// Method DeletePhoto delete photo.
+        /// </summary>
+        /// <param name="photo">Entity that need delete.</param>
         public void DeletePhoto(PhotoEntity photo)
         {
             try {
@@ -53,6 +63,10 @@ namespace BLL.Services
             }
         }
 
+        /// <summary>
+        /// Method GetAllPhotoEntities return all photos.
+        /// </summary>
+        /// <returns>Lists of photos entity.</returns>
         public IEnumerable<PhotoEntity> GetAllPhotoEntities()
         {
             try {
@@ -65,6 +79,11 @@ namespace BLL.Services
             return null;
         }
 
+        /// <summary>
+        /// Method return all photos for user by userId.
+        /// </summary>
+        /// <param name="userId">User with userId.</param>
+        /// <returns>All photos for user.</returns>
         public IEnumerable<PhotoEntity> GetAllPhotoEntitiesForUser(int userId)
         {
             try {
@@ -77,6 +96,11 @@ namespace BLL.Services
             return null;
         }
 
+        /// <summary>
+        /// Method return photo by category.
+        /// </summary>
+        /// <param name="categoryPhoto">Category of photos.</param>
+        /// <returns>Photos by categoryPhoto.</returns>
         public IEnumerable<PhotoEntity> GetPhotoByCategory(string categoryPhoto)
         {
             try {
@@ -90,6 +114,11 @@ namespace BLL.Services
             return null;
         }
 
+        /// <summary>
+        /// Method GetPhotoEntity return PhotoEntity entity by id.
+        /// </summary>
+        /// <param name="id">Id of photo entity.</param>
+        /// <returns>PhotoEntity entity by id.</returns>
         public PhotoEntity GetPhotoEntity(int id)
         {
             try {
@@ -102,6 +131,10 @@ namespace BLL.Services
             return null;
         }
 
+        /// <summary>
+        /// Method UpdatePhoto update exists photo.
+        /// </summary>
+        /// <param name="photo">PhotoEntity that need update.</param>
         public void UpdatePhoto(PhotoEntity photo)
         {
             try {
@@ -111,5 +144,7 @@ namespace BLL.Services
                 logger.Error(logger.GetMessage("Update photo was failed.", this), ex);
             }
         }
+
+        #endregion
     }
 }

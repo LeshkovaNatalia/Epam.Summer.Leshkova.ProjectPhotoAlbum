@@ -15,6 +15,7 @@ namespace BLL.Interface.Services
         IEnumerable<VotingEntity> GetAll();
         double GetRatingForPhoto(int photoId);
         int GetRatingForPhotoUser(int photoId, int userId);
+        int GetRaters(int id);
 
     }
 }

@@ -12,7 +12,6 @@ namespace Logger
         void Info(object msg);
         void Debug(string msg);
         void Error(string msg, Exception ex);
-
         string GetMessage(string msg, object obj);
     }
 }

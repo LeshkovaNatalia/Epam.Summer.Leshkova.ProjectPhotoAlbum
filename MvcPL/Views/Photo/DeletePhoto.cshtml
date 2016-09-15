@@ -5,16 +5,23 @@
     Layout = "~/Views/Shared/_PhotoLayout.cshtml";
 }
 
-<h2>Delete Photo</h2>
-<div>Are you sure you want to delete photo with description <b>@Html.DisplayFor(model => model.Description)</b>?</div>
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    <p>
-        <input type="submit" value="Delete" />
-    </p>
-    <p>
-        @Html.ActionLink("Back to photos", "GetPhotoForUser")
-    </p>
-}
-
+<div class="central-div">
+    <h4>Delete Photo</h4>
+    <hr>
+    <div style="width:50%; margin:0 auto;">
+        <div>Are you sure you want to delete photo with description <b>@Html.DisplayFor(model => model.Description)</b>?</div>
+        <br>
+        <img src="@Url.RouteUrl("photoimg", new { photoId = Model.Id})" class="display-img" style="border: 1px solid #ddd;
+    border-radius: 0.5rem;" alt="@Model.Description" />
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <p>
+                @Html.ActionLink("Back to photos", "GetPhotoForUser", null, htmlAttributes: new { @class = "link-btn btn" })
+            </p>
+            <p style="float:right; width:50%;">
+                <input style="border:1px solid lightgray; width:100%;" type="submit" value="Delete" />
+            </p>
+        }
+    </div>
+</div>

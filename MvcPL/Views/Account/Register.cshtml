@@ -1,66 +1,50 @@
 ﻿@model MvcPL.ViewModels.RegisterViewModel
 
 @{
-    Layout = "~/Views/Shared/_PhotoLayout.cshtml";
+    ViewBag.Title = "Registry";
 }
-
-<div id="register-form">
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
-{
-    @Html.AntiForgeryToken()
-    <h4>Register</h4>
+<div class="central-div">
+    <h4>Registry</h4>
     <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Email, null, new { @class = "text-danger" })
-        </div>
+    <div id="register-form">
+        @using (Html.BeginForm((string)ViewBag.FormAction, "Account", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()            
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="editor-field">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email" })
+                    @Html.ValidationMessageFor(m => m.Email, null, new { @class = "text-danger" })
+                </div>
+                <div class="editor-field">
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                    @Html.ValidationMessageFor(m => m.Password, null, new { @class = "text-danger" })
+                </div>
+                <div class="editor-field">
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Confirm Password" })
+                    @Html.ValidationMessageFor(m => m.ConfirmPassword, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                @Html.LabelFor(m => m.AvatarImg, new { @class = "control-label col-md-2" })
+                <div class="editor-field">
+                    <label class="file-upload">
+                        <span class="button">Upload File</span>
+                        <mark></mark>
+                        <input type="file" id="photo_path" name="photo_path" title="Upload File" />
+                    </label>
+                </div>
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(m => m.Captcha, new { @class = "form-control", @placeholder = "Captcha" })
+                    @Html.ValidationMessageFor(m => m.Captcha, null, new { @class = "text-danger" })
+                    <div class="img-responsive">
+                        <a id="link_update" class="link-update" href="#" title="Refresh" onclick="refreshCaptcha()"><img src="@Url.RouteUrl("captcha")" alt="captcha" id="captcha-img" /></a>
+                    </div>
+                </div>
+                <div class="col-md-10">
+                    <input type="submit" class="btn" value="Register" />
+                </div>
+        }
     </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Password, null, new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.ConfirmPassword, null, new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.AvatarImg, new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <label class="file-upload">
-                <span class="button">Upload File</span>
-                <mark></mark>
-                <input type="file" id="photo_path" name="photo_path" title="Upload File" />
-            </label>
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Captcha, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Captcha, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Captcha, null, new { @class = "text-danger" })
-            <div class="img-responsive">
-                <a id="link_update" class="link-update" href="#" title="Refresh" onclick="refreshCaptcha()"><img src="@Url.Action("Captcha", "Account")" alt="captcha" id="captcha-img" /></a>
-            </div>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-md-2"></label>
-        <div class="col-md-10">
-            <input type="submit" class="btn right-float" value="Register" />
-        </div>
-    </div>
-}
 </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+@Scripts.Render("~/bundles/jqueryval")

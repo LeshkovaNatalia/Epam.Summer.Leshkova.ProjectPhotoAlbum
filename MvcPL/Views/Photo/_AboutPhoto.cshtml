@@ -18,22 +18,22 @@
     {
         <div class="vote-div"> You already vote!</div>
     }
- }
- else
- {
+}
+else
+{
     <div class="vote-div"> Sign Up for rate photo!</div>
- }
+}
 <div class="left-float">
-        <span id="totalRating-@Model.Id">@Html.Action("GetTotalRating", "Voting", new { photoId = Model.Id })</span>
-        <img src="~/Content/images/star.png" alt="Star" />
-        By <span id="totalRaters-@Model.Id">@Html.Action("GetRaters", "Voting", new { photoId = Model.Id })</span> rater(s)
+    <span id="totalRating-@Model.Id">@Html.Action("GetTotalRating", "Voting", new { photoId = Model.Id })</span>
+    <img src="~/Content/images/star.png" alt="Star" />
+    By <span id="totalRaters-@Model.Id">@Html.Action("GetRaters", "Voting", new { photoId = Model.Id })</span> rater(s)
 </div>
 <div class="left-float">Description: @Model.Description</div>
 <div class="left-float">Category: @Html.Action("GetCategory", "Category", new { categoryId = Model.CategoryId })</div>
 
 @section Scripts
 {
-        @Styles.Render("~/Content/css")
-        @Scripts.Render("~/bundles/jqueryval")
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jqueryval")
 }
 

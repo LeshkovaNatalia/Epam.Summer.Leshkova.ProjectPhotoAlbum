@@ -12,7 +12,7 @@ $(document).ready(function () {
 function getPhotos(lastId) {
     $.ajax({
         type: 'POST',
-        url: '/Photo/Photos',
+        url: '/photos',
         data: 'id=' + lastId,
         dataType: "html",
         success: function (result) {

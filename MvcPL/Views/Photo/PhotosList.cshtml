@@ -9,24 +9,22 @@
         @foreach (var item in Model.Data)
         {
             <div class="div-cell" id="@item.Id">
-                <span data-descr="@item.Description">
-                    <img src="@Url.Action("GetImage", "Photo", new { photoId = item.Id })" class="display-img" alt="@item.Description" />
-                </span>
-                    <div>
-                        <noscript>
-                            <a href="/Photo/delete-photo/@item.Id" class="right-float">
-                                <img src="~/Content/images/delete-photo.png" class="delete-non-ajax" alt="Delete Photo" />
-                            </a>
-                        </noscript>
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "delete-photo" })
-                        <a href="@Url.Action("CreatePhoto", "Photo")" class="right-float">
-                            <img src="~/Content/images/add-photo.png" class="photo" alt="Add Photo" />
+                <img src="@Url.RouteUrl("photoimg", new { photoId = item.Id})" class="display-img" alt="@item.Description" />
+                <div>
+                    <noscript>
+                        <a href="@Url.RouteUrl(routeName: "photodelete", routeValues: new { id = item.Id })" class="right-float">
+                            <img src="~/Content/images/delete-photo.png" class="delete-non-ajax" alt="Delete Photo" />
                         </a>
-                        <a class="confirm right-float" href="@Url.Action("EditPhoto", "Photo", new { photoId = item.Id })">
-                            <img src="~/Content/images/edit-photo.png" class="photo" alt="Edit Photo" />
-                        </a>
-                    </div>
-</div>
+                    </noscript>
+                    @Html.ActionLink("Delete", "Delete", routeValues: new { id = item.Id }, htmlAttributes: new { @class = "delete-photo", style="display:none;" })
+                    <a href="@Url.Action("CreatePhoto", "Photo")" class="right-float">
+                        <img src="~/Content/images/add-photo.png" class="photo" alt="Add Photo" />
+                    </a>
+                    <a class="confirm right-float" href="@Url.Action("EditPhoto", "Photo", routeValues: new { photoId = item.Id })">
+                        <img src="~/Content/images/edit-photo.png" class="photo" alt="Edit Photo" />
+                    </a>
+                </div>
+            </div>
             if (counter % 3 == 0)
             {
                 @:</div><div class="div-row">
@@ -40,10 +38,11 @@
             @for (int i = 1; i <= Model.NumberOfPages; i++)
             {
                 if (i == Model.CurrentPage) {
-                    @i
+                    <p class="btn btn-default selected">@i</p>
                 }
                 else {
-                    <a class="page-number" href="javascript:void(0)">@i</a>
+                    <a class="btn btn-default" href="javascript:void(0)" onclick="loadUserPhoto(this);" style="display:none;">@i</a>
+                    <noscript><a class="btn btn-default" href="@Url.RouteUrl("userphotos", new { page = @i})">@i</a></noscript>
                 }
             }
         </div>

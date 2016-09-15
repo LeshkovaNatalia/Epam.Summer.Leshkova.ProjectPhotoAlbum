@@ -5,50 +5,53 @@
     Layout = "~/Views/Shared/_PhotoLayout.cshtml";
 }
 
-<div id="register-form">
-<h4>Add new Photo</h4>
+<section class="central-div">
+<h4>Add new Photo</h4>    
 <hr>
+    <div class="clearfix" style="width:10rem; float:left">
+        @{Html.RenderAction("LastPhotos", "Photo");}
+    </div>
 @using (Html.BeginForm("CreatePhoto", "Photo", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-        <div class="form-group">
-            @Html.LabelFor(m => Model.Description, new { @class = "control-label col-sm-3" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(m => m.Description, new { @class = "form-control required" })
-                @Html.ValidationMessageFor(model => model.Description)
+    <div class="form-group">
+        @Html.LabelFor(m => Model.Description, new { @class = "control-label col-sm-3" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(m => m.Description, new { @placeholder = "Short Description", @class = "form-control required" })
+            @Html.ValidationMessageFor(model => model.Description)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.Label("Category", new { @class = "control-label col-sm-3" })
+        <div class="col-md-10">
+            <div class="category-dropdown">
+                @{Html.RenderAction("GetAllCategoryPhoto", "Category");}
             </div>
-       </div>
-            <div class="form-group">
-                @Html.Label("Category", new { @class = "control-label col-sm-3" })
-                <div class="col-md-10">
-                    <div class="category-dropdown">
-                        @{Html.RenderAction("GetAllCategoryPhoto", "Category");}
-                    </div>
-                </div>
-           </div>
-
-            <div class="form-group">
-                @Html.Label("Choose Image(s)", new { @class = "control-label col-sm-3" })
-                <div class="col-md-10">
-                    <label class="file-upload">
-                        <span class="button">Upload File</span>
-                        <mark></mark>
-                        <input type="file" id="photo_path" name="files" accept=".jpg, .png, .gif" title="Choose file" onchange="previewFile()">
-                    </label>
-                    <img src="" class="img-preview" alt="Preview..." id="preview">
-                </div>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.Label("Choose Image", new { @class = "control-label col-sm-3" })
+        <div class="col-md-10">
+            <label class="file-upload">
+                <span class="button">Upload File</span>
+                <mark></mark>
+                <input type="file" id="photo_path" name="files" accept=".jpg, .png, .gif" title="Choose file" onchange="previewFile()">
+            </label>
+            <img src="" class="img-preview" alt="Preview..." id="preview" style="display:none;">
+        </div>
+    </div>
+    <br>
+    <div class="form-group">
+        <label class="col-md-2"></label>
+        <div class="col-md-10">
+            <input type="submit" class="button btn" style="border:1px solid lightgray; width:50%;" value="Add" />
+            @Html.ActionLink("Cancel", "Index", "Photo", null, new { @class = "link-btn btn" })
+            <div style="color:red">
+                @ViewBag.error
             </div>
-            <div class="form-group">
-                <label class="col-md-2"></label>
-                <div class="col-md-10">
-                    <input type="submit" class="btn right-float" value="Add" />
-                    <div style="color:red">
-                        @ViewBag.error
-                    </div>
-                </div>
-            </div>
-
+        </div>
+    </div>
 }
-</div>
+</section>
 
 

@@ -1,0 +1,28 @@
+﻿@model MvcPL.ViewModels.LogOnViewModel
+
+@{
+    ViewBag.Title = "LogOn";
+}
+
+<div class="central-div">
+    <div class="login-form">
+        <h4>Login</h4>
+        <hr>
+        @using (Html.BeginForm((string)ViewBag.FormAction, "Account", FormMethod.Post, new { id = "login-form" }))
+        {
+            @Html.ValidationSummary(true)
+            @Html.AntiForgeryToken()
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.Email, new { @placeholder = "Email", @class = "required" })
+                @Html.ValidationMessageFor(model => model.Email, null, new { @class = "text-danger" })
+            </div>
+            <div class="editor-field">
+                @Html.PasswordFor(model => model.Password, new { @placeholder = "Password" })
+                @Html.ValidationMessageFor(model => model.Password, null, new { @class = "text-danger" })
+            </div>
+            <input type="submit" name="loginBtn" form="login-form" id="loginBtn" value="Go" />
+        }
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/jqueryval")

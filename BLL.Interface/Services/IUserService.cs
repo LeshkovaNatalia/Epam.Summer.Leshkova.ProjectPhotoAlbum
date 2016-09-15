@@ -11,7 +11,7 @@ namespace BLL.Interface.Services
         void CreateUser(UserEntity user);
         void DeleteUser(UserEntity user);
         void UpdateUser(UserEntity user);
-        UserEntity GetUserByEmailPassword(string name, string passwd);
         UserEntity GetUserByEmail(string name);
+        string GetRolesForUser(int id);
     }
 }

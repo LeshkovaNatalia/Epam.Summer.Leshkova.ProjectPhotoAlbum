@@ -41,27 +41,27 @@ namespace MvcPL.Infrastructure.Utilities
             SetFamilyName(familyName);
             GenerateImage();
         }
-        
+
         // This member overrides Object.Finalize.
         ~CaptchaImage()
         {
             Dispose(false);
         }
-        
+
         // Releases all resources used by this object.
         public void Dispose()
         {
             GC.SuppressFinalize(this);
             Dispose(true);
         }
-        
+
         // Custom Dispose method to clean up unmanaged resources.
         protected virtual void Dispose(bool disposing)
         {
             if (disposing)
                 image.Dispose();
         }
-        
+
         // Sets the image aWidth and aHeight.
         private void SetDimensions(int aWidth, int aHeight)
         {
@@ -72,20 +72,22 @@ namespace MvcPL.Infrastructure.Utilities
             width = aWidth;
             height = aHeight;
         }
-        
+
         // Sets the font used for the image text.\
         private void SetFamilyName(string aFamilyName)
         {
-            try {
+            try
+            {
                 Font font = new Font(aFamilyName, 12F);
                 familyName = aFamilyName;
                 font.Dispose();
             }
-            catch (Exception) {
+            catch (Exception)
+            {
                 familyName = FontFamily.GenericSerif.Name;
             }
         }
-        
+
         // Creates the bitmap image.
         private void GenerateImage()
         {
@@ -94,10 +96,10 @@ namespace MvcPL.Infrastructure.Utilities
             Graphics g = Graphics.FromImage(bitmap);
             g.SmoothingMode = SmoothingMode.AntiAlias;
             Rectangle rect = new Rectangle(0, 0, width, height);
-            
+
             HatchBrush hatchBrush = new HatchBrush(HatchStyle.SmallConfetti, Color.LightGray, Color.White);
             g.FillRectangle(hatchBrush, rect);
-            
+
             SizeF size;
             float fontSize = rect.Height + 1;
             Font font;
@@ -107,13 +109,13 @@ namespace MvcPL.Infrastructure.Utilities
                 font = new Font(familyName, fontSize, FontStyle.Bold);
                 size = g.MeasureString(text, font);
             } while (size.Width > rect.Width);
-            
+
             StringFormat format = new StringFormat
             {
                 Alignment = StringAlignment.Center,
                 LineAlignment = StringAlignment.Center
             };
-            
+
             GraphicsPath path = new GraphicsPath();
             path.AddString(text, font.FontFamily, (int)font.Style, font.Size, rect, format);
             float v = 4F;
@@ -127,10 +129,10 @@ namespace MvcPL.Infrastructure.Utilities
             Matrix matrix = new Matrix();
             matrix.Translate(0F, 0F);
             path.Warp(points, rect, matrix, WarpMode.Perspective, 0F);
-            
+
             hatchBrush = new HatchBrush(HatchStyle.LargeConfetti, Color.LightGray, Color.DarkGray);
             g.FillPath(hatchBrush, path);
-            
+
             int m = Math.Max(rect.Width, rect.Height);
             for (int i = 0; i < (int)(rect.Width * rect.Height / 30F); i++)
             {
@@ -140,11 +142,11 @@ namespace MvcPL.Infrastructure.Utilities
                 int h = random.Next(m / 50);
                 g.FillEllipse(hatchBrush, x, y, w, h);
             }
-            
+
             font.Dispose();
             hatchBrush.Dispose();
             g.Dispose();
-            
+
             image = bitmap;
         }
     }

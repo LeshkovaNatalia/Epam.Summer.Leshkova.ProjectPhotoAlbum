@@ -31,6 +31,12 @@ namespace BLL.Services
 
         #endregion
 
+        #region Public Methods
+
+        /// <summary>
+        /// Method CreateCategoryPhoto use for add new category photo.
+        /// </summary>
+        /// <param name="ctgrPhoto">CategoryPhotoEntity that need to add.</param>
         public void CreateCategoryPhoto(CategoryPhotoEntity ctgrPhoto)
         {
             try {
@@ -42,6 +48,10 @@ namespace BLL.Services
             }
         }
 
+        /// <summary>
+        /// Method DeleteCategoryPhoto use for delete category photo.
+        /// </summary>
+        /// <param name="ctgrPhoto">CategoryPhotoEntity that need delete.</param>
         public void DeleteCategoryPhoto(CategoryPhotoEntity ctgrPhoto)
         {
             try {
@@ -53,6 +63,9 @@ namespace BLL.Services
             }
         }
 
+        /// <summary>
+        /// Method return all categories of photos.
+        /// </summary>
         public IEnumerable<CategoryPhotoEntity> GetAllCategoryPhotoEntities()
         {
             try {
@@ -65,24 +78,32 @@ namespace BLL.Services
             return null;
         }
 
+        /// <summary>
+        /// Method need to find if of category photo by its name.
+        /// </summary>
+        /// <param name="name">Name of category photo.</param>
+        /// <returns>Id of category photo.</returns>
         public int GetCategoryIdByName(string name)
         {
-            try
-            {
-                return ctgrPhotoRepository.GetAll().FirstOrDefault(cat => cat.Name == name).Id;
+            try { 
+                return ctgrPhotoRepository.GetByPredicate(ctgr => ctgr.Name.ToUpper() == name.ToUpper()).ToBllCategoryPhoto().CategoryId;
             }
-            catch(Exception ex)
-            {
-                logger.Error(logger.GetMessage("Get category id by name was failed.", this), ex);
+            catch(Exception ex) {
+                logger.Error(logger.GetMessage(string.Format("Get category id by name {0} was failed.", name), this), ex);
             }
 
             return default(int);
         }
 
+        /// <summary>
+        /// Method use for get gategory photo entity by its id.
+        /// </summary>
+        /// <param name="id">Id of category photo.</param>
+        /// <returns>Category photo entity.</returns>
         public CategoryPhotoEntity GetCategoryPhotoEntity(int id)
         {
             try {
-                return ctgrPhotoRepository.GetAll().FirstOrDefault(cat => cat.Id == id).ToBllCategoryPhoto();
+                return ctgrPhotoRepository.GetByPredicate(ctgr => ctgr.Id == id).ToBllCategoryPhoto();
             }
             catch(Exception ex) {
                 logger.Error(logger.GetMessage(string.Format("Get category photo by id {0} was failed.", id), this), ex);
@@ -90,5 +111,7 @@ namespace BLL.Services
 
             return null;
         }
+
+        #endregion
     }
 }

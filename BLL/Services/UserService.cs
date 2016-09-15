@@ -30,6 +30,11 @@ namespace BLL.Services
 
         #region Public Methods
 
+        /// <summary>
+        /// Method CreateUser create user entity.
+        /// </summary>
+        /// <param name="user">New user entity for create.</param>
+        /// <param name="role">Role for new user.</param>
         public void CreateUser(UserEntity user, RoleEntity role)
         {
             try {
@@ -41,6 +46,10 @@ namespace BLL.Services
             }
         }
 
+        /// <summary>
+        /// Method CreateUser create user entity.
+        /// </summary>
+        /// <param name="user">New user entity for create.</param>
         public void CreateUser(UserEntity user)
         {
             try {
@@ -52,6 +61,10 @@ namespace BLL.Services
             }
         }
 
+        /// <summary>
+        /// Method DeleteUser user.
+        /// </summary>
+        /// <param name="user">Entity that need delete.</param>
         public void DeleteUser(UserEntity user)
         {
             try { 
@@ -63,6 +76,10 @@ namespace BLL.Services
             }
         }
 
+        /// <summary>
+        /// Method return all users.
+        /// </summary>
+        /// <returns>Lists of users entity.</returns>
         public IEnumerable<UserEntity> GetAllUserEntities()
         {
             try {
@@ -75,37 +92,44 @@ namespace BLL.Services
             return null;
         }
 
-        public UserEntity GetUserByEmail(string name)
+        /// <summary>
+        /// Method return user entity by email.
+        /// </summary>
+        /// <param name="email">User's email.</param>
+        /// <returns>User entity by email.</returns>
+        public UserEntity GetUserByEmail(string email)
         {
             try {
-                return userRepository.GetUserByEmail(name).ToBllUser();
+                return userRepository.GetUserByEmail(email).ToBllUser();
             }
             catch(Exception ex) {
-                logger.Error(logger.GetMessage(string.Format("Get user by email {0} was failed.", name), this), ex);
+                logger.Error(logger.GetMessage(string.Format("Get user by email {0} was failed.", email), this), ex);
             }
 
             return null;
         }
 
-        public UserEntity GetUserByEmailPassword(string name, string passwd)
-        {
-            throw new NotImplementedException();
-        }
-
+        /// <summary>
+        /// Method GetUserEntity return UserEntity by id.
+        /// </summary>
+        /// <param name="id">Id of user entity.</param>
+        /// <returns>UserEntity entity by id.</returns>
         public UserEntity GetUserEntity(int id)
         {
-            try
-            {
+            try {
                 return userRepository.GetById(id).ToBllUser();
             }
-            catch(Exception ex)
-            {
+            catch(Exception ex) {
                 logger.Error(logger.GetMessage(string.Format("Get user by id {0} was failed.", id), this), ex);
             }
 
             return null;
         }
 
+        /// <summary>
+        /// Method UpdateUser update exists user.
+        /// </summary>
+        /// <param name="user">UserEntity that need update.</param>
         public void UpdateUser(UserEntity user)
         {
             try {
@@ -114,6 +138,32 @@ namespace BLL.Services
             catch(Exception ex) {
                 logger.Error(logger.GetMessage(string.Format("Update user with id {0} was failed.", user.UserId), this), ex);
             }
+        }
+
+        /// <summary>
+        /// Method return roles for user in string format.
+        /// </summary>
+        /// <param name="userId">IUser's id.</param>
+        /// <returns>Roles for user.</returns>
+        public string GetRolesForUser(int userId)
+        {
+            try  {
+                var roles = userRepository.GetById(userId).Roles;
+                string result = string.Empty;
+                int i = 0;
+                foreach (var role in roles)
+                {
+                    result += role.Name;
+                    result += " ";
+                    i++;
+                }
+                return result;
+            }
+            catch(Exception ex) {
+                logger.Error(logger.GetMessage(string.Format("GetRolesForUser user with id {0} was failed.", userId), this), ex);
+            }
+
+            return null;
         }
 
         #endregion

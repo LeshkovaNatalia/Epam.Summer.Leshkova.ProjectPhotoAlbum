@@ -32,22 +32,27 @@ namespace MvcPL.Controllers
         #endregion
 
         #region Public Methods
+
         [HttpGet]
         public ActionResult LogOn(string returnUrl)
         {
-            return PartialView();
+            if (Request.QueryString["content"] != null)
+                return PartialView();
+            else
+                return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult LogOn(LogOnViewModel viewModel, string returnUrl)
         {
-
             if (ModelState.IsValid)
             {
                 if (Membership.ValidateUser(viewModel.Email, viewModel.Password))
                 {
                     FormsAuthentication.SetAuthCookie(viewModel.Email, viewModel.RememberMe);
+                    if (HttpContext.Request.IsAjaxRequest())
+                        return Json(new { success = true, redirect = returnUrl });
                     if (Url.IsLocalUrl(returnUrl))
                         return Redirect(returnUrl);
                     else
@@ -57,7 +62,10 @@ namespace MvcPL.Controllers
                     ModelState.AddModelError("", "Incorrect login or password.");
             }
 
-            return RedirectToAction("Register", "Account");           
+            if (HttpContext.Request.IsAjaxRequest())
+                return Json(new { errors = GetErrorsFromModelState() });
+
+            return RedirectToAction("Register", "Account");
         }
 
         [Authorize]
@@ -70,7 +78,10 @@ namespace MvcPL.Controllers
         [HttpGet]
         public ActionResult Register()
         {
-            return View();
+            if (Request.QueryString["content"] != null)
+                return PartialView();
+            else
+                return View();
         }
 
         [HttpPost]
@@ -80,6 +91,8 @@ namespace MvcPL.Controllers
             if (viewModel.Captcha != (string)Session[CaptchaImage.CaptchaValueKey])
             {
                 ModelState.AddModelError("Captcha", "Incorrect input.");
+                if (HttpContext.Request.IsAjaxRequest())
+                    return Json(new { errors = GetErrorsFromModelState() });
                 return View(viewModel);
             }
 
@@ -98,6 +111,8 @@ namespace MvcPL.Controllers
             if (anyUser)
             {
                 ModelState.AddModelError("", "User with this address already registered.");
+                if (HttpContext.Request.IsAjaxRequest())
+                    return Json(new { errors = GetErrorsFromModelState() });
                 return View(viewModel);
             }
 
@@ -114,11 +129,13 @@ namespace MvcPL.Controllers
                 else
                     ModelState.AddModelError("", "Error registration.");
             }
+            if (HttpContext.Request.IsAjaxRequest())
+                return Json(new { errors = GetErrorsFromModelState() });
             return View(viewModel);
         }
 
         public JsonResult ValidateUserEmail(string Email)
-       {
+        {
             var anyUser = userService.GetUserByEmail(Email);
 
             return Json(anyUser == null, JsonRequestBehavior.AllowGet);
@@ -150,21 +167,17 @@ namespace MvcPL.Controllers
         }
         public string GetRolesForUser(int userId)
         {
-            var roles = userService.GetUserEntity(userId).Roles;
-            string result = string.Empty;
-            int i = 0;
-            foreach (var role in roles)
-            {
-                result += role.Name;
-                result += " ";
-                i++;
-            }
-            return result;
+            return userService.GetRolesForUser(userId); ;
         }
-        
+
         public ActionResult LoginPartial()
         {
             return PartialView("_LoginPartial");
+        }
+
+        private IEnumerable<string> GetErrorsFromModelState()
+        {
+            return ModelState.SelectMany(x => x.Value.Errors.Select(error => error.ErrorMessage));
         }
 
         #endregion

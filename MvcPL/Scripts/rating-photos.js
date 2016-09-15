@@ -1,5 +1,4 @@
 ﻿/* Voting */
-
 $("img.star").mouseover(function () {
     var span = $(this).parent("span");
     var newRating = $(this).attr("value");
@@ -21,7 +20,7 @@ function setRating(span, rating) {
     });
 }
 function clickStar(obj) {
-    var url = "/Voting/AddVoting";
+    var url = "addvote";
     var span = $(obj).parent("span");
     var rate = $(obj).attr("value");
     var photoId = span.attr("photo");

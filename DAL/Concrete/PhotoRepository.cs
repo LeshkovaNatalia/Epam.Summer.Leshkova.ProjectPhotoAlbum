@@ -1,5 +1,6 @@
 ﻿using DAL.Interface.DTO;
 using DAL.Interface.Repository;
+using DAL.Mappers;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -24,15 +25,19 @@ namespace DAL.Concrete
 
         #region Public Methods
 
-        public void Create(DalPhoto entity)
+        /// <summary>
+        /// Method Create create photo entity.
+        /// </summary>
+        /// <param name="dalPhoto">New photo entity for create.</param>
+        public void Create(DalPhoto dalPhoto)
         {
             var photo = new Photo()
             {
-                Description = entity.Description,
-                Image = entity.Image,
-                CreatedOn = entity.CreatedOn,
-                CategoryId = entity.CategoryId,
-                UserId = entity.UserId
+                Description = dalPhoto.Description,
+                Image = dalPhoto.Image,
+                CreatedOn = dalPhoto.CreatedOn,
+                CategoryId = dalPhoto.CategoryId,
+                UserId = dalPhoto.UserId
             };
 
             context.Set<Photo>().Add(photo);
@@ -58,6 +63,10 @@ namespace DAL.Concrete
             context.Set<Photo>().Remove(photo);
         }
 
+        /// <summary>
+        /// Method GetAll return all photos.
+        /// </summary>
+        /// <returns>Lists of photos entity.</returns>
         public IEnumerable<DalPhoto> GetAll()
         {
             return context.Set<Photo>().Select(photo => new DalPhoto()
@@ -71,26 +80,49 @@ namespace DAL.Concrete
             });
         }
 
+        /// <summary>
+        /// Method GetById return DalPhoto entity by id.
+        /// </summary>
+        /// <param name="id">Id of photo entity.</param>
+        /// <returns>DalPhoto entity by id.</returns>
         public DalPhoto GetById(int id)
         {
             return GetAll().SingleOrDefault(photo => photo.Id == id);
         }
 
+        /// <summary>
+        /// Method GetByPredicate return DalPhoto by predicate.
+        /// </summary>
+        /// <param name="f">Predicate.</param>
+        /// <returns>Return DalPhoto by predicate f.</returns>
         public DalPhoto GetByPredicate(Expression<Func<DalPhoto, bool>> f)
         {
-            throw new NotImplementedException();
+            Photo item = context.Set<Photo>().SingleOrDefault(f.ConvertExpressionPhoto());
+
+            return new DalPhoto {
+                Id = item.PhotoId,
+                CategoryId = item.CategoryId,
+                CreatedOn = item.CreatedOn,
+                Description = item.Description,
+                UserId = item.UserId,
+                Image = item.Image
+            };
         }
 
-        public void Update(DalPhoto entity)
+        /// <summary>
+        /// Method Update update exists photo.
+        /// </summary>
+        /// <param name="dalPhoto">DalPhoto that need update.</param>
+        public void Update(DalPhoto dalPhoto)
         {
-            var actualPhoto = GetById(entity.Id);
+            var actualPhoto = GetById(dalPhoto.Id);
             Photo updatedPhoto = new Photo()
             {
                 PhotoId = actualPhoto.Id,
                 Image = actualPhoto.Image,
-                CategoryId = entity.CategoryId,
+                CategoryId = dalPhoto.CategoryId,
                 CreatedOn = actualPhoto.CreatedOn,
-                Description = entity.Description,
+                Description = dalPhoto.Description,
                 UserId = actualPhoto.UserId
             };
             context.Set<Photo>().Attach(updatedPhoto);

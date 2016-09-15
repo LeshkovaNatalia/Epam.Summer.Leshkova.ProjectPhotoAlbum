@@ -3,24 +3,69 @@
 
 <html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width" />   
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <link rel="icon" href="~/Content/images/icon.png" />   
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+    <link rel="icon" href="~/Content/images/icon.png" />
 </head>
 <body>
-    <main>
-    <header>
-        <section>
-            <a href="/"><img src="~/Content/images/logo.png" class="logo nav" alt="Logo" /></a>
-        </section>
+    <div class="clearfix">
+        <header class="clearfix">
+            <div class="logo-div">
+                <a href="/"><img src="~/Content/images/logo.png" class="logo nav" alt="Logo" /></a>
+            </div>
+            <nav>
+                <ul class="topnav" id="topnav">
+                    <li id="first-li">
+                        @Html.ActionLink("Home", "Index", "Photo", routeValues: null, htmlAttributes: new { @class = "nav" })
+                        <ul>
+                            <li class="nav-li">@Html.ActionLink("About", "About", "Home", routeValues: null, htmlAttributes: new { @class = "nav" })</li>
+                            <li class="nav-li">@Html.ActionLink("Contact", "Contact", "Home", routeValues: null, htmlAttributes: new { @class = "nav contactLink", data_dialog_width = 340 })</li>
+                            @{
+                                if (@User.IsInRole("User"))
+                                {
+                                    <li class="nav-li">@Html.RouteLink("My Photo", "userphotos", routeValues: null, htmlAttributes: new { @class = "nav" })</li>
+                                }
+                                else
+                                {
+                                    <li class="nav-li">@Html.RouteLink("Registry", "register", routeValues: null, htmlAttributes: new { @class = "registerLink", data_dialog_width = 400 })</li>
+                                }
+                            }
+                            @{
+                                if (@User.IsInRole("Administrator"))
+                                {
+                                    <li class="nav-li">@Html.ActionLink("Users", "Index", "Admin", routeValues: null, htmlAttributes: new { @class = "nav" })</li>
+                                }
+                            }
+                        </ul>
+                    </li>
+                    <li id="last-li" class="right-float">@Html.Partial("_Login", new LogOnViewModel())</li>
+                </ul>
+            </nav>
+            <section id="search">
+                @{
+                    using (Html.BeginForm("Find", "Photo", FormMethod.Post, new { id = "search-form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <input type="text" id="photo" name="term" placeholder="Search" />
+                        <input type="submit" name="search-btn" form="search-form" id="get-photos" value="" />
+                    }
+                }
+            </section>
+
+        </header>
+        <main class="main-content">
+            @RenderBody()
+        </main>
+    </div>
+    <footer>
         <nav>
-            <ul class="topnav" id="topnav">
+            <ul class="footer-nav">
                 <li>@Html.ActionLink("Home", "Index", "Photo", null, new { @class = "nav" })</li>
                 <li>@Html.ActionLink("About", "About", "Home", null, new { @class = "nav" })</li>
-                <li>@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav" })</li>
+                <li>@Html.ActionLink("Contact", "Contact", "Home", routeValues: null, htmlAttributes: new { @class = "nav contactLink", data_dialog_width = 340 })</li>
                 @{
                     if (@User.IsInRole("User"))
                     {
@@ -28,66 +73,19 @@
                     }
                     else
                     {
-                        <li>@Html.ActionLink("Registry", "Register", "Account", null, new { @class = "nav" })</li>
+                        <li>@Html.RouteLink("Registry", "register", routeValues: null, htmlAttributes: new { @class = "registerLink", data_dialog_width = 400 })</li>
                     }
                 }
                 @{
                     if (@User.IsInRole("Administrator"))
-                    { 
+                    {
                         <li>@Html.ActionLink("Users", "Index", "Admin", null, new { @class = "nav" })</li>
                     }
                 }
-                <li class="icon">
-                    <a href="javascript:void(0)" onclick="subMenuFunction()">&#9776;</a>
-                </li>                
-            </ul>            
-        </nav> 
-        @Html.Partial("_Login", new LogOnViewModel())        
-        <section id="search">
-            @{
-                using (Html.BeginForm("Find", "Photo", FormMethod.Post, new { id = "search-form" }))
-                {
-                    @Html.AntiForgeryToken()
-                    <input type="text" id="photo" name="term" placeholder="Search" />
-                    <input type="submit" name="search-btn" form="search-form" id="get-photos" value="" />
-                }
-            }
-        </section>
-     
-    </header>
-        <div style="clear: both;"></div>
-        <section class="main-content">
-            @RenderBody()
-        </section>
-        
-    </main>
-    <div style="clear:both;"></div>
-    <footer>
-        <nav>
-        <ul class="footer-nav">
-            <li>@Html.ActionLink("Home", "Index", "Photo", null, new { @class = "nav" })</li>
-            <li>@Html.ActionLink("About", "About", "Home", null, new { @class = "nav" })</li>
-            <li>@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav" })</li>
-            @{
-                if (@User.IsInRole("User"))
-                {
-                    <li>@Html.ActionLink("My Photo", "GetPhotoForUser", "Photo", null, new { @class = "nav" })</li>
-                }
-                else
-                {
-                    <li>@Html.ActionLink("Registry", "Register", "Account", null, new { @class = "nav" })</li>
-                }
-            }
-            @{
-                if (@User.IsInRole("Administrator"))
-                {
-                    <li>@Html.ActionLink("Users", "Index", "Admin", null, new { @class = "nav" })</li>
-                }
-            }
-        </ul>
-            <a href="/" class="nav"><img src="~/Content/images/logo.png" class="footer-logo" alt="Logo" /></a>
+            </ul>
         </nav>
         <p>&copy; @DateTime.Now.Year - Lehkova Natalia</p>
+        <a href="/" class="nav"><img src="~/Content/images/logo.png" class="footer-logo" alt="Logo" /></a>
     </footer>
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)

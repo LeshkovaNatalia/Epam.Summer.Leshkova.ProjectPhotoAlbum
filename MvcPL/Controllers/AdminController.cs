@@ -35,7 +35,7 @@ namespace MvcPL.Controllers
 
             return View(model);
         }
-        
+
         public ActionResult Details(int userId)
         {
             var user = userService.GetUserEntity(userId).ToMvcUser();

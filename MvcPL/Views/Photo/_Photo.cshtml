@@ -1,7 +1,7 @@
 ﻿@model MvcPL.ViewModels.PhotoViewModel
 
 <div class="results">
-    <img id="img_@Model.Id" src="@Url.Action("GetImage", "Photo", new { photoId = Model.Id })" class="source-photo" alt="@Model.Description"/>
+    <img id="img_@Model.Id" src="@Url.RouteUrl("photoimg", new { photoId = Model.Id})" class="source-photo" alt="@Model.Description" />
 </div>
 
 @section Scripts

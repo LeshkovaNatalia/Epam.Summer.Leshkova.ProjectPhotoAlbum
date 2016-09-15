@@ -5,16 +5,21 @@
     Layout = "~/Views/Shared/_PhotoLayout.cshtml";
 }
 
-<h2>Delete User</h2>
-
-<div>Are you sure you want to delete user with login <b>@Html.DisplayFor(model => model.Email)</b>?</div>
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    <p>
-        <input type="submit" value="Delete" />
-    </p>
-    <p>
-        @Html.ActionLink("Back to user's list", "Index")
-    </p>
-}
+<div class="central-div">
+    <h4>Delete User</h4>
+    <hr>
+    <div style="width:50%; margin:0 auto;">
+        <div>Are you sure you want to delete user with login <b>@Html.DisplayFor(model => model.Email)</b>?</div>
+        <br>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <p class="btn" style="padding:0.3rem 0.9rem; width:50%; border:1px solid lightgray; float:right;">
+                @Html.ActionLink("Back to user's list", "Index")
+            </p>
+            <p style="float:right; width:50%;">
+                <input style="border:1px solid lightgray; width:100%;" type="submit" value="Delete" />
+            </p>
+        }
+    </div>
+</div>

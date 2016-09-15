@@ -1,4 +1,6 @@
-﻿@model  IEnumerable<MvcPL.ViewModels.PhotoViewModel>
+﻿@*@model  IEnumerable<MvcPL.ViewModels.PhotoViewModel>*@
+@using MvcPL.Infrastructure.Helpers
+@model MvcPL.ViewModels.IndexViewModel
 
 @{
     ViewBag.Title = "Photo Album";
@@ -8,11 +10,10 @@
 <script src="~/Scripts/jquery-1.12.4.min.js"></script>
 <script src="~/Scripts/load-photos.js"></script>
 
-<noscript>Display all photo @Html.ActionLink("All Photo", "AllPhotos")</noscript>
-<div class="div-table  grid cs-style-3">
+<div class="div-table  grid cs-style-3 clearfix">
     @{var counter = 1;}
     <div class="div-row">
-        @foreach (var item in Model)
+        @foreach (var item in Model.Photos)
         {
             <div class="div-cell">
                 <figure>
@@ -30,4 +31,9 @@
         }
     </div>
 </div>
+<noscript>
+    <div class="div-row" style="text-align:center;">
+        @Html.PageLinks(Model.PageInfo, x => Url.Action("Index", new { page = x }))
+    </div>
+</noscript>
 @Html.Hidden("User", User.Identity.Name)

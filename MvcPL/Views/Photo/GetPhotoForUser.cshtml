@@ -7,13 +7,13 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="~/Scripts/load-user-photos.js"></script>
+<script src="~/Scripts/dialog-login-registry.js"></script>
 
-@if (Model.Data.Count() == 0){
-    <div class="central-div">
-        <p>No photo. @Html.ActionLink("Add Photo", "CreatePhoto")</p>
-    </div>
-}
-
+<div style="width:60%; margin:0 auto;">
+    <p style="width:50%;">@Html.ActionLink("Add Photo", "CreatePhoto", routeValues: null, htmlAttributes: new { @class = "link-btn btn" })</p>
+    <p style="width:50%">@Html.RouteLink("Add Category", "categorycreate", routeValues: null, htmlAttributes: new { id = "categoryLink", data_dialog_width = 350, @class = "link-btn btn" })</p>
+</div>
+<br>
 <div id="photos-list">
     @if (TempData["message"] != null)
     {

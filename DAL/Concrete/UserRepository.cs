@@ -25,6 +25,10 @@ namespace DAL.Concrete
 
         #region Public Methods
 
+        /// <summary>
+        /// Method Create create user entity.
+        /// </summary>
+        /// <param name="dalUser">New user entity for create.</param>
         public void Create(DalUser dalUser)
         {
             var user = new User()
@@ -34,7 +38,7 @@ namespace DAL.Concrete
                 Email = dalUser.Email,
                 Photo = dalUser.Photo,
                 CreatedOn = dalUser.CreatedOn,
-                Roles = new List<Role>()//dalUser.Roles.ToRoles()
+                Roles = new List<Role>()
             };
 
             Role myRole = context.Set<Role>().FirstOrDefault(r => r.RoleId == 3);
@@ -60,10 +64,13 @@ namespace DAL.Concrete
             };
 
             user.Roles.Add(role);
-
             context.Set<User>().Add(user);
         }
 
+        /// <summary>
+        /// Method Delete user.
+        /// </summary>
+        /// <param name="dalUser">Entity that need delete.</param>
         public void Delete(DalUser dalUser)
         {
             User user = context.Set<User>().First(u => u.UserId == dalUser.Id);
@@ -91,6 +98,10 @@ namespace DAL.Concrete
             context.Set<User>().Remove(user);            
         }
 
+        /// <summary>
+        /// Method GetAll return all users.
+        /// </summary>
+        /// <returns>Lists of users entity.</returns>
         public IEnumerable<DalUser> GetAll()
         {
             IEnumerable<DalUser> users = context.Set<User>().Select(user => new DalUser()
@@ -119,8 +130,13 @@ namespace DAL.Concrete
 
             return users;
         }
-        
-        public DalUser GetById(int key)
+
+        /// <summary>
+        /// Method GetById return DalUser entity by id.
+        /// </summary>
+        /// <param name="id">Id of user entity.</param>
+        /// <returns>DalUser entity by id.</returns>
+        public DalUser GetById(int id)
         {
             DalUser dalUser = context.Set<User>().Select(user => new DalUser()
             {
@@ -130,20 +146,41 @@ namespace DAL.Concrete
                 Password = user.Password,
                 CreatedOn = user.CreatedOn,
                 Photo = user.Photo
-            }).SingleOrDefault(usr => usr.Id == key);
+            }).SingleOrDefault(usr => usr.Id == id);
 
-            User cur = context.Set<User>().Single(user => user.UserId == key);
+            User cur = context.Set<User>().Single(user => user.UserId == id);
             foreach(var r in cur.Roles)
                 dalUser.Roles.Add(r.ToDalRole());
 
             return dalUser;
         }
 
-        public DalUser GetByPredicate(Expression<Func<DalUser, bool>> predicate)
+        /// <summary>
+        /// Method GetByPredicate return DalUser by predicate.
+        /// </summary>
+        /// <param name="f">Predicate.</param>
+        /// <returns>Return DalUser by predicate f.</returns>
+        public DalUser GetByPredicate(Expression<Func<DalUser, bool>> f)
         {
-            throw new NotImplementedException();
+            User item = context.Set<User>().SingleOrDefault(f.ConvertExpressionUser());
+
+            return new DalUser
+            {
+                Id = item.UserId,                
+                Login = item.Login,
+                Email = item.Email,
+                Password = item.Password,
+                CreatedOn = item.CreatedOn,
+                Photo = item.Photo,
+                Roles = item.Roles.ToDalRoles()
+            };
         }
 
+        /// <summary>
+        /// Method return user entity by email.
+        /// </summary>
+        /// <param name="email">User's email.</param>
+        /// <returns>User entity by email.</returns>
         public DalUser GetUserByEmail(string email)
         {
             DalUser dalUser = context.Set<User>().Select(user => new DalUser()
@@ -167,18 +204,22 @@ namespace DAL.Concrete
             return null;
         }
 
-        public void Update(DalUser entity)
+        /// <summary>
+        /// Method Update update exists user.
+        /// </summary>
+        /// <param name="dalUser">DalUser that need update.</param>
+        public void Update(DalUser dalUser)
         {
-            var actualUser = GetById(entity.Id);
+            var actualUser = GetById(dalUser.Id);
             User updatedUser = new User()
             {
-                UserId = entity.Id,
-                Login = entity.Login,
-                Email = entity.Email,
-                Password = entity.Password,
+                UserId = dalUser.Id,
+                Login = dalUser.Login,
+                Email = dalUser.Email,
+                Password = dalUser.Password,
                 Roles = actualUser.Roles.ToRoles(),
-                Photo = entity.Photo,
-                CreatedOn = entity.CreatedOn                
+                Photo = dalUser.Photo,
+                CreatedOn = dalUser.CreatedOn                
             };
 
             context.Entry(updatedUser).State = EntityState.Modified;

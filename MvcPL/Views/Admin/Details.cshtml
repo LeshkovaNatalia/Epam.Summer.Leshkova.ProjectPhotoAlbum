@@ -8,10 +8,18 @@
 <div class="central-div">
     <h4>Details</h4>
     <hr>
-    <img src="@Url.Action("GetUserImage", "Photo", new { userName = Model.Email })" alt="User Photo" class="left-float">
-    <div>Data of user's registration: @Html.DisplayFor(modelItem => Model.CreatedOn)</div>
-    @{
-        var roles = Html.Action("GetRolesForUser", "Account", new { userId = Model.UserId });
-        <div>Roles: @Convert.ToString(roles)</div>
-    }
+    @Html.ActionLink("Back to user's list", "Index", "Admin", null, new { @class = "btn" })
+    <div class="clearfix" style="width:40%; margin:0 auto;">
+        <img src="@Url.RouteUrl("userimg", new { email = Model.Email })" alt="User Photo" class="left-float" style="margin-right:1rem;">
+        <div>Date of user's registration: @Html.DisplayFor(modelItem => Model.CreatedOn)</div>
+        @{
+            var roles = Html.Action("GetRolesForUser", "Account", new { userId = Model.UserId });
+            <div>Roles: @Convert.ToString(roles)</div>
+        }
+    </div>
+    <br>
+    Last added photos
+    <div style="width:100%">
+        @{Html.RenderAction("LastPhotos", "Photo", new { userName = Model.Email });}
+    </div>
 </div>

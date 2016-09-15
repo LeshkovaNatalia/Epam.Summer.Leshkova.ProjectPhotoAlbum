@@ -1,12 +1,26 @@
-﻿@{
+﻿@model MvcPL.ViewModels.EmailViewModel
+
+@{
     ViewBag.Title = "Contact";
-    Layout = "~/Views/Shared/_PhotoLayout.cshtml";
 }
 <div class="central-div">
-<h2>@ViewBag.Title</h2>
-<hr>
+    <h4>@ViewBag.Title</h4>
+    <hr>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:leshkovanm@google.com">leshkovanm@gmail.com</a><br />
-</address>
+    @using (Html.BeginForm((string)ViewBag.FormAction, "Home", FormMethod.Post, new { @class = "contact-form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="editor-field">
+            @Html.TextBoxFor(m => m.Email, new { @class = "required", @placeholder = "Email" })
+            @Html.ValidationMessageFor(m => m.Email, null, new { @class = "text-danger" })
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(m => m.Message, new { @class = "form-control required", @placeholder = "Message" })
+            @Html.ValidationMessageFor(m => m.Message, null, new { @class = "text-danger" })
+        </div>
+        <input type="submit" value="Send" />
+    }
 </div>
+
+@Scripts.Render("~/bundles/jqueryval")
