@@ -44,7 +44,7 @@ namespace MvcPL.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult LogOn(LogOnViewModel viewModel, string returnUrl)
+        public ActionResult LogOn(LogOnViewModel viewModel, string returnUrl = "")
         {
             if (ModelState.IsValid)
             {

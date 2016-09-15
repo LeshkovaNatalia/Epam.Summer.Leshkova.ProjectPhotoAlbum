@@ -22,7 +22,7 @@
                         @Html.ActionLink("Home", "Index", "Photo", routeValues: null, htmlAttributes: new { @class = "nav" })
                         <ul>
                             <li class="nav-li">@Html.ActionLink("About", "About", "Home", routeValues: null, htmlAttributes: new { @class = "nav" })</li>
-                            <li class="nav-li">@Html.ActionLink("Contact", "Contact", "Home", routeValues: null, htmlAttributes: new { @class = "nav contactLink", data_dialog_width = 340 })</li>
+                            <li class="nav-li">@Html.ActionLink("Contact", "Contact", "Home", routeValues: null, htmlAttributes: new { id = "contactLink", @class = "nav", data_dialog_width = 340 })</li>
                             @{
                                 if (@User.IsInRole("User"))
                                 {
@@ -30,7 +30,7 @@
                                 }
                                 else
                                 {
-                                    <li class="nav-li">@Html.RouteLink("Registry", "register", routeValues: null, htmlAttributes: new { @class = "registerLink", data_dialog_width = 400 })</li>
+                                    <li class="nav-li">@Html.RouteLink("Registry", "register", routeValues: null, htmlAttributes: new { id = "registerLink", data_dialog_width = 400 })</li>
                                 }
                             }
                             @{
@@ -65,7 +65,7 @@
             <ul class="footer-nav">
                 <li>@Html.ActionLink("Home", "Index", "Photo", null, new { @class = "nav" })</li>
                 <li>@Html.ActionLink("About", "About", "Home", null, new { @class = "nav" })</li>
-                <li>@Html.ActionLink("Contact", "Contact", "Home", routeValues: null, htmlAttributes: new { @class = "nav contactLink", data_dialog_width = 340 })</li>
+                <li>@Html.ActionLink("Contact", "Contact", "Home", routeValues: null, htmlAttributes: new { id = "contactLink2", @class = "nav", data_dialog_width = 340 })</li>
                 @{
                     if (@User.IsInRole("User"))
                     {
@@ -73,7 +73,7 @@
                     }
                     else
                     {
-                        <li>@Html.RouteLink("Registry", "register", routeValues: null, htmlAttributes: new { @class = "registerLink", data_dialog_width = 400 })</li>
+                        <li>@Html.RouteLink("Registry", "register", routeValues: null, htmlAttributes: new { id = "registerLink2", data_dialog_width = 400 })</li>
                     }
                 }
                 @{

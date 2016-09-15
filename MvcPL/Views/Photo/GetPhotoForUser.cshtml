@@ -11,7 +11,7 @@
 
 <div style="width:60%; margin:0 auto;">
     <p style="width:50%;">@Html.ActionLink("Add Photo", "CreatePhoto", routeValues: null, htmlAttributes: new { @class = "link-btn btn" })</p>
-    <p style="width:50%">@Html.RouteLink("Add Category", "categorycreate", routeValues: null, htmlAttributes: new { @class = "link-btn btn categoryLink", data_dialog_width = 350 })</p>
+    <p style="width:50%">@Html.RouteLink("Add Category", "categorycreate", routeValues: null, htmlAttributes: new { id = "categoryLink", @class = "link-btn btn", data_dialog_width = 350 })</p>
 </div>
 <br>
 <div id="photos-list">

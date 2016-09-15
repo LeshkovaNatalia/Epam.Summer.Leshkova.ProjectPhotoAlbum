@@ -48,7 +48,7 @@ namespace MvcPL.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Contact(EmailViewModel viewModel, string returnUrl)
+        public ActionResult Contact(EmailViewModel viewModel)
         {
             if (viewModel.Email == null || viewModel.Message == null)
             {
@@ -61,7 +61,7 @@ namespace MvcPL.Controllers
             if (ModelState.IsValid)
             {
                 if (HttpContext.Request.IsAjaxRequest())
-                    return Json(new { success = true, redirect = returnUrl });
+                    return Json(new { success = true, redirect = "" });
                 return RedirectToAction("Index", "Photo");
             }
             else

@@ -80,7 +80,7 @@
             });
     };
 
-    var links = ['#loginLink', 'a.registerLink', 'a.categoryLink', 'a.contactLink'];
+    var links = ['#loginLink', '#registerLink', '#registerLink2', '#categoryLink', '#categoryLink2', '#contactLink', '#contactLink2'];
 
     $.each(links, function (i, id) {
         $(id).click(function (e) {
