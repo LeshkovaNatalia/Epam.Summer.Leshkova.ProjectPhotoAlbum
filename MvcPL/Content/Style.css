@@ -531,6 +531,18 @@ div.ui-dialog div.form-group div {
     width: 55%;
     float: left;
 }
+
+div.ui-dialog div#register-form div.form-group div {
+    float: left;
+    text-align: left;
+    width: 79%;
+}
+
+div.ui-dialog div#register-form .file-upload .button, .file-upload > mark {
+    font-size: 10px;
+    margin-left: 0.2rem;
+    margin-top: 0.2rem;
+}
 div.ui-dialog #login-form {
     width: auto;
     margin: 0 auto;

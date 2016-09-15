@@ -39,7 +39,6 @@ $(document).ready(function () {
 })
 
 function aboutPhoto(obj) {
-    //$(".selected-photo").hide().html('');
     $("#indicator").show();
 
     var url = $(obj).attr('href');

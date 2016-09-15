@@ -14,7 +14,6 @@ namespace MvcPL.Providers
 {
     public class CustomMembershipProvider : MembershipProvider
     {
-
         public IUserService UserService 
             => (IUserService)System.Web.Mvc.DependencyResolver.Current.GetService(typeof(IUserService));
 
@@ -29,9 +28,6 @@ namespace MvcPL.Providers
             {
                 return null;
             }
-
-            /*Image img = Image.FromFile(avatarPath);
-            byte[] byteImage = imgToByteArray(img);*/
 
             var user = new UserEntity
             {

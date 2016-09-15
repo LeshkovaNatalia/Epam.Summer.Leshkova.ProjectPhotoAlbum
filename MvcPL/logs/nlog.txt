@@ -151,3 +151,4 @@ PhotoController.Index => PhotoService.GetAllPhotoEntities => NLogLogger.Error 14
 PhotoController.Index => PhotoService.GetAllPhotoEntities => NLogLogger.Error 14.09.2016 BLL.Services.PhotoService Get all photos was failed.
 CategoryController.CreateCategory => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 15.09.2016 BLL.Services.CategoryPhotoService Get category id by name  was failed.
 CategoryController.CreateCategory => CategoryPhotoService.CreateCategoryPhoto => NLogLogger.Error 15.09.2016 BLL.Services.CategoryPhotoService Create category photo was failed.
+PhotoController.Index => PhotoService.GetAllPhotoEntities => NLogLogger.Error 15.09.2016 BLL.Services.PhotoService Get all photos was failed.

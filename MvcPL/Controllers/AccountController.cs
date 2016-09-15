@@ -86,7 +86,7 @@ namespace MvcPL.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(RegisterViewModel viewModel, HttpPostedFileBase photo_path)
+        public ActionResult Register(RegisterViewModel viewModel, HttpPostedFileBase photo_path, string returnUrl)
         {
             if (viewModel.Captcha != (string)Session[CaptchaImage.CaptchaValueKey])
             {
@@ -124,6 +124,8 @@ namespace MvcPL.Controllers
                 if (membershipUser != null)
                 {
                     FormsAuthentication.SetAuthCookie(viewModel.Email, false);
+                    if (HttpContext.Request.IsAjaxRequest())
+                        return Json(new { success = true, redirect = returnUrl });
                     return RedirectToAction("Index", "Photo");
                 }
                 else
