@@ -5,9 +5,11 @@
     Layout = "~/Views/Shared/_PhotoLayout.cshtml";
 }
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="~/Scripts/jquery-1.12.4.min.js"></script>
 <script src="~/Scripts/load-user-photos.js"></script>
 <script src="~/Scripts/dialog-login-registry.js"></script>
+<script src="~/Scripts/confirm-delete.js"></script>
+<script src="~/Scripts/photo-album.js"></script>
 
 <div style="width:60%; margin:0 auto;">
     <p style="width:50%;">@Html.ActionLink("Add Photo", "CreatePhoto", routeValues: null, htmlAttributes: new { @class = "link-btn btn" })</p>
@@ -23,8 +25,3 @@
     }
         @Html.Partial("PhotosList")
 </div>
-
-@section Scripts
-{
-    @Scripts.Render("~/bundles/jqueryval")
-}

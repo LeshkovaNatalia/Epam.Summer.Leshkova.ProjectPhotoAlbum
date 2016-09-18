@@ -11,8 +11,11 @@
                 <figcaption id="@item.Id">
                     @Html.Partial("_AboutPhoto", item)
                 </figcaption>
+                <noscript>
+                    <div style="min-height: 27.1rem;width : 21.2rem;">@Html.Partial("_AboutPhoto", item)</div>
+                </noscript>
             </figure>
         </div>
     }
 </div>
-
+@Scripts.Render("~/bundles/jqueryval")

@@ -36,7 +36,6 @@ namespace MvcPL.Controllers
                 return PartialView();
             else
                 return View();
-            //return View();
         }
 
         [Authorize]
@@ -46,20 +45,21 @@ namespace MvcPL.Controllers
         {
             if (categoryService.GetCategoryIdByName(ctgrPhotoViewModel.Name) != 0)
             {
-                if (HttpContext.Request.IsAjaxRequest())
-                    return Json(new { success = true, redirect = returnUrl });
                 ModelState.AddModelError("", "Category already exists.");
+                if (HttpContext.Request.IsAjaxRequest())
+                    return Json(new { errors = GetErrorsFromModelState() });                
                 return View(ctgrPhotoViewModel);
             }
 
             categoryService.CreateCategoryPhoto(ctgrPhotoViewModel.ToBllCategory());
+            if (HttpContext.Request.IsAjaxRequest())
+                return Json(new { success = true, redirect = returnUrl });
             return RedirectToAction("Index", "Photo");
         }
 
         public JsonResult ValidateCategoryName(string Name)
         {
             var anyCategory = categoryService.GetCategoryIdByName(Name);
-
             return Json(anyCategory == 0, JsonRequestBehavior.AllowGet);
         }
 
@@ -70,7 +70,7 @@ namespace MvcPL.Controllers
             {
                 CategoryName = c.Name,
                 CategoryId = c.Id,
-                Selected = (c.Id == id)
+                Selected = false
             }).ToList();
 
             ViewBag.CategoryPhoto = new SelectList(rslt, "CategoryId", "CategoryName");
@@ -85,6 +85,13 @@ namespace MvcPL.Controllers
             return category.Name;
         }
 
+        #endregion
+
+        #region Private Methods
+        private IEnumerable<string> GetErrorsFromModelState()
+        {
+            return ModelState.SelectMany(x => x.Value.Errors.Select(error => error.ErrorMessage));
+        }
         #endregion
     }
 }

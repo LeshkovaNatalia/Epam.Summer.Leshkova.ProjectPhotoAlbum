@@ -4,6 +4,8 @@ using MvcPL.ViewModels;
 using MvcPL.Infrastructure.Mappers;
 using System.Linq;
 using System.Web.Mvc;
+using System;
+using System.Collections.Generic;
 
 namespace MvcPL.Controllers
 {
@@ -24,16 +26,60 @@ namespace MvcPL.Controllers
         #region Public Methods
 
         [ActionName("Index")]
-        public ActionResult UsersEdit()
+        public ActionResult UsersEdit(int page = 0)
         {
-            var model = userService.GetAllUserEntities().Select(user => new UserViewModel
+            int pageSize = 10;
+            var users = new PagedData<UserViewModel>();
+            var allusers = userService.GetAllUserEntities();
+            users = GetCountOfUsers(pageSize, page, allusers);      
+            
+            if (HttpContext.Request.IsAjaxRequest())
+                return PartialView(users);
+            else
+                return View(users);
+        }
+
+        private PagedData<UserViewModel> GetCountOfUsers(int pageSize, int page, IEnumerable<UserEntity> allusers)
+        {
+            var resultUsers = new PagedData<UserViewModel>();
+            if (page > 0)
+            {
+                resultUsers.Data = GetUsersData(pageSize, page);
+                resultUsers.CurrentPage = page;
+            }
+            else
+            {
+                resultUsers.Data = GetFirstPageUsersData(pageSize, page); 
+                resultUsers.CurrentPage = 1;
+            }
+
+            resultUsers.NumberOfPages = allusers.Count() % pageSize == 0 ? allusers.Count() / pageSize : allusers.Count() / pageSize + 1;
+            return resultUsers;
+        }
+
+        private IEnumerable<UserViewModel> GetFirstPageUsersData(int pageSize, int page)
+        {
+            var users = userService.GetAllUserEntities().Select(user => new UserViewModel
             {
                 UserId = user.UserId,
                 Email = user.Email,
                 CreatedOn = user.CreatedOn
-            });
+            }).Take(pageSize)
+                        .ToList();
+            return users;
+        }
 
-            return View(model);
+        private IEnumerable<UserViewModel> GetUsersData(int pageSize, int page)
+        {
+            var users = userService.GetAllUserEntities().Select(user => new UserViewModel
+            {
+                UserId = user.UserId,
+                Email = user.Email,
+                CreatedOn = user.CreatedOn
+            }).Skip(pageSize * (page - 1))
+                        .Take(pageSize)
+                        .ToList();
+            return users;
         }
 
         public ActionResult Details(int userId)
@@ -54,11 +100,8 @@ namespace MvcPL.Controllers
         public ActionResult Delete(int id)
         {
             UserEntity user = userService.GetUserEntity(id);
-
             if (user == null)
-            {
                 return HttpNotFound();
-            }
 
             return View(user.ToMvcUser());
         }

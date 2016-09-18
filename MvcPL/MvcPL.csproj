@@ -218,6 +218,7 @@
     <Content Include="Content\images\about-photo.png" />
     <Content Include="Content\images\ajax-loader.gif" />
     <Content Include="Content\images\add-photo.png" />
+    <Content Include="Content\images\default-user.png" />
     <Content Include="Content\images\icon.png" />
     <Content Include="Content\images\delete-photo.png" />
     <Content Include="Content\images\edit-photo.png" />
@@ -278,6 +279,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
+    <Content Include="Scripts\confirm-delete.js" />
     <Content Include="Scripts\dialog-login-registry.js" />
     <Content Include="Scripts\jquery-1.12.4.js" />
     <Content Include="Scripts\jquery-1.12.4.min.js" />
@@ -300,6 +302,7 @@
     <Content Include="Scripts\rating-photos.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\upload-file.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

@@ -12,7 +12,7 @@
     }
     else if (Convert.ToBoolean(canVote.ToString()) == true)
     {
-        @Html.Ratings(new VotingViewModel() { PhotoId = @Model.Id })
+        @Html.Ratings(new VotingViewModel() { PhotoId = @Model.Id })        
     }
     else
     {

@@ -1,8 +1,9 @@
 ﻿@model MvcPL.ViewModels.PagedData<MvcPL.ViewModels.PhotoViewModel>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="~/Scripts/jquery-1.12.4.min.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.0.min.js"></script>
 <script src="~/Scripts/load-user-photos.js"></script>
-
+@Scripts.Render("~/bundles/jqueryval")
 <div class="div-table">
     @{var counter = 1;}
     <div class="div-row">
@@ -16,7 +17,7 @@
                             <img src="~/Content/images/delete-photo.png" class="delete-non-ajax" alt="Delete Photo" />
                         </a>
                     </noscript>
-                    @Html.ActionLink("Delete", "Delete", routeValues: new { id = item.Id }, htmlAttributes: new { @class = "delete-photo", style="display:none;" })
+                    <a href="#" data-href="@Url.RouteUrl(routeName: "photodel", routeValues: new { id = item.Id })" @*onclick="deletePhoto(this);"*@ class="delete-photo" style="display:none"></a>
                     <a href="@Url.Action("CreatePhoto", "Photo")" class="right-float">
                         <img src="~/Content/images/add-photo.png" class="photo" alt="Add Photo" />
                     </a>
@@ -41,13 +42,10 @@
                     <p class="btn btn-default selected">@i</p>
                 }
                 else {
-                    <a class="btn btn-default" href="javascript:void(0)" onclick="loadUserPhoto(this);" style="display:none;">@i</a>
+                    <a class="btn btn-default" href="#" onclick="loadUserPhoto(this);" style="display:none;">@i</a>
                     <noscript><a class="btn btn-default" href="@Url.RouteUrl("userphotos", new { page = @i})">@i</a></noscript>
                 }
             }
         </div>
     </div>
-@section Scripts
-{
-    @Scripts.Render("~/bundles/jqueryval")
-}
+

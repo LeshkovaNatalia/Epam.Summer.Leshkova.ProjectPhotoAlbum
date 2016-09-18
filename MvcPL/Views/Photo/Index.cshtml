@@ -1,26 +1,31 @@
-﻿@*@model  IEnumerable<MvcPL.ViewModels.PhotoViewModel>*@
-@using MvcPL.Infrastructure.Helpers
+﻿@using MvcPL.Infrastructure.Helpers
 @model MvcPL.ViewModels.IndexViewModel
 
 @{
     ViewBag.Title = "Photo Album";
-    Layout = "~/Views/Shared/_PhotoLayout.cshtml";
 }
 
 <script src="~/Scripts/jquery-1.12.4.min.js"></script>
 <script src="~/Scripts/load-photos.js"></script>
+<script src="~/Scripts/rating-photos.js"></script>
 
-<div class="div-table  grid cs-style-3 clearfix">
+<div class="div-table  grid cs-style-3 clearfix" id="allphoto">
     @{var counter = 1;}
     <div class="div-row">
         @foreach (var item in Model.Photos)
-        {
+{
             <div class="div-cell">
                 <figure>
                     @Html.Partial("_Photo", item)
                     <figcaption id="@item.Id">
                         @Html.Partial("_AboutPhoto", item)
                     </figcaption>
+                    <noscript>
+                    <span style="display:block; width:300px; height:380px;">
+                        You need enable javascript to vote.
+                        @Html.Partial("_AboutPhoto", item)
+                    </span>
+                    </noscript>
                 </figure>
             </div>
             if (counter % 3 == 0)
@@ -37,3 +42,4 @@
     </div>
 </noscript>
 @Html.Hidden("User", User.Identity.Name)
+@Scripts.Render("~/bundles/jqueryval")

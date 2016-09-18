@@ -53,6 +53,7 @@ header {
 .main-content {
     width: 90%;
     max-width: 1024px;
+    min-height: 23rem;
     margin: 0 auto;
     padding-bottom: 6rem;
 }
@@ -187,13 +188,24 @@ footer > nav {
 img {
     background: url('images/ajax-loader.gif') no-repeat center;
 }
+div.div-row a.selected{
+    color:white;
+}
+div.div-row a.selected:hover{
+    background-color:darkturquoise;
+    color:white;
+}
+.selected{
+    background-color:darkturquoise;
+    color:white;
+}
 
 /* Style for input type="file" */
 .file-upload {
     display: block;
     position: relative;
     overflow: hidden;
-    margin-left: 2rem;
+    /*margin-left: 2rem;*/
     height: 2rem;
 }
 .file-upload .button, .file-upload > mark {
@@ -282,14 +294,14 @@ div.form-group label.file-upload span {
 .login-form input[type=text] {
     border: 1px solid #ccc;
     border-radius: 4px;
-    font-size: 16px;
+    font-size: 14px;
     width: 15rem;
 }
 
 .login-form input[type=password] {
     border: 1px solid #ccc;
     border-radius: 4px;
-    font-size: 16px;
+    font-size: 14px;
     width: 15rem;
 }
 
@@ -321,6 +333,10 @@ div#register-form .form-horizontal{
 #search {
     float: left;
     width: 50%;
+}
+#filter{
+    float: right;
+    width: 35%;
 }
 .selected-photo {
     padding: 10px;
@@ -420,6 +436,10 @@ input[type=submit] {
     border-radius: 0.3rem;
 }
 
+.btn:focus{
+    outline:none;
+}
+
 input[type=submit] .button {
     border: 1px solid lightgray;
 }
@@ -450,10 +470,7 @@ input#photo[type=text]:focus {
 }
 
 #ui-id-1 {
-    position: fixed;
     background-color: white;
-    border: 1px solid #ccc;
-    border-top-style: none;
     border-radius: 4px;
     width: 1em;
     list-style: none;
@@ -475,11 +492,12 @@ input#photo[type=text]:focus {
     background: darkturquoise none repeat scroll 0 0;
     border: thin solid lightgray;
     width: 15.5rem;
+    margin-left: 1.2rem;
+    margin-top: 0.5rem;
 }
 
 div.form-group label {
     text-align: left;
-    /*width: 41%;*/
     float: left;
 }
 
@@ -526,6 +544,15 @@ div.form-group div.col-md-10 {
     width: 17rem;
 }
 
+.validation-summary-errors {
+    color: red;
+    font-size: 1em;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
 div.ui-dialog div.form-group div {
     text-align: left;
     width: 55%;
@@ -568,7 +595,7 @@ div.ui-dialog{
 
 .img-responsive {
     padding-top: 0.5rem;
-    padding-left: 0.3rem;
+    padding-left: 2.5rem;
 }
 
 /* Description photo */
@@ -706,6 +733,7 @@ input[type=text] {
 .display-img {
     width: 300px;
     height: 300px;
+    background: none;
 }
 
 .delete-non-ajax {
@@ -725,9 +753,17 @@ input[type=text] {
     width: 340px;
 }
 
+#photos-list img.display-img{
+    background: url('images/ajax-loader.gif') no-repeat center;
+}
+
 .user-description {
     display: none;
     margin-left: 10rem;
+}
+
+#users-list div.central-div{
+    min-height:25rem;
 }
 
 .email:hover + .user-description {
@@ -1014,4 +1050,18 @@ input.required::after {
     to {
         opacity: 1;
     }
+}
+
+.scrollToTop{
+	width:5rem; 
+	height:6rem;
+	text-decoration: none;
+	position:fixed;
+	top:35rem;
+	right:4rem;
+	display:none;
+	background: url('images/up.png') no-repeat 0px 20px;
+}
+.scrollToTop:hover{
+	text-decoration:none;
 }

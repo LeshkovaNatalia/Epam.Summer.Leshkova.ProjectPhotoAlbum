@@ -39,7 +39,7 @@ namespace MvcPL.Controllers
 
             int raters = GetRaters(photoId);
             double totalRating = Math.Round(GetTotalRating(photoId), 1);
-            var jsondata = new { Raters = raters, Rating = totalRating };// ctx.Entries.Where(e => e.Message.Contains(searchString));
+            var jsondata = new { Raters = raters, Rating = totalRating };
 
             return Json(jsondata);
         }

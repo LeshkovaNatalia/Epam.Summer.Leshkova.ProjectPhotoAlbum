@@ -38,7 +38,10 @@ namespace MvcPL
 
             routes.MapRoute("userphotos", "myphotos",
                 new { controller = "Photo", action = "GetPhotoForUser" });
-        
+
+            routes.MapRoute("validateuser", "userexist",
+                defaults: new { controller = "Account", action = "ValidateUserEmail" });
+
             // routes for photo
             routes.MapRoute("photosearch", "search/{term}",
             new { controller = "Photo", action = "Find", term = UrlParameter.Optional });
@@ -55,6 +58,8 @@ namespace MvcPL
                 new { controller = "Photo", action = "FindByDescription", term = UrlParameter.Optional });
             routes.MapRoute("photodelete", "photo/delete/{id}",
                 new { controller = "Photo", action = "DeletePhoto", id = UrlParameter.Optional });
+            routes.MapRoute("photodel", "myphotos/delete/{id}",
+                new { controller = "Photo", action = "Delete", id = UrlParameter.Optional });
             routes.MapRoute("photocreate", "photo/create",
                 new { controller = "Photo", action = "CreatePhoto" });
             routes.MapRoute("photoedit", "photo/{photoId}/{action}",

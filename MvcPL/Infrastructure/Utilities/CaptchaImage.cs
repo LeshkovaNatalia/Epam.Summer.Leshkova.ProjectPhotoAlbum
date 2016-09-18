@@ -73,7 +73,7 @@ namespace MvcPL.Infrastructure.Utilities
             height = aHeight;
         }
 
-        // Sets the font used for the image text.\
+        // Sets the font used for the image text.
         private void SetFamilyName(string aFamilyName)
         {
             try

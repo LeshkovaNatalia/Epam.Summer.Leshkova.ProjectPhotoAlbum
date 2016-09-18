@@ -92,6 +92,14 @@ namespace MvcPL.Infrastructure.Mappers
             };
         }
 
+        public static bool IsEmpty<T>(this IEnumerable<T> list)
+        {
+            if (list is ICollection<T>)
+                return ((ICollection<T>)list).Count == 0;
+
+            return !list.Any();
+        }
+
         #endregion
 
         #region Private Methods
@@ -115,9 +123,8 @@ namespace MvcPL.Infrastructure.Mappers
             var roles = new List<RoleEntity>();
 
             for (int i = 0; i < rolesStrings.Length; i++)
-            {
                 roles.Add(new RoleEntity() { Name = rolesStrings[i] });
-            }
+
             return roles;
         }
 

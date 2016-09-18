@@ -25,9 +25,7 @@ namespace MvcPL.Providers
             MembershipUser membershipUser = GetUser(email, false);
 
             if (membershipUser != null)
-            {
                 return null;
-            }
 
             var user = new UserEntity
             {
@@ -40,9 +38,7 @@ namespace MvcPL.Providers
             var role = RoleService.GetAllRoles().FirstOrDefault(r => r.Name == "User");
 
             if (role != null)
-            {
                 user.Roles.Add(role);
-            }
             
             UserService.CreateUser(user);
             membershipUser = GetUser(email, false);

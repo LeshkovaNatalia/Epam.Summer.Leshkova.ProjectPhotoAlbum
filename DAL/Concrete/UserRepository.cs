@@ -76,26 +76,73 @@ namespace DAL.Concrete
             User user = context.Set<User>().First(u => u.UserId == dalUser.Id);
             user.Roles.Remove(new Role() { Name = "User" });
 
-            IEnumerable<DalVoting> votings = context.Set<Voting>().Where(usr => usr.UserId == dalUser.Id).Select(vote => new DalVoting()
-            {
-                UserId = dalUser.Id
-            });
-
-            if (votings != null)
-                foreach(var vote in votings)
-                    if(vote.UserId != 0)
-                        context.Set<Voting>().Remove(new Voting() { UserId = vote.UserId, PhotoId = vote.PhotoId});
-
-            IEnumerable<DalPhoto> photos = context.Set<Photo>().Where(usr => usr.UserId == dalUser.Id).Select(ph => new DalPhoto()
-            {
-                UserId = dalUser.Id
-            });
-
-            foreach (var photo in photos)
-                if (photo.UserId != 0)
-                    context.Set<Photo>().Remove(new Photo() { UserId = photo.UserId});
+            RemoveVotings(context, dalUser.Id);
+            RemovePhotos(context, dalUser.Id);
             
             context.Set<User>().Remove(user);            
+        }
+
+        private void RemovePhotos(DbContext context, int id)
+        {
+            IEnumerable<DalPhoto> photos = context.Set<Photo>().Where(usr => usr.UserId == id).Select(ph => new DalPhoto()
+            {
+                UserId = id,
+                Id = ph.PhotoId,
+                CategoryId = ph.CategoryId,
+                CreatedOn = ph.CreatedOn,
+                Image = ph.Image,
+                Description = ph.Description
+            });
+
+            if (photos.Count() != 0)
+                foreach (var photo in photos)
+                    if (photo.UserId != 0)
+                    {
+                        var ph = new Photo()
+                        {
+                            UserId = photo.UserId,
+                            PhotoId = photo.Id,
+                            CreatedOn = photo.CreatedOn,
+                            CategoryId = photo.CategoryId,
+                            Image = photo.Image,
+                            Description = photo.Description
+                        };
+                        RemoveVotings(context, photo.UserId, photo.Id);
+                        context.Set<Photo>().Attach(ph);
+                        context.Set<Photo>().Remove(ph);
+                    }
+        }
+
+        private void RemoveVotings(DbContext context, int id, int photoId = 0)
+        {
+            IEnumerable<DalVoting> votings;
+            if(photoId == 0)
+                votings = context.Set<Voting>().Where(usr => usr.UserId == id).Select(vote => new DalVoting()
+            {
+                UserId = id,
+                PhotoId = vote.PhotoId,
+                Rating = vote.Rating
+            });
+            else
+                votings = context.Set<Voting>().Where(ph => ph.PhotoId == photoId).Select(vote => new DalVoting()
+                {
+                    UserId = vote.UserId,
+                    PhotoId = photoId,
+                    Rating = vote.Rating
+                });
+
+            if (votings != null)
+                foreach (var vote in votings)
+                {
+                    var entity = new Voting()
+                    {
+                        UserId = vote.UserId,
+                        PhotoId = vote.PhotoId,
+                        Rating = vote.Rating
+                    };
+                    context.Set<Voting>().Attach(entity);
+                    context.Set<Voting>().Remove(entity);
+                }
         }
 
         /// <summary>

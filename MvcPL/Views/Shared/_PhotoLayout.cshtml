@@ -54,7 +54,15 @@
                     }
                 }
             </section>
-
+            <section id="filter">
+            @using (Ajax.BeginForm("Index", "Photo", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "allphoto" }))
+            {
+                <div>
+                    @{Html.RenderAction("GetAllCategoryPhoto", "Category");}
+                    <input type="submit" class="button btn" style="border:1px solid lightgray; width:50%;" value="Display" />
+                </div>
+            }
+            </section>
         </header>
         <main class="main-content">
             @RenderBody()
@@ -87,6 +95,7 @@
         <p>&copy; @DateTime.Now.Year - Lehkova Natalia</p>
         <a href="/" class="nav"><img src="~/Content/images/logo.png" class="footer-logo" alt="Logo" /></a>
     </footer>
+    <a href="#" class="scrollToTop"></a>
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
 </body>

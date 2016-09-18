@@ -30,6 +30,7 @@
         getValidationSummaryErrors($form)
             .removeClass('validation-summary-errors')
             .addClass('validation-summary-valid')
+            .innerHTML="";
     };
 
     var formSubmitHandler = function (e) {
@@ -54,10 +55,9 @@
     var loadAndShowDialog = function (id, link, url) {
         var separator = url.indexOf('?') >= 0 ? '&' : '?';
 
-        // Save an empty jQuery in our cache for now.
         dialogs[id] = $();
 
-        // Load the dialog with the content=1 QueryString in order to get a PartialView
+        // Load the dialog with the content=1 -> return result to partial view
         $.get(url + separator + 'content=1')
             .done(function (content) {
                 dialogs[id] = $('<div class="modal-popup">' + content + '</div>')
@@ -71,12 +71,35 @@
                         draggable: true,
                         width: link.data('dialog-width') || 600,
                         beforeClose: function () { resetForm($(this).find('form')); },
-                        show: { effect: "fade", duration: 1500 },
+                        show: { effect: "fade", duration: 500 },
                         hide: { effect: "slide", duration: 1000 }
                     })
                     .find('form')
                         .submit(formSubmitHandler)
                     .end();
+                $('#Email').keyup(function () {
+                    var email = $(this).val();
+                    $.ajax({
+                        url: 'userexist',
+                        type: "POST",
+                        data: { Email: email }
+                    });
+                });
+                $('#Name').keyup(function () {
+                    var name = $(this).val();
+                    $.ajax({
+                        url: 'ValidateCategoryName',
+                        type: "POST",
+                        data: { Name: name },
+                        success: function (data) {
+                            if (data == 1) {
+                                $("span.text-danger").text("");
+                            } else {
+                                $("span.text-danger").text("Category exist with this name!");
+                            }
+                        }
+                    });
+                });
             });
     };
 
@@ -89,6 +112,7 @@
             if (!dialogs[id]) {
                 loadAndShowDialog(id, link, url);
             } else {
+                
                 dialogs[id].dialog('open');
             }
             e.preventDefault();

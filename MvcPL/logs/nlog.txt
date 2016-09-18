@@ -152,3 +152,127 @@ PhotoController.Index => PhotoService.GetAllPhotoEntities => NLogLogger.Error 14
 CategoryController.CreateCategory => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 15.09.2016 BLL.Services.CategoryPhotoService Get category id by name  was failed.
 CategoryController.CreateCategory => CategoryPhotoService.CreateCategoryPhoto => NLogLogger.Error 15.09.2016 BLL.Services.CategoryPhotoService Create category photo was failed.
 PhotoController.Index => PhotoService.GetAllPhotoEntities => NLogLogger.Error 15.09.2016 BLL.Services.PhotoService Get all photos was failed.
+PhotoController.Index => PhotoService.GetAllPhotoEntities => NLogLogger.Error 16.09.2016 BLL.Services.PhotoService Get all photos was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 16.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 16.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 16.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 16.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 16.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 16.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 16.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 16.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 16.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 16.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 16.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 16.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 16.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 16.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 16.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 16.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 16.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 16.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 16.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 16.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 16.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 16.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 16.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 16.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 16.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 16.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 16.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 16.09.2016 BLL.Services.UserService Delete user was failed.
+PhotoController.Index => PhotoService.GetAllPhotoEntities => NLogLogger.Error 17.09.2016 BLL.Services.PhotoService Get all photos was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 17.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 17.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 17.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 17.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 17.09.2016 BLL.Services.UserService Delete user was failed.
+CategoryController.CreateCategory => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name  was failed.
+CategoryController.CreateCategory => CategoryPhotoService.CreateCategoryPhoto => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Create category photo was failed.
+CategoryController.CreateCategory => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name Mountain was failed.
+CategoryController.CreateCategory => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name newcategory was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name A was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name A was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name Ani was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name Ani was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name Anim was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name Anim was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name Anim was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name Anim was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name A was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name A was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name An was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name Ani was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name Ani was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name Anim was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name Anima was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name Animal was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name A was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name A was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name An was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name Ani was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name Anim was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name Anima was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name Animal was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name Animalsh was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name Animal was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name Anima was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name Anim was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name Ani was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name An was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name Ani was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name Anim was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name Anima was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name Animal was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name Animal was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name An was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name A was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name Ani was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name Ani was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name Anim was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name A was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name Anima was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name Animal was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name A was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name  was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name S was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name S was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name Se was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name S was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name S was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name Se was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name Se was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name s was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name se was failed.
+CategoryController.CreateCategory => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name  was failed.
+CategoryController.CreateCategory => CategoryPhotoService.CreateCategoryPhoto => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Create category photo was failed.
+CustomRoleProvider.GetRolesForUser => UserService.GetAllUserEntities => NLogLogger.Error 17.09.2016 BLL.Services.UserService Get all user was failed.
+PhotoController.Index => PhotoService.GetAllPhotoEntities => NLogLogger.Error 17.09.2016 BLL.Services.PhotoService Get all photos was failed.
+CategoryController.CreateCategory => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name Category was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name  was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name S was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name S was failed.
+CategoryController.ValidateCategoryName => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name Se was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 17.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 17.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 17.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 17.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 17.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 17.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 17.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 17.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 17.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 17.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 17.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 17.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 17.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 17.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 17.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 17.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 17.09.2016 BLL.Services.UserService Delete user was failed.
+CategoryController.CreateCategory => CategoryPhotoService.GetCategoryIdByName => NLogLogger.Error 17.09.2016 BLL.Services.CategoryPhotoService Get category id by name Sponge Bob was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 17.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 17.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 17.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 17.09.2016 BLL.Services.UserService Delete user was failed.
+AdminController.DeleteUser => UserService.DeleteUser => NLogLogger.Error 17.09.2016 BLL.Services.UserService Delete user was failed.

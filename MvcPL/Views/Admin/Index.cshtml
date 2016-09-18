@@ -1,49 +1,70 @@
-﻿@model IEnumerable<MvcPL.ViewModels.UserViewModel>
+﻿@*@model IEnumerable<MvcPL.ViewModels.UserViewModel>*@
+@model MvcPL.ViewModels.PagedData<MvcPL.ViewModels.UserViewModel>
 
 @{
     ViewBag.Title = "Users";
-    Layout = "~/Views/Shared/_PhotoLayout.cshtml";
 }
-
-
-<div class="central-div">
-    <h4>List of users</h4>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatedOn)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Roles)
-            </th>
-            <th></th>
-        </tr>
-        @foreach (var item in Model)
-        {
+<script src="~/Scripts/jquery-1.12.4.min.js"></script>
+<script src="~/Scripts/load-user-photos.js"></script>
+<script src="~/Scripts/dialog-login-registry.js"></script>
+<script src="~/Scripts/confirm-delete.js"></script>
+<div id="users-list">
+    <div class="central-div">
+        <h4>List of users</h4>
+        <table class="table">
             <tr>
-                <td>
-                    @Html.RouteLink(item.Email, "usersdetails", new { userId = item.UserId }, new { @class = "email" })
-                    <div class="user-description">
-                        <img src="@Url.RouteUrl("userimg", new { email = item.Email })" alt="User Photo">
-                    </div>
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreatedOn)
-                </td>
-                <td>
-                    @{
-                        var roles = Html.Action("GetRolesForUser", "Account", new { userId = item.UserId });
-                        <div>@Convert.ToString(roles)</div>
-                    }
-                </td>
-                <td>
-                    @Html.RouteLink("Delete", "deleteuser", new { id = item.UserId }, new { @class = "delete-user", style = "display:none;" })
-                    <noscript>@Html.RouteLink("Delete", "delete", new { id = item.UserId })</noscript>
-                </td>
+                <th>
+                    @Html.DisplayName("Email")
+                </th>
+                <th>
+                    @Html.DisplayName("CreatedOn")
+                </th>
+                <th>
+                    @Html.DisplayName("Roles")
+                </th>
+                <th></th>
             </tr>
-        }
-    </table>
+            @foreach (var item in Model.Data)
+            {
+                <tr>
+                    <td>
+                        @Html.RouteLink(item.Email, "usersdetails", new { userId = item.UserId }, new { @class = "email" })
+                        <div class="user-description">
+                            <img src="@Url.RouteUrl("userimg", new { email = item.Email })" alt="User Photo">
+                        </div>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreatedOn)
+                    </td>
+                    <td>
+                        @{
+                            var roles = Html.Action("GetRolesForUser", "Account", new { userId = item.UserId });
+                            <div>@Convert.ToString(roles)</div>
+                        }
+                    </td>
+                    <td>
+                        <a href="#" onclick = "deleteUser(this);" data-href="@Url.RouteUrl(routeName: "deleteuser", routeValues: new { id = item.UserId })" class = "delete-user" style = "display:none;">
+                            Delete
+                        </a>
+                        <noscript>@Html.RouteLink("Delete", "delete", new { id = item.UserId })</noscript>
+                    </td>
+                </tr>
+                            }
+        </table>
+        <div class="div-row" style="text-align:center;">
+            @for (int i = 1; i <= Model.NumberOfPages; i++)
+            {
+                if (i == Model.CurrentPage)
+                {
+                    <p class="btn btn-default selected">@i</p>
+                }
+                else
+                {
+                    <a class="btn btn-default" href="#" onclick="loadUsers(this);" style="display:none;">@i</a>
+                    <noscript><a class="btn btn-default" href="@Url.RouteUrl("users", new { page = @i})">@i</a></noscript>
+                }
+            }
+        </div>
+    </div>
 </div>
+

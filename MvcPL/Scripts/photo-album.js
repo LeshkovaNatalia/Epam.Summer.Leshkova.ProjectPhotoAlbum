@@ -1,4 +1,18 @@
-﻿/* Function for search photos */
+﻿$(document).ready(function(){	
+	$(window).scroll(function(){
+		if ($(this).scrollTop() > 250) {
+			$('.scrollToTop').fadeIn();
+		} else {
+			$('.scrollToTop').fadeOut();
+		}
+	});	
+	$('.scrollToTop').click(function(){
+		$('html, body').animate({scrollTop : 0}, 800);
+		return false;
+	});	
+});
+
+/* Function for search photos */
 $(document).ready(function () {
     $("#photo").autocomplete({
         source: function (request, response) {
@@ -26,28 +40,21 @@ $(document).ready(function () {
             $.each(data, function (i, photo) {
                 items += "<td><a onclick='aboutPhoto(this)' data-ajax='true' data-ajax-mode='replace' data-ajax-update='#photoTemplate' href='/Photo/Details?photoId=" + photo.Id + "'><img src='/images/" + photo.Id + "' width=\"100\" height=\"100\"/></a></td>";
                 if (counter % 5 == 0)
-                {
                     items += "</tr><tr>";
-                }
                 counter++;
             });
             items += "</table>";
-
             $('#search-photo').html(items);
         });
     });
 })
 
 function aboutPhoto(obj) {
-    $("#indicator").show();
-
     var url = $(obj).attr('href');
-
-    $.getJSON(url, null, function (photo) {
-        $("#indicator").hide();
+    $.getJSON(url, null, function (photo) {        
         var descr = photo.Description;
         var photoId = photo.Id;
-        $('.selected-photo div p.photo-description').html(descr);
+        $('.selected-photo div p.photo-description').html(descr);        
         $('.selected-photo div img.display-img').attr('src', '/images?photoId=' + photoId);
         $('.selected-photo').removeAttr('style');
     });
@@ -113,29 +120,3 @@ $(document).ready(function () {
     $('.col-md-10 img.img-preview').removeAttr('style');
 });
 
-/* Dialog for confirm delete photo */
-$().ready(function () {
-    $('.delete-photo').click(function (e) {
-        e.preventDefault();
-        deleteItem(this, '<p>Are you sure you want to delete this photo?</p>');
-    });
-    $('.delete-user').click(function (e) {
-        e.preventDefault();
-        deleteItem(this, '<p>Are you sure you want to delete this user?</p>');
-    });
-});
-
-function deleteItem(obj, msg) {
-    var href = $(obj).attr("href");
-    var dialog = $(msg).dialog({
-        buttons: {
-            "Yes": function () {
-                window.location.href = href;
-                dialog.dialog('close');
-            },
-            "Cancel": function () {
-                dialog.dialog('close');
-            }
-        }
-    });
-}

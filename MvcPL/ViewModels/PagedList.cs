@@ -24,6 +24,7 @@ namespace MvcPL.ViewModels
     public class IndexViewModel
     {
         public IEnumerable<PhotoViewModel> Photos { get; set; }
+        public IEnumerable<UserViewModel> Users { get; set; }
         public PageInfo PageInfo { get; set; }
     }
 }

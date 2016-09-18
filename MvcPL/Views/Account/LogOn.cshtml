@@ -10,7 +10,7 @@
         <hr>
         @using (Html.BeginForm((string)ViewBag.FormAction, "Account", FormMethod.Post, new { id = "login-form" }))
         {
-            @Html.ValidationSummary(true)
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @Html.AntiForgeryToken()
             <div class="editor-field">
                 @Html.TextBoxFor(model => model.Email, new { @placeholder = "Email", @class = "required" })

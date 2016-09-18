@@ -105,6 +105,16 @@ namespace MvcPL.Controllers
                     viewModel.AvatarImg = ms.ToArray();
                 }
             }
+            else
+            {                
+                using (var img = Image.FromFile(Server.MapPath(@"~\Content/images/default-user.png")))
+                {
+                    var ms = new MemoryStream();
+                    img.Save(ms, img.RawFormat);
+                    viewModel.AvatarImg = ms.ToArray();
+                }
+
+            }
 
             var anyUser = userService.GetAllUserEntities().Any(u => u.Email.Contains(viewModel.Email));
 
@@ -139,7 +149,6 @@ namespace MvcPL.Controllers
         public JsonResult ValidateUserEmail(string Email)
         {
             var anyUser = userService.GetUserByEmail(Email);
-
             return Json(anyUser == null, JsonRequestBehavior.AllowGet);
         }
 
@@ -164,7 +173,6 @@ namespace MvcPL.Controllers
         public string GetUserName(int userId)
         {
             var user = userService.GetUserEntity(userId);
-
             return user.Email;
         }
         public string GetRolesForUser(int userId)
@@ -177,11 +185,13 @@ namespace MvcPL.Controllers
             return PartialView("_LoginPartial");
         }
 
+        #endregion
+
+        #region Private Methods
         private IEnumerable<string> GetErrorsFromModelState()
         {
             return ModelState.SelectMany(x => x.Value.Errors.Select(error => error.ErrorMessage));
         }
-
         #endregion
     }
 }

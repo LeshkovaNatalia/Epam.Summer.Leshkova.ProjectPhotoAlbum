@@ -26,6 +26,9 @@
         <div class="col-md-10">
             <div class="category-dropdown">
                 @{Html.RenderAction("GetAllCategoryPhoto", "Category");}
+                <span class="left-float">
+                    @Html.RouteLink("+ Category", "categorycreate", routeValues: null, htmlAttributes: new { id = "categoryLink2", data_dialog_width = 350 })
+                </span>
             </div>
         </div>
     </div>
@@ -35,7 +38,7 @@
             <label class="file-upload">
                 <span class="button">Upload File</span>
                 <mark></mark>
-                <input type="file" id="photo_path" name="files" accept=".jpg, .png, .gif" title="Choose file" onchange="previewFile()">
+                <input type="file" multiple id="photo_path" name="files" accept=".jpg, .png, .gif" title="Choose file" onchange="previewFile()">
             </label>
             <img src="" class="img-preview" alt="Preview..." id="preview" style="display:none;">
         </div>
