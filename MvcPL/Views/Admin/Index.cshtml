@@ -1,5 +1,4 @@
-﻿@*@model IEnumerable<MvcPL.ViewModels.UserViewModel>*@
-@model MvcPL.ViewModels.PagedData<MvcPL.ViewModels.UserViewModel>
+﻿@model MvcPL.ViewModels.PagedData<MvcPL.ViewModels.UserViewModel>
 
 @{
     ViewBag.Title = "Users";
@@ -43,7 +42,7 @@
                         }
                     </td>
                     <td>
-                        <a href="#" onclick = "deleteUser(this);" data-href="@Url.RouteUrl(routeName: "deleteuser", routeValues: new { id = item.UserId })" class = "delete-user" style = "display:none;">
+                        <a href="#" data-href="@Url.RouteUrl(routeName: "deleteuser", routeValues: new { id = item.UserId })" class = "delete-user" style = "display:none;">
                             Delete
                         </a>
                         <noscript>@Html.RouteLink("Delete", "delete", new { id = item.UserId })</noscript>

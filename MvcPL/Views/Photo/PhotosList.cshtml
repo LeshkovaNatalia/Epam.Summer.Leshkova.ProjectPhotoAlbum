@@ -17,7 +17,7 @@
                             <img src="~/Content/images/delete-photo.png" class="delete-non-ajax" alt="Delete Photo" />
                         </a>
                     </noscript>
-                    <a href="#" data-href="@Url.RouteUrl(routeName: "photodel", routeValues: new { id = item.Id })" @*onclick="deletePhoto(this);"*@ class="delete-photo" style="display:none"></a>
+                    <a href="#" data-href="@Url.RouteUrl(routeName: "photodel", routeValues: new { id = item.Id })" class="delete-photo" style="display:none"></a>
                     <a href="@Url.Action("CreatePhoto", "Photo")" class="right-float">
                         <img src="~/Content/images/add-photo.png" class="photo" alt="Add Photo" />
                     </a>
